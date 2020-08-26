@@ -6,14 +6,14 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/04 15:06:12 by amunoz-p          #+#    #+#             */
-/*   Updated: 2019/11/04 18:02:48 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2019/11/15 12:46:18 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 #include <stdio.h>
 
-void	ft_bzero(void *s, unsigned int n)
+void	ft_bzero(void *s, size_t n)
 {
 	int			i;
 	char		*a;
