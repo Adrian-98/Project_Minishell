@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/10 18:10:01 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/08/26 19:38:09 by amunoz-p         ###   ########.fr       */
+/*   Created: 2019/11/06 16:15:16 by amunoz-p          #+#    #+#             */
+/*   Updated: 2019/11/10 18:40:08 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "minishell.h"
+#include "libft.h"
 
-int main(int argc, char **argv, char **env)
+int		ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	char *line;
+	size_t			i;
+	unsigned char	*ptr;
+	unsigned char	*ptr2;
 
-	while (1)
+	if (n == 0)
+		return (0);
+	ptr = (unsigned char*)s1;
+	ptr2 = (unsigned char*)s2;
+	i = 0;
+	while (*ptr == *ptr2 && ++i < n)
 	{
-		get_next_line(0, &line);
-		if (ft_memcmp("exit", line, ft_strlen("exit")) == 0)
-			return(0);
-		//printf("hola\n");
-		printf("%s\n", line);
-		
+		ptr++;
+		ptr2++;
 	}
-	return 0;
+	return ((int)(*ptr - *ptr2));
 }

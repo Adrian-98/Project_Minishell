@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/10 18:10:01 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/08/26 19:38:09 by amunoz-p         ###   ########.fr       */
+/*   Created: 2019/11/06 15:08:23 by amunoz-p          #+#    #+#             */
+/*   Updated: 2019/11/07 11:57:01 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "minishell.h"
+#include "libft.h"
 
-int main(int argc, char **argv, char **env)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	char *line;
+	size_t			i;
+	const char		*b;
 
-	while (1)
+	b = s;
+	i = 0;
+	while (i < n)
 	{
-		get_next_line(0, &line);
-		if (ft_memcmp("exit", line, ft_strlen("exit")) == 0)
-			return(0);
-		//printf("hola\n");
-		printf("%s\n", line);
-		
+		if (b[i] == c)
+			return (&((char*)s)[i]);
+		i++;
 	}
-	return 0;
+	return (NULL);
 }

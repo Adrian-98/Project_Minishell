@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/10 18:10:01 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/08/26 19:38:09 by amunoz-p         ###   ########.fr       */
+/*   Created: 2019/11/10 16:07:04 by amunoz-p          #+#    #+#             */
+/*   Updated: 2019/11/10 16:13:08 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "minishell.h"
+#include "libft.h"
 
-int main(int argc, char **argv, char **env)
+void	ft_putchar_fd(char c, int fd)
 {
-	char *line;
-
-	while (1)
-	{
-		get_next_line(0, &line);
-		if (ft_memcmp("exit", line, ft_strlen("exit")) == 0)
-			return(0);
-		//printf("hola\n");
-		printf("%s\n", line);
-		
-	}
-	return 0;
+	write(fd, &c, 1);
 }

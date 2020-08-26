@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/10 18:10:01 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/08/26 19:38:09 by amunoz-p         ###   ########.fr       */
+/*   Created: 2019/11/10 16:36:00 by amunoz-p          #+#    #+#             */
+/*   Updated: 2019/11/10 16:51:08 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "minishell.h"
+#include "libft.h"
 
-int main(int argc, char **argv, char **env)
+void	ft_putnbr_fd(int n, int fd)
 {
-	char *line;
+	unsigned int nb;
 
-	while (1)
+	nb = 0;
+	if (n < 0)
 	{
-		get_next_line(0, &line);
-		if (ft_memcmp("exit", line, ft_strlen("exit")) == 0)
-			return(0);
-		//printf("hola\n");
-		printf("%s\n", line);
-		
+		nb = n * -1;
+		write(fd, "-", 1);
 	}
-	return 0;
+	else
+		nb = n;
+	if (nb >= 10)
+		ft_putnbr_fd(nb / 10, fd);
+	nb = (nb % 10) + 48;
+	write(fd, &nb, 1);
 }

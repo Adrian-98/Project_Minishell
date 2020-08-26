@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/10 18:10:01 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/08/26 19:38:09 by amunoz-p         ###   ########.fr       */
+/*   Created: 2019/11/06 18:46:18 by amunoz-p          #+#    #+#             */
+/*   Updated: 2019/11/12 17:48:57 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "minishell.h"
+#include "libft.h"
 
-int main(int argc, char **argv, char **env)
+size_t		ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	char *line;
+	size_t			i;
+	size_t			count;
 
-	while (1)
+	count = 0;
+	i = 0;
+	if (!dst)
+		return (dstsize);
+	count = ft_strlen((char *)src);
+	if (dstsize > 0)
 	{
-		get_next_line(0, &line);
-		if (ft_memcmp("exit", line, ft_strlen("exit")) == 0)
-			return(0);
-		//printf("hola\n");
-		printf("%s\n", line);
-		
+		while (src[i] != '\0' && i < (dstsize - 1))
+		{
+			dst[i] = ((char*)src)[i];
+			i++;
+		}
+		dst[i] = 0;
 	}
-	return 0;
+	return (count);
 }

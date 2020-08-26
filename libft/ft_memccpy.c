@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/10 18:10:01 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/08/26 19:38:09 by amunoz-p         ###   ########.fr       */
+/*   Created: 2019/11/05 13:47:56 by amunoz-p          #+#    #+#             */
+/*   Updated: 2019/11/12 18:07:49 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "minishell.h"
+#include <stddef.h>
 
-int main(int argc, char **argv, char **env)
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	char *line;
+	unsigned char		*dest;
+	unsigned char		*source;
+	unsigned char		d;
+	int					i;
 
-	while (1)
+	i = 0;
+	dest = (unsigned char *)dst;
+	source = (unsigned char *)src;
+	d = c;
+	while (n-- > 0)
 	{
-		get_next_line(0, &line);
-		if (ft_memcmp("exit", line, ft_strlen("exit")) == 0)
-			return(0);
-		//printf("hola\n");
-		printf("%s\n", line);
-		
+		dest[i] = source[i];
+		if (source[i] == d)
+			return (&dst[i + 1]);
+		i++;
 	}
-	return 0;
+	return (NULL);
 }

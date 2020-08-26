@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/10 18:10:01 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/08/26 19:38:09 by amunoz-p         ###   ########.fr       */
+/*   Created: 2019/09/15 11:05:01 by amunoz-p          #+#    #+#             */
+/*   Updated: 2019/11/06 20:35:50 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "minishell.h"
-
-int main(int argc, char **argv, char **env)
+int		ft_strncmp(const char *s1, const char *s2, unsigned int n)
 {
-	char *line;
+	unsigned	int	i;
+	int				num;
 
-	while (1)
+	num = 0;
+	i = 0;
+	while ((s1[i] != '\0') && (s2[i] != '\0') && (num == 0 && i < n))
 	{
-		get_next_line(0, &line);
-		if (ft_memcmp("exit", line, ft_strlen("exit")) == 0)
-			return(0);
-		//printf("hola\n");
-		printf("%s\n", line);
-		
+		num += (unsigned char)s1[i] - (unsigned char)s2[i];
+		i++;
 	}
-	return 0;
+	if (num == 0 && i < n)
+	{
+		num = (unsigned char)s1[i] - (unsigned char)s2[i];
+	}
+	return (num);
 }

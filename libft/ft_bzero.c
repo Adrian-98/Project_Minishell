@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/10 18:10:01 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/08/26 19:38:09 by amunoz-p         ###   ########.fr       */
+/*   Created: 2019/11/04 15:06:12 by amunoz-p          #+#    #+#             */
+/*   Updated: 2019/11/15 12:46:18 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "minishell.h"
+#include <string.h>
+#include <stdio.h>
 
-int main(int argc, char **argv, char **env)
+void	ft_bzero(void *s, size_t n)
 {
-	char *line;
+	int			i;
+	char		*a;
 
-	while (1)
+	a = s;
+	i = 0;
+	while (n > 0)
 	{
-		get_next_line(0, &line);
-		if (ft_memcmp("exit", line, ft_strlen("exit")) == 0)
-			return(0);
-		//printf("hola\n");
-		printf("%s\n", line);
-		
+		a[i] = 0;
+		i++;
+		n--;
 	}
-	return 0;
 }

@@ -6,24 +6,34 @@
 #    By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/26 17:54:32 by amunoz-p          #+#    #+#              #
-#    Updated: 2020/08/26 17:54:55 by amunoz-p         ###   ########.fr        #
+#    Updated: 2020/08/26 19:39:34 by amunoz-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME			= minishell
+NAME		= minishell
 
-all:			$(NAME)
+SRCS		= main.c
 
-$(NAME):		 $(OBJS)
-				gcc ${CFLAGS} -o ${NAME} ${OBJS} ${LIBS}
+GCC			=	@gcc -Wall -Wextra -Werror
 
-clean:
-				@$(MAKE) -C 
-				$(RM) $(OBJS)
+OBJS		=	$(SRCS:.c=.o)
 
-fclean:			clean
-				$(RM) $(NAME)
+LIBFT		= libft/libft.a
 
-re:				fclean $(NAME)
+INCLUDES	=	./
 
-.PHONY:			all clean fclean re
+all: $(NAME)
+
+$(NAME):	$(OBJS)
+		@$(MAKE) -C libft
+		@$(GCC) -I$(INCLUDES) $(LIBFT) $(OBJS) -o $(NAME)
+		
+clean:  
+			-@$(RM) $(OBJS)	
+			@$(MAKE) -C libft clean
+
+fclean:     clean
+			-@$(RM) $(NAME) $(LIBFT)
+re:			fclean all
+
+.PHONY:		all clean fclean re bonus

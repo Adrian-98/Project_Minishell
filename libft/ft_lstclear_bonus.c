@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/10 18:10:01 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/08/26 19:38:09 by amunoz-p         ###   ########.fr       */
+/*   Created: 2019/11/12 12:55:03 by amunoz-p          #+#    #+#             */
+/*   Updated: 2019/11/12 18:03:07 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "minishell.h"
+#include "libft.h"
 
-int main(int argc, char **argv, char **env)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	char *line;
+	t_list		*node;
+	t_list		*thennode;
 
-	while (1)
+	if (del == 0 || *lst == 0)
+		return ;
+	node = *lst;
+	while (node != NULL)
 	{
-		get_next_line(0, &line);
-		if (ft_memcmp("exit", line, ft_strlen("exit")) == 0)
-			return(0);
-		//printf("hola\n");
-		printf("%s\n", line);
-		
+		thennode = node->next;
+		del(node->content);
+		free(node);
+		node = thennode;
 	}
-	return 0;
+	*lst = NULL;
 }

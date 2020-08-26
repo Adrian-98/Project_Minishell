@@ -1,29 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/10 18:10:01 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/08/26 19:38:09 by amunoz-p         ###   ########.fr       */
+/*   Created: 2019/11/10 16:52:49 by amunoz-p          #+#    #+#             */
+/*   Updated: 2019/11/10 18:01:09 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "minishell.h"
+#include "libft.h"
 
-int main(int argc, char **argv, char **env)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char *line;
+	unsigned int		i;
+	int					j;
+	char				*pointer;
 
-	while (1)
+	i = 0;
+	j = 0;
+	if (s != '\0' && f != '\0')
 	{
-		get_next_line(0, &line);
-		if (ft_memcmp("exit", line, ft_strlen("exit")) == 0)
-			return(0);
-		//printf("hola\n");
-		printf("%s\n", line);
-		
+		j = ft_strlen((char *)s);
+		if (!(pointer = (char *)malloc(sizeof(char) * (j + 1))))
+			return (NULL);
+		while (s[i] != '\0')
+		{
+			pointer[i] = f(i, s[i]);
+			i++;
+		}
+		pointer[i] = '\0';
+		return (pointer);
 	}
-	return 0;
+	else
+		return (NULL);
 }

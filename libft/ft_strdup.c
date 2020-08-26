@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/10 18:10:01 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/08/26 19:38:09 by amunoz-p         ###   ########.fr       */
+/*   Created: 2019/11/07 21:18:32 by amunoz-p          #+#    #+#             */
+/*   Updated: 2019/11/07 21:32:21 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "minishell.h"
+#include "libft.h"
 
-int main(int argc, char **argv, char **env)
+char	*ft_strdup(const char *s1)
 {
-	char *line;
+	char	*p;
+	int		i;
 
-	while (1)
+	i = 0;
+	while (s1[i] != '\0')
+		i++;
+	p = (char *)malloc(sizeof(char) * (i + 1));
+	i = 0;
+	if (p == NULL)
+		return (0);
+	while (s1[i] != '\0')
 	{
-		get_next_line(0, &line);
-		if (ft_memcmp("exit", line, ft_strlen("exit")) == 0)
-			return(0);
-		//printf("hola\n");
-		printf("%s\n", line);
-		
+		p[i] = s1[i];
+		i++;
 	}
-	return 0;
+	p[i] = '\0';
+	return (p);
 }

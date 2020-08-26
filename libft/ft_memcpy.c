@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/10 18:10:01 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/08/26 19:38:09 by amunoz-p         ###   ########.fr       */
+/*   Created: 2019/11/04 17:10:15 by amunoz-p          #+#    #+#             */
+/*   Updated: 2019/11/10 18:23:15 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "minishell.h"
+#include "libft.h"
 
-int main(int argc, char **argv, char **env)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	char *line;
+	size_t				i;
+	unsigned char		*dest;
+	unsigned char		*source;
 
-	while (1)
+	dest = (unsigned char *)dst;
+	source = (unsigned char *)src;
+	if (!n || dst == src)
+		return (dst);
+	i = 0;
+	while (n > 0)
 	{
-		get_next_line(0, &line);
-		if (ft_memcmp("exit", line, ft_strlen("exit")) == 0)
-			return(0);
-		//printf("hola\n");
-		printf("%s\n", line);
-		
+		dest[i] = source[i];
+		n--;
+		i++;
 	}
-	return 0;
+	return (dst);
 }

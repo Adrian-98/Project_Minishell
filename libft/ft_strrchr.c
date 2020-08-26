@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/10 18:10:01 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/08/26 19:38:09 by amunoz-p         ###   ########.fr       */
+/*   Created: 2019/11/06 17:45:09 by amunoz-p          #+#    #+#             */
+/*   Updated: 2019/11/06 18:13:58 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "minishell.h"
+#include "libft.h"
 
-int main(int argc, char **argv, char **env)
+char	*ft_strrchr(const char *s, int c)
 {
-	char *line;
+	int		i;
 
-	while (1)
+	i = 0;
+	while (s[i] != '\0')
+		i++;
+	if (s[i] == c)
+		return ((&((char*)s)[i]));
+	while (i >= 0)
 	{
-		get_next_line(0, &line);
-		if (ft_memcmp("exit", line, ft_strlen("exit")) == 0)
-			return(0);
-		//printf("hola\n");
-		printf("%s\n", line);
-		
+		if (s[i] == c)
+			return (&((char*)s)[i]);
+		i--;
 	}
-	return 0;
+	return (0);
 }
