@@ -6,7 +6,7 @@
 #    By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/04 17:26:05 by amunoz-p          #+#    #+#              #
-#    Updated: 2020/08/26 19:03:45 by amunoz-p         ###   ########.fr        #
+#    Updated: 2020/08/27 19:56:04 by amunoz-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ ft_strlcat.c ft_atoi.c ft_strnstr.c ft_calloc.c ft_strdup.c ft_substr.c\
 ft_strtrim.c ft_split.c ft_putnbr_fd.c ft_strmapi.c\
 ft_itoa.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c\
 ft_putnbr_fd.c ft_strmapi.c ft_isascii.c ft_get_next_line.c\
-ft_get_next_line_utils.c\
+ft_get_next_line_utils.c ft_putstr.c\
 
 
 BONS		=	ft_lstmap_bonus.c ft_lstiter_bonus.c ft_lstclear_bonus.c\
