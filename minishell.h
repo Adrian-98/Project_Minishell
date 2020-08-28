@@ -6,7 +6,7 @@
 /*   By: adrian <adrian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 19:20:28 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/08/28 19:46:23 by adrian           ###   ########.fr       */
+/*   Updated: 2020/08/28 20:01:42 by adrian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct	shell_struct
 // char			*ft_strdup(const char *s1);
 // char			*ft_strchr(char *s, char a);
 // char			*ft_substr(char *s, int start, int len);
-void		display_msg(void);
+void		display_msg(t_shell *f);
 void		ft_pwd(t_shell *f);
 
 #endif
