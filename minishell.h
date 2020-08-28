@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adrian <adrian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 19:20:28 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/08/27 19:49:14 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/08/28 19:46:23 by adrian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,16 @@
 # include <fcntl.h>
 # include <string.h>
 
+typedef struct	shell_struct
+{
+	char	*line;
+	char	*path;
+}				t_shell;
 // char			*ft_strjoin(char const *s1, char const *s2);
 // char			*ft_strdup(const char *s1);
 // char			*ft_strchr(char *s, char a);
 // char			*ft_substr(char *s, int start, int len);
-// void		display_msg(void);
-// void		ft_pwd(void);
+void		display_msg(void);
+void		ft_pwd(t_shell *f);
 
 #endif
