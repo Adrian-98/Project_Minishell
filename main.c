@@ -6,7 +6,7 @@
 /*   By: adrian <adrian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 18:10:01 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/08/28 19:46:49 by adrian           ###   ########.fr       */
+/*   Updated: 2020/08/28 19:49:09 by adrian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,26 +41,16 @@ int main(int argc, char **argv, char **env)
 	
 	while (1)
 	{
-		display_msg();
-		printf("contenido line1 = %s\n", f->line);
-		// if (f->line)
-		// {
-		// 	
-		// 	free(f->line);
-		// }
-			
+		display_msg();			
 		get_next_line(0, &f->line);
+		
 		if (ft_strncmp("exit", f->line, ft_strlen(f->line)) == 0)
 			return(0);
 		else if (ft_strncmp("pwd", f->line, ft_strlen(f->line)) == 0)
-		{
 			ft_pwd(f);
-		}
 		else
 			printf("zsh: command not found: %s\n", f->line);
 		free(f->line);
-		printf("contenido line2 = %s\n", f->line);
-		//printf("$%s\n", line);
 	}
 	return 0;
 }
