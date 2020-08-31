@@ -20,6 +20,5 @@ void	display_msg(t_shell *f)
  
 void	ft_pwd(t_shell *f)
 {
-	f->path = getcwd(f->path, 4096);
-	printf("esto es path%s\n", f->path);
+	printf("%s\n", f->path);
 }
