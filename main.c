@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adrian <adrian@student.42.fr>              +#+  +:+       +#+        */
+/*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 18:10:01 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/08/29 12:38:22 by adrian           ###   ########.fr       */
+/*   Updated: 2020/09/01 18:22:56 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int main(int argc, char **argv, char **env)
 	{
 		display_msg(f);			
 		get_next_line(0, &f->line);
-		f->line = ft_spaceserase(f->line);
 		ft_cases(f);
 		free(f->line);
 	}
