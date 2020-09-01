@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 18:10:01 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/01 19:27:47 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/09/01 20:02:21 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int main(int argc, char **argv, char **env)
 	{
 		display_msg(f);			
 		get_next_line(0, &f->line);
-		f->line = ft_spaceserase(f->line);
+		f->arguments = ft_split(f->line, f->c);
 		ft_cases(f);
 		free(f->line);
 	}
