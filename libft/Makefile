@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+         #
+#    By: adrian <adrian@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/04 17:26:05 by amunoz-p          #+#    #+#              #
-#    Updated: 2020/08/27 19:56:04 by amunoz-p         ###   ########.fr        #
+#    Updated: 2020/08/28 21:27:29 by adrian           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,10 +16,10 @@ SRCS		= 	ft_strlen.c ft_memset.c ft_bzero.c ft_isalnum.c ft_isalpha.c\
 ft_isdigit.c ft_isprint.c ft_memcpy.c ft_toupper.c ft_tolower.c ft_memccpy.c\
 ft_memmove.c ft_memchr.c ft_memcmp.c ft_strncmp.c ft_strrchr.c ft_strlcpy.c\
 ft_strlcat.c ft_atoi.c ft_strnstr.c ft_calloc.c ft_strdup.c ft_substr.c\
-ft_strtrim.c ft_split.c ft_putnbr_fd.c ft_strmapi.c\
+ft_strtrim.c ft_split.c ft_putnbr_fd.c ft_strnew.c ft_strmapi.c\
 ft_itoa.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c\
 ft_putnbr_fd.c ft_strmapi.c ft_isascii.c ft_get_next_line.c\
-ft_get_next_line_utils.c ft_putstr.c\
+ft_strsub.c ft_get_next_line_utils.c ft_putstr.c ft_spaceserase.c\
 
 
 BONS		=	ft_lstmap_bonus.c ft_lstiter_bonus.c ft_lstclear_bonus.c\
