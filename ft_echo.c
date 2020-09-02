@@ -12,19 +12,7 @@
 
 #include "minishell.h"
 
-void	ft_cases(t_shell *f)
+void	ft_echo(t_shell *f)
 {
-	if (f->arguments[0] == NULL)
-		ft_exit1(f);
-	else if (ft_strncmp("exit", f->arguments[0],
-			ft_strlen(f->arguments[0])) == 0)
-		ft_exit(f);
-	else if (ft_strncmp("pwd", f->arguments[0],
-			ft_strlen(f->arguments[0])) == 0)
-		ft_pwd(f);
-	else if (ft_strncmp("echo", f->arguments[0],
-			ft_strlen(f->arguments[0])) == 0)
-		ft_echo(f);
-	else
-		ft_404(f);
+	
 }
