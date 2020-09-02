@@ -14,5 +14,14 @@
 
 void	ft_echo(t_shell *f)
 {
-	
+	int	i;
+
+	i = 1;
+	//printf("hola");
+	while (f->arguments[i])
+	{
+		printf("%s ", f->arguments[i]);
+		i++;
+	}
+	printf("\n");
 }
