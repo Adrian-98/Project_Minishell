@@ -12,7 +12,7 @@
 
 NAME		= minishell
 
-SRCS		= main.c ft_path.c ft_cases.c ft_exit.c
+SRCS		= main.c ft_path.c ft_cases.c ft_exit.c ft_echo.c
 
 GCC			=	@gcc -Wall -Wextra -Werror
 
