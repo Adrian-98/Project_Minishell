@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 19:20:28 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/01 19:53:28 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/09/03 19:36:29 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct	shell_struct
 	char	**arguments;
 	char	*path;
 	char	c;
+	int		quote;
 }				t_shell;
 
 void		display_msg(t_shell *f);
@@ -39,5 +40,7 @@ void		ft_exit(t_shell *f);
 void		ft_too_many(t_shell *f);
 void		ft_exit1(t_shell *f);
 void		ft_echo(t_shell *f);
+int			ft_quotes(t_shell *f);
+void		ft_quote1(t_shell *f);
 
 #endif
