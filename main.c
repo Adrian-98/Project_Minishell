@@ -33,6 +33,7 @@ int main(int argc, char **argv, char **env)
 	{
 		display_msg(f);			
 		get_next_line(0, &f->line);
+		if (f->line)
 		f->arguments = ft_split(f->line, f->c);
 		ft_cases(f);
 		free(f->line);
