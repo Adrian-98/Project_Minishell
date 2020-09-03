@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 11:27:22 by adrian            #+#    #+#             */
-/*   Updated: 2020/09/01 15:55:08 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/09/03 16:51:01 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ void	ft_pwd(t_shell *f)
 	else
 	{
 		f->path = getcwd(f->path, 4096);
-		printf("esto es path%s\n", f->path);
+		printf("%s\n", f->path);
 	}
 }
