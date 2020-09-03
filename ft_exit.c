@@ -24,10 +24,7 @@ void		ft_exit(t_shell *f)
 	while (f->arguments[i])
 		i++;
 	if (i >= 3)
-	{
 		ft_too_many(f);
-	}
-
 	else
 		exit(0);
 }
