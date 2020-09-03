@@ -11,46 +11,65 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-static int		ft_rows(char const *s, char c)
+static	int	ft_rows(const char *s, char c, int *pointer)
 {
 	int i;
-	int j;
-	int rows;
+	int size;
 
+	if (!s)
+		return (-1);
 	i = 0;
-	j = 0;
-	rows = 0;
-	while (s[i] && s[i] == c)
-		i++;
-	while (s[i])
+	size = 0;
+	while (s[i] != '\0')
 	{
-		if (s[i] && s[i] != c)
-			j = 1;
-		
-		if (s[i] == c)
+		if (s[i] == '"')
 		{
-			while (s[i] && s[i] == c)
+			i++;
+			while (s[i] != '"')
 				i++;
-			if (s[i])
-				rows++;
+		}
+		if (s[i] != c)
+		{
+			size++;
+			while (s[i] != c && s[i] != '\0')
+				i++;
 		}
 		else
 			i++;
 	}
-	return (rows + j);
+	*pointer = i - 1;
+	printf("%d\n", size);
+	return (size);
 }
+
 
 static	char	*ft_str_malloc(char const *s, char c)
 {
 	int		i;
+	int		j;
 	char	*str;
 
 	i = 0;
-	while (s[i] && s[i] != c)
+	j = 0;
+	if (s[i] == '"')
+	{
 		i++;
+		while (s[i] != '"')
+			i++;
+		j = 1;
+		i--;
+	}
+	else
+	{
+		while (s[i] && s[i] != c)
+			i++;
+	}
 	if (!(str = (char *)malloc(sizeof(char) * (i + 1))))
 		return (NULL);
+	if (j == 1)
+		ft_strlcpy(str, ++s, i + 1);
 	ft_strlcpy(str, s, i + 1);
 	return (str);
 }
@@ -61,9 +80,10 @@ char			**ft_split(char const *s, char c)
 	int		i;
 	char	**tab;
 
+	i = 0;
 	if (!s)
 		return (NULL);
-	rows = ft_rows(s, c);
+	rows = ft_rows(s, c, &i);
 	i = -1;
 	if (!(tab = malloc(sizeof(char *) * (rows + 1))))
 		return (NULL);
