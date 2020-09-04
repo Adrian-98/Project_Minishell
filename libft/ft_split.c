@@ -59,7 +59,7 @@ static	char	*ft_str_malloc(char const *s, char c)
 		while (s[i] != '"')
 			i++;
 		j = 1;
-		i--;
+		i -= 2;
 	}
 	else
 	{
@@ -69,8 +69,12 @@ static	char	*ft_str_malloc(char const *s, char c)
 	if (!(str = (char *)malloc(sizeof(char) * (i + 1))))
 		return (NULL);
 	if (j == 1)
-		ft_strlcpy(str, ++s, i + 1);
-	ft_strlcpy(str, s, i + 1);
+	{
+		ft_strlcpy(str, ++s, i);
+		s -= 1;
+	}
+	else
+		ft_strlcpy(str, s, i + 1);
 	return (str);
 }
 
