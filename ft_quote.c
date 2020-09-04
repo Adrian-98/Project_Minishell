@@ -24,10 +24,11 @@ int		ft_quotes(t_shell *f)
 {
 	int i;
 	int j;
+	int	k;
 
 	j = 0;
 	i = 0;
-
+	k = 0;
 	while (f->line[j] != 0)
 	{
 		if (f->line[j] == 34)
@@ -38,19 +39,32 @@ int		ft_quotes(t_shell *f)
 			break ;
 		j++;
 	}
+	return (ft_quotes1(f));
+}
+
+int		ft_quotes1(t_shell *f)
+{
+	int	i;
+	int	j;
+	int	k;
+
+	i = 0;
 	j = 0;
+	k = 0;
 	while (f->line[j] != 0)
 	{
-		if (f->line[j] == 34 || f->line[j] == 39)
+		if (f->line[j] == 34)
 			i++;
+		if (f->line[j] == 39)
+			k++;
 		j++;
 	}
-	if (i % 2 != 0)
+	if (i % 2 != 0 || k % 2 != 0)
 		return (1);
 	return (0);
 }
 
-void	ft_quote1(t_shell *f)
+void	ft_quote2(t_shell *f)
 {
 	while (1)
 	{

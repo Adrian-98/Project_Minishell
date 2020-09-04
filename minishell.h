@@ -32,6 +32,7 @@ typedef struct	shell_struct
 	int		quote;
 }				t_shell;
 
+
 void		display_msg(t_shell *f);
 void		ft_pwd(t_shell *f);
 void		ft_cases(t_shell *f);
@@ -41,6 +42,7 @@ void		ft_too_many(t_shell *f);
 void		ft_exit1(t_shell *f);
 void		ft_echo(t_shell *f);
 int			ft_quotes(t_shell *f);
-void		ft_quote1(t_shell *f);
+void		ft_quote2(t_shell *f);
+int			ft_quotes1(t_shell *f);
 
 #endif

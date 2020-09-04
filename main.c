@@ -40,7 +40,7 @@ int main(int argc, char **argv, char **env)
 		get_next_line(0, &f->line);
 		i = ft_quotes(f);
 		if (i == 1)
-			ft_quote1(f);	
+			ft_quote2(f);	
 		else
 		{
 			f->arguments = ft_split(f->line, f->c);
