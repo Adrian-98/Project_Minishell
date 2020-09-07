@@ -13,7 +13,7 @@
 #include "libft.h"
 #include <stdio.h>
 
-static	int	ft_rows(const char *s, char c, int *pointer)
+static	int	ft_rows(const char *s, char c)
 {
 	int i;
 	int size;
@@ -29,80 +29,83 @@ static	int	ft_rows(const char *s, char c, int *pointer)
 			i++;
 			while (s[i] != '"')
 				i++;
+			i++;
+			size++;
 		}
-		if (s[i] != c)
+		else if (s[i] != c)
 		{
 			size++;
-			while (s[i] != c && s[i] != '\0')
+			while (s[i] != c && s[i] != '\0' && s[i] != '"')
 				i++;
 		}
 		else
 			i++;
 	}
-	*pointer = i - 1;
-	printf("%d\n", size);
 	return (size);
 }
 
-
-static	char	*ft_str_malloc(char const *s, char c)
+static	char	*ft_str_malloc(char const *s, char c, int k, t_shell *f)
 {
 	int		i;
-	int		j;
 	char	*str;
 
 	i = 0;
-	j = 0;
-	if (s[i] == '"')
+	if (s[i + k] == '"')
 	{
 		i++;
-		while (s[i] != '"')
+		while (s[i + k] != '"')
 			i++;
-		j = 1;
-		i -= 2;
+		f->flag = 1;
+		i -= 1;
 	}
 	else
 	{
-		while (s[i] && s[i] != c)
+		while (s[i + k] && s[i + k] != c && s[i + k] != '"')
 			i++;
 	}
 	if (!(str = (char *)malloc(sizeof(char) * (i + 1))))
 		return (NULL);
-	if (j == 1)
+	if (f->flag == 1)
 	{
-		ft_strlcpy(str, ++s, i);
-		s -= 1;
+		ft_strlcpy(str, s + k + 1, i + 1);
+		s += 1;
 	}
 	else
-		ft_strlcpy(str, s, i + 1);
+		ft_strlcpy(str, s + k, i + 1);
 	return (str);
 }
 
-char			**ft_split(char const *s, char c)
+char			**ft_split(char const *s, char c, t_shell *f)
 {
 	int		rows;
 	int		i;
+	int		j;
 	char	**tab;
 
-	i = 0;
+	j = 0;
 	if (!s)
 		return (NULL);
-	rows = ft_rows(s, c, &i);
+	rows = ft_rows(s, c);
 	i = -1;
 	if (!(tab = malloc(sizeof(char *) * (rows + 1))))
 		return (NULL);
 	while (++i < rows)
 	{
-		while (*s == c)
-			s++;
-		if (!(tab[i] = ft_str_malloc(s, c)))
+		while (s[j] == c)
+			j++;
+		if (!(tab[i] = ft_str_malloc(s, c, j, f)))
 		{
 			while (i > 0)
 				free(tab[i--]);
 			free(tab);
 			return (NULL);
 		}
-		s += ft_strlen(tab[i]);
+		j += ft_strlen(tab[i]);
+		if (f->flag == 1)
+		{
+			j += 2;
+			f->flag = 0;
+		}
 	}
 	tab[i] = 0;
 	return (tab);
