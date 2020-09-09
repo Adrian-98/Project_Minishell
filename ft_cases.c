@@ -28,5 +28,6 @@ void	ft_cases(t_shell *f)
 	else
 		ft_404(f);
 	f->line = 0;
+	f->arguments = 0;
 	//ifree(f->line);
 }

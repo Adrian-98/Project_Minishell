@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 18:10:01 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/03 19:50:31 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/09/09 18:22:31 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int main(int argc, char **argv, char **env)
 			ft_quote2(f);	
 		else
 		{
-			f->arguments = ft_split(f->line, f->c);
+			f->arguments = ft_split(f->line, f->c, f);
 			ft_cases(f);
 		}
 		free(f->line);

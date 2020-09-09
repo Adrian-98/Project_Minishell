@@ -5,14 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/09 15:04:37 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/03 18:25:59 by amunoz-p         ###   ########.fr       */
+/*   Created: 2019/11/11 14:00:29 by glopez-a          #+#    #+#             */
+/*   Updated: 2020/09/09 18:23:02 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-static	int	ft_wordscounter(const char *s, char c, int *pointer)
+static	int	ft_rows(const char *s, char c)
 {
 	int i;
 	int size;
@@ -23,57 +24,89 @@ static	int	ft_wordscounter(const char *s, char c, int *pointer)
 	size = 0;
 	while (s[i] != '\0')
 	{
-		if (s[i] != c)
+		if (s[i] == '"')
+		{
+			i++;
+			while (s[i] != '"')
+				i++;
+			i++;
+			size++;
+		}
+		else if (s[i] != c)
 		{
 			size++;
-			while (s[i] != c && s[i] != '\0')
+			while (s[i] != c && s[i] != '\0' && s[i] != '"')
 				i++;
 		}
 		else
 			i++;
 	}
-	*pointer = i - 1;
 	return (size);
 }
 
-static int	ft_malloc(int size, int i, int j, char **pointer)
-{
-	((pointer[size] = (char *)malloc(sizeof(char) * (j - i + 1))));
-	if (pointer[size] == NULL)
-	{
-		while (pointer[size] != '\0')
-			free(pointer[size++]);
-		free(pointer);
-		return (0);
-	}
-	return (1);
-}
-
-char		**ft_split(char const *s, char c)
+static	char	*ft_str_malloc(char const *s, char c, int k, t_shell *f)
 {
 	int		i;
-	int		size;
-	int		j;
-	char	**pointer;
+	char	*str;
 
 	i = 0;
-	size = ft_wordscounter(s, c, &i);
-	if (!(pointer = (char **)malloc(sizeof(char *) * (size + 1))) || size == -1)
-		return (0);
-	pointer[size] = NULL;
-	while (i >= 0)
+	if (s[i + k] == '"')
 	{
-		if (s[i] != c)
-		{
-			j = i;
-			while (i >= 0 && s[i] != c)
-				i--;
-			size--;
-			if (ft_malloc(size, i, j, pointer) == 0)
-				return (0);
-			ft_strlcpy(pointer[size], &((char *)s)[i + 1], j - i + 1);
-		}
-		i--;
+		i++;
+		while (s[i + k] != '"')
+			i++;
+		f->flag = 1;
+		i -= 1;
 	}
-	return (pointer);
+	else
+	{
+		while (s[i + k] && s[i + k] != c && s[i + k] != '"')
+			i++;
+	}
+	if (!(str = (char *)malloc(sizeof(char) * (i + 1))))
+		return (NULL);
+	if (f->flag == 1)
+	{
+		ft_strlcpy(str, s + k + 1, i + 1);
+		s += 1;
+	}
+	else
+		ft_strlcpy(str, s + k, i + 1);
+	return (str);
+}
+
+char			**ft_split(char const *s, char c, t_shell *f)
+{
+	int		rows;
+	int		i;
+	int		j;
+	char	**tab;
+
+	j = 0;
+	if (!s)
+		return (NULL);
+	rows = ft_rows(s, c);
+	i = -1;
+	if (!(tab = malloc(sizeof(char *) * (rows + 1))))
+		return (NULL);
+	while (++i < rows)
+	{
+		while (s[j] == c)
+			j++;
+		if (!(tab[i] = ft_str_malloc(s, c, j, f)))
+		{
+			while (i > 0)
+				free(tab[i--]);
+			free(tab);
+			return (NULL);
+		}
+		j += ft_strlen(tab[i]);
+		if (f->flag == 1)
+		{
+			j += 2;
+			f->flag = 0;
+		}
+	}
+	tab[i] = 0;
+	return (tab);
 }
