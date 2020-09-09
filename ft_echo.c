@@ -12,15 +12,46 @@
 
 #include "minishell.h"
 
+void	ft_echo_var(t_shell *f, int i)
+{
+	char	*str;
+	char	*str1;
+	int		j;
+	int		k;
+
+	j = 0;
+	str = &f->arguments[i][1];
+
+	while (f->envv[j])
+	{
+		k = 0;
+		//printf("%s\n", f->envv[j]);
+		while (f->envv[j][k] != '=')
+			k++;
+		if (ft_strncmp(str, f->envv[j], k) == 0 && ft_strlen(str) == k)
+		{
+			str1 = ft_strchr(f->envv[j], '=');
+			str1++;
+			printf("%s ", str1);
+		}
+		j++;
+	}
+}
+
 void	ft_echo(t_shell *f)
 {
 	int	i;
+	int	j;
 
 	i = 1;
 	//printf("hola");
+	//if (ft_strncp,f->arguments)
 	while (f->arguments[i])
 	{
-		printf("%s ", f->arguments[i]);
+		if (*f->arguments[i] == '$')
+			ft_echo_var(f, i);
+		else
+			printf("%s ", f->arguments[i]);
 		i++;
 	}
 	printf("\n");

@@ -32,6 +32,7 @@ typedef struct	shell_struct
 	char	c;
 	int		flag;
 	int		quote;
+	char	**envv;
 }				t_shell;
 
 int				get_next_line(int fd, char **line);

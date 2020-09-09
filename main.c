@@ -33,7 +33,7 @@ int main(int argc, char **argv, char **env)
 	i = 0;
 	f = NULL;
 	f = ft_create_struct(f);
-
+	f->envv = env;
 	while (1)
 	{
 		display_msg(f);			
