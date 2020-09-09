@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 19:20:28 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/01 19:53:28 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/09/09 17:56:23 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,6 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include <string.h>
-
-typedef struct	shell_struct
-{
-	char	*line;
-	char	**arguments;
-	char	*path;
-	char	c;
-}				t_shell;
 
 void		display_msg(t_shell *f);
 void		ft_pwd(t_shell *f);
