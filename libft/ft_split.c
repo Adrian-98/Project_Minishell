@@ -6,14 +6,14 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 14:00:29 by glopez-a          #+#    #+#             */
-/*   Updated: 2020/09/09 18:23:02 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/09/09 20:05:30 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
 
-static	int	ft_rows(const char *s, char c)
+static	int	ft_rows(const char *s, char c, t_shell *f)
 {
 	int i;
 	int size;
@@ -22,25 +22,49 @@ static	int	ft_rows(const char *s, char c)
 		return (-1);
 	i = 0;
 	size = 0;
+	printf("%c\n", s[i]);
 	while (s[i] != '\0')
 	{
-		if (s[i] == '"')
+		//printf("%c\n", s[i]);
+		if (s[i] == '"' && s[i - 1] != '"' && f->open == 0)
 		{
+			f->open = 1;
 			i++;
+			printf("%c\n", s[i]);
+		}
+		else if (s[i] == '"' && f->open == 1)
+		{
+			f->close = 1;
+			f->open = 0;
+			i++;
+			printf("%c\n", s[i]);
+		}
+		if ((f->open == 1 && s[i - 2] == ' ') ||
+			(f->close == 1 && s[i] == ' '))
+		{
 			while (s[i] != '"')
+			{
 				i++;
-			i++;
+				printf("%c\n", s[i]);
+			}
 			size++;
 		}
-		else if (s[i] != c)
+		else if (s[i] != c && f->open == 0 && f->close == 0)
 		{
 			size++;
 			while (s[i] != c && s[i] != '\0' && s[i] != '"')
+			{
 				i++;
+				printf("%c\n", s[i]);
+			}
 		}
 		else
+		{
 			i++;
+			printf("%c\n", s[i]);
+		}
 	}
+	printf("VALOR SIZE =[%i]\n", size);
 	return (size);
 }
 
@@ -85,7 +109,8 @@ char			**ft_split(char const *s, char c, t_shell *f)
 	j = 0;
 	if (!s)
 		return (NULL);
-	rows = ft_rows(s, c);
+	rows = ft_rows(s, c, f);
+	printf("SALIO\n");
 	i = -1;
 	if (!(tab = malloc(sizeof(char *) * (rows + 1))))
 		return (NULL);
@@ -107,6 +132,8 @@ char			**ft_split(char const *s, char c, t_shell *f)
 			f->flag = 0;
 		}
 	}
+	f->open = 0;
+	f->close = 0;
 	tab[i] = 0;
 	return (tab);
 }

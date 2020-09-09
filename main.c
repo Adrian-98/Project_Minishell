@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 18:10:01 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/09 18:22:31 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/09/09 19:14:21 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@ static	t_shell		*ft_create_struct(t_shell *f)
 	f->path = getcwd(f->path, 4096);
 	f->c = 32;
 	f->quote = 0;
+	f->open = 0;
+	f->close = 0;
+	f->flag = 0;
 	return(f);
 }
 

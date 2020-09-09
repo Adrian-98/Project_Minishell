@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 15:44:40 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/09 18:21:42 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/09/09 19:14:08 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,9 @@ typedef struct	shell_struct
 	char	*path;
 	char	c;
 	int		flag;
-	int		quote;
+	int		quote;		//flag para comprobar comillas pares o impares
+	int		open;     //#flag para ver si estmos entre comillas
+	int		close;
 }				t_shell;
 
 int				get_next_line(int fd, char **line);
