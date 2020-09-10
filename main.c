@@ -17,13 +17,29 @@ static	t_shell		*ft_create_struct(t_shell *f)
 {
 	if (!(f = malloc(sizeof(t_shell))))
 		return 0;
-	f->path = getcwd(f->path, 4096);
+	f->pwd = getcwd(f->pwd, 4096);
 	f->c = 32;
 	f->quote = 0;
 	return(f);
 }
 
-
+void	ft_get_path(t_shell *f)
+{
+	while (*f->envv)
+	{
+		if (!ft_strncmp(*f->envv, "PATH=", 5))
+		{
+			f->path = ft_split(*f->envv + 5, ':', f);
+			break;
+		}
+		f->envv++;
+	}
+	while (*f->path)
+		{
+			printf("%s\n", *f->path);
+			f->path++;
+		}
+}
 
 int main(int argc, char **argv, char **env)
 {
@@ -34,6 +50,7 @@ int main(int argc, char **argv, char **env)
 	f = NULL;
 	f = ft_create_struct(f);
 	f->envv = env;
+	ft_get_path(f);
 	while (1)
 	{
 		display_msg(f);			

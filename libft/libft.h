@@ -28,7 +28,8 @@ typedef struct	shell_struct
 {
 	char	*line;
 	char	**arguments;
-	char	*path;
+	char	*pwd;
+	char	**path;
 	char	c;
 	int		flag;
 	int		quote;

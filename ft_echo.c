@@ -25,7 +25,6 @@ void	ft_echo_var(t_shell *f, int i)
 	while (f->envv[j])
 	{
 		k = 0;
-		//printf("%s\n", f->envv[j]);
 		while (f->envv[j][k] != '=')
 			k++;
 		if (ft_strncmp(str, f->envv[j], k) == 0 && ft_strlen(str) == k)
