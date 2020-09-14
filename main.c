@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: glopez-a <glopez-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 18:10:01 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/09 18:22:31 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/09/11 19:21:41 by glopez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,13 @@ int main(int argc, char **argv, char **env)
 	{
 		display_msg(f);			
 		get_next_line(0, &f->line);
+		f->arguments = ft_split_cmd(f->line, ";|");
+		while (*f->arguments)
+		{
+			printf("%s\n", *f->arguments);
+			f->arguments++;
+		}
+		exit(1);
 		i = ft_quotes(f);
 		if (i == 1)
 			ft_quote2(f);	

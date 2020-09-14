@@ -14,4 +14,5 @@
 
 void	ft_bash(t_shell *f)
 {
+	
 }
