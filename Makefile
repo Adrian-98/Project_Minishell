@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+         #
+#    By: glopez-a <glopez-a@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/26 17:54:32 by amunoz-p          #+#    #+#              #
-#    Updated: 2020/09/03 19:27:05 by amunoz-p         ###   ########.fr        #
+#    Updated: 2020/09/15 18:36:05 by glopez-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= minishell
 
-SRCS		= main.c ft_path.c ft_cases.c ft_exit.c ft_echo.c ft_quote.c
+SRCS		= main.c ft_path.c ft_cases.c ft_exit.c ft_echo.c ft_quote.c ft_bash.c
 
 GCC			=	@gcc -Wall -Wextra -Werror
 

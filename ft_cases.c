@@ -6,7 +6,7 @@
 /*   By: glopez-a <glopez-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 11:33:02 by adrian            #+#    #+#             */
-/*   Updated: 2020/09/15 16:49:46 by glopez-a         ###   ########.fr       */
+/*   Updated: 2020/09/15 18:50:57 by glopez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ft_cases(t_shell *f)
 		ft_echo(f);
 	//else if (ft_strncmp("env", f->arguments[0]))
 	else
-		ft_404(f);
+		ft_bash(f);
 	f->line = 0;
 	f->arguments = 0;
 	//ifree(f->line);

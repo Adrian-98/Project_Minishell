@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 18:10:01 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/15 18:38:37 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/09/15 20:34:53 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,11 @@ void	ft_get_path(t_shell *f)
 	{
 		if (!ft_strncmp(*f->envv, "PATH=", 5))
 		{
-			f->path = ft_split(*f->envv + 5, ':', f);
+			f->path = ft_split1(*f->envv + 5, ':', f);
 			break;
 		}
 		f->envv++;
 	}
-	while (*f->path)
-		{
-			//printf("%s\n", *f->path);
-			f->path++;
-		}
 }
 
 int main(int argc, char **argv, char **env)
@@ -47,7 +42,6 @@ int main(int argc, char **argv, char **env)
 	int i;
 	t_shell *f;
 	char	*proceso;
-	char	*args[4];
 
 	i = 0;
 	f = NULL;

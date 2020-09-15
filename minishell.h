@@ -6,7 +6,11 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 19:20:28 by amunoz-p          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2020/09/15 18:22:36 by amunoz-p         ###   ########.fr       */
+=======
+/*   Updated: 2020/09/15 18:35:52 by glopez-a         ###   ########.fr       */
+>>>>>>> gonzalo
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +39,8 @@ void		ft_echo(t_shell *f);
 int			ft_quotes(t_shell *f, char *proceso);
 void		ft_quote2(t_shell *f);
 int			ft_quotes1(t_shell *f, char *proceso);
+void		ft_bash(t_shell *f);
+
+
 
 #endif

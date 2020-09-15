@@ -6,7 +6,11 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 15:44:40 by amunoz-p          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2020/09/15 18:15:46 by amunoz-p         ###   ########.fr       */
+=======
+/*   Updated: 2020/09/15 18:21:57 by glopez-a         ###   ########.fr       */
+>>>>>>> gonzalo
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +43,12 @@ typedef struct	shell_struct
 	char	*info;
 }				t_shell;
 
+<<<<<<< HEAD
 char			**ft_split_cmd(char const *s, char *c, t_shell *f);
+=======
+char			**ft_split1(char const *s, char c, t_shell *f);
+char			**ft_split_cmd(char const *s, char *c);
+>>>>>>> gonzalo
 int				get_next_line(int fd, char **line);
 void			*ft_memset(void *b, int c, size_t len);
 void			ft_bzero(void *s, size_t n);
@@ -91,4 +100,5 @@ void			ft_putstr(char *s);
 char    		*ft_spaceserase(char *str);
 char			*ft_strsub(char *str, int start, size_t len);
 char			*ft_strnew(size_t size);
+size_t			ft_strlcpy1(char *dst, const char *src, size_t dstsize);
 #endif

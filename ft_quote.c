@@ -6,7 +6,7 @@
 /*   By: glopez-a <glopez-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 18:58:15 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/14 19:06:41 by glopez-a         ###   ########.fr       */
+/*   Updated: 2020/09/15 19:17:27 by glopez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void	ft_quote2(t_shell *f)
 {
 	while (1)
 	{
+		ft_bash(f);
 		display_msg1(f);
 		get_next_line(0, &f->line);
 		free(f->line);
