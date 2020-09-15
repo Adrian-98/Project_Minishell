@@ -6,7 +6,7 @@
 /*   By: glopez-a <glopez-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 15:44:40 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/11 19:25:46 by glopez-a         ###   ########.fr       */
+/*   Updated: 2020/09/14 17:56:07 by glopez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct	shell_struct
 	int		flag;
 	int		quote;
 	char	**envv;
+	char	**process;
 }				t_shell;
 
 char			**ft_split_cmd(char const *s, char *c);

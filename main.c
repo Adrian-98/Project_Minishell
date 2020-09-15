@@ -6,7 +6,7 @@
 /*   By: glopez-a <glopez-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 18:10:01 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/11 19:21:41 by glopez-a         ###   ########.fr       */
+/*   Updated: 2020/09/15 17:07:40 by glopez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,17 @@ int main(int argc, char **argv, char **env)
 {
 	int i;
 	t_shell *f;
+	char	*proceso;
+	char	*args[4];
 
 	i = 0;
+	/*args[0] = "jhjfshjkhfdsjkjfdsskjhdfsjh";
+	args[1] = "-e";
+	args[2] = "ft_cases.c";
+	args[3] = 0;*/
+	//i = execve("/bin/cat", &args[0], env);
+	printf("\n\n\n\n hola %d\n", i);
+	//exit(1);
 	f = NULL;
 	f = ft_create_struct(f);
 	f->envv = env;
@@ -55,20 +64,19 @@ int main(int argc, char **argv, char **env)
 	{
 		display_msg(f);			
 		get_next_line(0, &f->line);
-		f->arguments = ft_split_cmd(f->line, ";|");
-		while (*f->arguments)
+		proceso = f->line;
+		f->process = ft_split_cmd(f->line, ";|");
+		while (*f->process)
 		{
-			printf("%s\n", *f->arguments);
-			f->arguments++;
-		}
-		exit(1);
-		i = ft_quotes(f);
-		if (i == 1)
-			ft_quote2(f);	
-		else
-		{
-			f->arguments = ft_split(f->line, f->c, f);
-			ft_cases(f);
+			i = ft_quotes(f, proceso);
+			if (i == 1)
+				ft_quote2(f);	
+			else
+			{
+				f->arguments = ft_split(*f->process, f->c, f);
+				ft_cases(f);
+			}
+			f->process++;
 		}
 		free(f->line);
 	}
