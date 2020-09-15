@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strlcy1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glopez-a <glopez-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 18:46:18 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/15 18:18:01 by glopez-a         ###   ########.fr       */
+/*   Updated: 2020/09/15 18:19:54 by glopez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t		ft_strlcpy(char *dst, const char *src, size_t dstsize)
+size_t		ft_strlcpy1(char *dst, const char *src, size_t dstsize)
 {
 	size_t			i;
 	size_t			count;
@@ -29,7 +29,8 @@ size_t		ft_strlcpy(char *dst, const char *src, size_t dstsize)
 			dst[i] = ((char*)src)[i];
 			i++;
 		}
-		dst[i] = 0;
+		dst[i] = '/';
+		dst[i + 1] = 0;
 	}
 	return (count);
 }
