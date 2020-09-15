@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: adrian <adrian@student.42.fr>              +#+  +:+       +#+         #
+#    By: glopez-a <glopez-a@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/04 17:26:05 by amunoz-p          #+#    #+#              #
-#    Updated: 2020/08/28 21:27:29 by adrian           ###   ########.fr        #
+#    Updated: 2020/09/11 19:22:17 by glopez-a         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ ft_strtrim.c ft_split.c ft_putnbr_fd.c ft_strnew.c ft_strmapi.c\
 ft_itoa.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c\
 ft_putnbr_fd.c ft_strmapi.c ft_isascii.c ft_get_next_line.c\
 ft_strsub.c ft_get_next_line_utils.c ft_putstr.c ft_spaceserase.c\
+ft_split_cmd.c\
 
 
 BONS		=	ft_lstmap_bonus.c ft_lstiter_bonus.c ft_lstclear_bonus.c\

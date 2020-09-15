@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 15:44:40 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/09 19:14:08 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/09/15 18:15:46 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdio.h>
 
 typedef	struct	s_list
 {
@@ -28,14 +29,17 @@ typedef struct	shell_struct
 {
 	char	*line;
 	char	**arguments;
-	char	*path;
+	char	*pwd;
+	char	**path;
 	char	c;
 	int		flag;
-	int		quote;		//flag para comprobar comillas pares o impares
-	int		open;     //#flag para ver si estmos entre comillas
-	int		close;
+	int		quote;
+	char	**envv;
+	char	**process;
+	char	*info;
 }				t_shell;
 
+char			**ft_split_cmd(char const *s, char *c, t_shell *f);
 int				get_next_line(int fd, char **line);
 void			*ft_memset(void *b, int c, size_t len);
 void			ft_bzero(void *s, size_t n);

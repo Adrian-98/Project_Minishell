@@ -30,7 +30,7 @@ void	ft_pwd(t_shell *f)
 		ft_too_many(f);
 	else
 	{
-		f->path = getcwd(f->path, 4096);
-		printf("%s\n", f->path);
+		f->pwd = getcwd(f->pwd, 4096);
+		printf("%s\n", f->pwd);
 	}
 }
