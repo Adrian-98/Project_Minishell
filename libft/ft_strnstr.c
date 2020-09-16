@@ -6,7 +6,7 @@
 /*   By: adrian <adrian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 16:55:43 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/16 22:59:45 by adrian           ###   ########.fr       */
+/*   Updated: 2020/09/16 23:02:15 by adrian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 		return ((char*)haystack);
 	while (pajar[i] != '\0' && i < len)
 	{
-		if (pajar[i] == '"')
+		if (pajar[i] == '"')   //agregacion para que funcione quotes
 			return (NULL);
 		j = 0;
 		if (pajar[i] == needle[j])
