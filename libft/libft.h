@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 15:44:40 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/16 18:11:42 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/09/16 18:33:45 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef struct	shell_struct
 	int		quote;
 	char	**envv;
 	char	**process;
-	char	info[100];
+	char	*info;
 }				t_shell;
 
 char			**ft_split1(char const *s, char c, t_shell *f);

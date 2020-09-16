@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/11 18:47:21 by glopez-a          #+#    #+#             */
-/*   Updated: 2020/09/16 18:11:08 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/09/16 18:35:49 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,17 @@ static void		ft_info(const char *s, char *c, t_shell *f)
 {
 	int i;
 	int j;
-	printf("hola\n");
-	printf("valor de c=%s\n",  c);
+
 	i = 0;
+	j = 0;
+	while (s[i] != 0)
+	{
+		if (s[i] == c[0] || s[i] == c[1])
+			j++;
+		i++;
+	}
+	i = 0;
+	f->info = malloc(sizeof(j));
 	j = 0;
 	while (s[i] != 0)
 	{
@@ -31,7 +39,6 @@ static void		ft_info(const char *s, char *c, t_shell *f)
 		i++;
 	}
 	f->info[j] = 0;
-	printf("valor de info=%s\n",  f->info);
 }
 
 static int		ft_rows(char const *s, char *c)
