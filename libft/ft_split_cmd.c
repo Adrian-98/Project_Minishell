@@ -6,11 +6,33 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/11 18:47:21 by glopez-a          #+#    #+#             */
-/*   Updated: 2020/09/15 20:16:27 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/09/16 18:11:08 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "libft.h"
+
+static void		ft_info(const char *s, char *c, t_shell *f)
+{
+	int i;
+	int j;
+	printf("hola\n");
+	printf("valor de c=%s\n",  c);
+	i = 0;
+	j = 0;
+	while (s[i] != 0)
+	{
+		if (s[i] == c[0] || s[i] == c[1])
+		{
+			f->info[j] = s[i];
+			j++;
+		}
+		i++;
+	}
+	f->info[j] = 0;
+	printf("valor de info=%s\n",  f->info);
+}
 
 static int		ft_rows(char const *s, char *c)
 {
@@ -61,71 +83,28 @@ char			**ft_split_cmd(char const *s, char *c, t_shell *f)
 {
 	int		rows;
 	int		i;
-	char	**tab = NULL;
-	pid_t	pid;
-	int		j;
-	int		fd[2];
-	char	info[100];
-	(void)f;
+	char	**tab;
 
-	printf("valor de info ANTES de llenarlo = %s\n", info);
-	pipe(fd);
-	if (pipe(fd) == -1){
-		printf("error with fd");
-		return 0;
-	}
-	pid = fork();
-	j = 0;
 	if (!s)
 		return (NULL);
-	if (pid > 0)
+	ft_info(s, c, f);
+	rows = ft_rows(s, c);
+	i = -1;
+	if (!(tab = malloc(sizeof(char *) * (rows + 1))))
+		return (NULL);
+	while (++i < rows)
 	{
-		close(fd[1]);
-		rows = ft_rows(s, c);
-		i = -1;
-		if (!(tab = malloc(sizeof(char *) * (rows + 1))))
+		while (*s == c[0] || *s == c[1])
+			s++;
+		if (!(tab[i] = ft_str_malloc(s, c)))
+		{
+			while (i > 0)
+				free(tab[i--]);
+			free(tab);
 			return (NULL);
-		while (++i < rows)
-		{
-			while (*s == c[0] || *s == c[1])
-				s++;
-			if (!(tab[i] = ft_str_malloc(s, c)))
-			{
-				while (i > 0)
-					free(tab[i--]);
-				free(tab);
-				return (NULL);
-			}
-			s += ft_strlen(tab[i]);
 		}
-		tab[i] = 0;
-		read(fd[0], info, 100);
-		close(fd[0]);
-		printf("VVVVVVVVVVVvalor de info= %s\n", info);
-		return (tab);
+		s += ft_strlen(tab[i]);
 	}
-	else if (pid == 0)
-	{
-		i = 0;
-		close(fd[0]);
-		while (s[i] != 0)
-		{
-			printf("valor de s[i]=%c\n", s[i]);
-			if (s[i] == c[0] || s[i] == c[1])
-			{
-				info[j] = s[i];
-				j++;
-			}
-			i++;
-		}
-		info[j] = 0;
-		printf("valor de INFO=%s\n",info);
-		write(fd[1], info, j + 1);
-		printf("tu puta madre\n");
-		close(fd[1]);
-		exit(0);
-	}
-	else
-		printf("error\n");
+	tab[i] = 0;
 	return (tab);
 }
