@@ -28,8 +28,14 @@ void	ft_bash(t_shell *f)
 			//printf("%s\n", aux);
 			j = execve(aux, f->arguments, f->envv);
 			free(aux);
-			printf("%d\n", j);
+			//printf("%d\n", j);
 			i++;
 		}
-		ft_404(f);
+		if (j == -1)
+			ft_404_kill(f);
+	else
+	{
+		wait(0);
+
+	}
 }

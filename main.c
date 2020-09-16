@@ -29,22 +29,18 @@ void	ft_get_path(t_shell *f)
 	{
 		if (!ft_strncmp(*f->envv, "PATH=", 5))
 		{
-			f->path = ft_split(*f->envv + 5, ':', f);
+			f->path = ft_split1(*f->envv + 5, ':', f);
 			break;
 		}
 		f->envv++;
 	}
-	while (*f->path)
-		{
-			printf("%s\n", *f->path);
-			f->path++;
-		}
 }
 
 int main(int argc, char **argv, char **env)
 {
 	int i;
 	t_shell *f;
+	char	*proceso;
 
 	i = 0;
 	f = NULL;
@@ -55,20 +51,19 @@ int main(int argc, char **argv, char **env)
 	{
 		display_msg(f);			
 		get_next_line(0, &f->line);
-		f->arguments = ft_split_cmd(f->line, ";|");
-		while (*f->arguments)
+		proceso = f->line;
+		f->process = ft_split_cmd(f->line, ";|");
+		while (*f->process)
 		{
-			printf("%s\n", *f->arguments);
-			f->arguments++;
-		}
-		exit(1);
-		i = ft_quotes(f);
-		if (i == 1)
-			ft_quote2(f);	
-		else
-		{
-			f->arguments = ft_split(f->line, f->c, f);
-			ft_cases(f);
+			i = ft_quotes(f, proceso);
+			if (i == 1)
+				ft_quote2(f);	
+			else
+			{
+				f->arguments = ft_split(*f->process, f->c, f);
+				ft_cases(f);
+			}
+			f->process++;
 		}
 		free(f->line);
 	}
