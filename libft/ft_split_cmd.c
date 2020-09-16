@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/11 18:47:21 by glopez-a          #+#    #+#             */
-/*   Updated: 2020/09/16 18:35:49 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/09/16 18:40:52 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void		ft_info(const char *s, char *c, t_shell *f)
 		i++;
 	}
 	i = 0;
-	f->info = malloc(sizeof(j));
+	f->info = malloc(sizeof(j + 1));
 	j = 0;
 	while (s[i] != 0)
 	{

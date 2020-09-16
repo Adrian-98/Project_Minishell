@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 18:10:01 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/16 18:07:37 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/09/16 19:26:42 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,9 @@ int main(int argc, char **argv, char **env)
 	int i;
 	t_shell *f;
 	char	*proceso;
+	// char   a[50] = "hello\\n";
+	// printf("%s\n", a);
+	// exit(0);
 
 	i = 0;
 	f = NULL;
@@ -51,18 +54,15 @@ int main(int argc, char **argv, char **env)
 	{
 		display_msg(f);			
 		get_next_line(0, &f->line);
+		i = ft_quotes(f);
+		if (i == 1)
+			ft_quote2(f);
 		proceso = f->line;
 		f->process = ft_split_cmd(f->line, ";|", f);
 		while (*f->process)
 		{
-			i = ft_quotes(f, proceso);
-			if (i == 1)
-				ft_quote2(f);	
-			else
-			{
-				f->arguments = ft_split(*f->process, f->c, f);
-				ft_cases(f);
-			}
+			f->arguments = ft_split(*f->process, f->c, f);
+			ft_cases(f);
 			f->process++;
 		}
 		free(f->line);
