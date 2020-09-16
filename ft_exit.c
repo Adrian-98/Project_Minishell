@@ -42,7 +42,10 @@ void		ft_404(t_shell *f)
 
 void		ft_404_kill(t_shell *f)
 {
+	f->line = ft_spaceserase(f->line);
+	printf("zsh: command not found: %s\n", f->line);
 	//pipe("le tiene que decir al padre que no ha encontrado la funcion");
-	kill();
+	kill(0, -9);
+	printf("hola\n");
 }
 

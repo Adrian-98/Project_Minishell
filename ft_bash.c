@@ -14,9 +14,10 @@
 
 void	ft_bash(t_shell *f)
 {
-	char *aux;
-	int	i;
-	int	j;
+	char	*aux;
+	char	*tmp;	
+	int		i;
+	int		j;
 	pid_t	id;
 
 	i = 0;
@@ -26,16 +27,15 @@ void	ft_bash(t_shell *f)
 		{
 			aux = ft_strjoin(f->path[i], *f->arguments);
 			//printf("%s\n", aux);
-			j = execve(aux, f->arguments, f->envv);
+			tmp = aux;
 			free(aux);
+			j = execve(tmp, f->arguments, f->envv);
+			//free(aux);
 			//printf("%d\n", j);
 			i++;
 		}
 		if (j == -1)
 			ft_404_kill(f);
 	else
-	{
 		wait(0);
-
-	}
 }
