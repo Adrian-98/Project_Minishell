@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 18:58:15 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/16 20:00:12 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/09/16 20:16:25 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,7 @@ void	ft_quote2(t_shell *f)
 	int		t;
 
 	t = 0;
-	if (ft_strncmp("echo", f->line,
-	4)) == 0)
+	if (ft_strnstr(f->line, "echo", ft_strlen(f->line)))
 		t = 1;
 	printf("valor de t =%i\n", t);
 	if (t == 1)
