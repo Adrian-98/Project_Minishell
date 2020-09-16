@@ -6,11 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 19:20:28 by amunoz-p          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2020/09/15 18:22:36 by amunoz-p         ###   ########.fr       */
-=======
-/*   Updated: 2020/09/15 18:35:52 by glopez-a         ###   ########.fr       */
->>>>>>> gonzalo
+/*   Updated: 2020/09/16 17:19:35 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +29,7 @@ void		ft_pwd(t_shell *f);
 void		ft_cases(t_shell *f);
 void		ft_404(t_shell *f);
 void		ft_exit(t_shell *f);
+void		ft_404_kill(t_shell *f);
 void		ft_too_many(t_shell *f);
 void		ft_exit1(t_shell *f);
 void		ft_echo(t_shell *f);

@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 18:10:01 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/15 20:34:53 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/09/16 17:19:07 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int main(int argc, char **argv, char **env)
 		display_msg(f);			
 		get_next_line(0, &f->line);
 		proceso = f->line;
-		f->process = ft_split_cmd(f->line, ";|", f);
+		f->process = ft_split_cmd(f->line, ";|");
 		while (*f->process)
 		{
 			i = ft_quotes(f, proceso);
