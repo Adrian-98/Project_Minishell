@@ -17,9 +17,11 @@ void	ft_bash(t_shell *f)
 	char *aux;
 	int	i;
 	int	j;
+	pid_t	id;
 
 	i = 0;
-	if (si es el proceso hijo)
+	id = fork();
+	if (id == 0)
 		while (f->path[i])
 		{
 			aux = ft_strjoin(f->path[i], *f->arguments);

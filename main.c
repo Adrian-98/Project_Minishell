@@ -6,7 +6,7 @@
 /*   By: glopez-a <glopez-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 18:10:01 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/15 20:05:57 by glopez-a         ###   ########.fr       */
+/*   Updated: 2020/09/11 19:21:41 by glopez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,22 @@ void	ft_get_path(t_shell *f)
 	{
 		if (!ft_strncmp(*f->envv, "PATH=", 5))
 		{
-			f->path = ft_split1(*f->envv + 5, ':', f);
+			f->path = ft_split(*f->envv + 5, ':', f);
 			break;
 		}
 		f->envv++;
 	}
+	while (*f->path)
+		{
+			printf("%s\n", *f->path);
+			f->path++;
+		}
 }
 
 int main(int argc, char **argv, char **env)
 {
 	int i;
 	t_shell *f;
-	char	*proceso;
 
 	i = 0;
 	f = NULL;
@@ -51,19 +55,20 @@ int main(int argc, char **argv, char **env)
 	{
 		display_msg(f);			
 		get_next_line(0, &f->line);
-		proceso = f->line;
-		f->process = ft_split_cmd(f->line, ";|");
-		while (*f->process)
+		f->arguments = ft_split_cmd(f->line, ";|");
+		while (*f->arguments)
 		{
-			i = ft_quotes(f, proceso);
-			if (i == 1)
-				ft_quote2(f);	
-			else
-			{
-				f->arguments = ft_split(*f->process, f->c, f);
-				ft_cases(f);
-			}
-			f->process++;
+			printf("%s\n", *f->arguments);
+			f->arguments++;
+		}
+		exit(1);
+		i = ft_quotes(f);
+		if (i == 1)
+			ft_quote2(f);	
+		else
+		{
+			f->arguments = ft_split(f->line, f->c, f);
+			ft_cases(f);
 		}
 		free(f->line);
 	}
