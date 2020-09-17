@@ -6,12 +6,11 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 18:10:01 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/16 20:23:09 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/09/17 17:51:02 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "minishell.h"
-
 
 static	t_shell		*ft_create_struct(t_shell *f)
 {
@@ -41,9 +40,6 @@ int main(int argc, char **argv, char **env)
 	int i;
 	t_shell *f;
 	char	*proceso;
-	 char   a[50] = "hello\\n";
-	// printf("%s\n", a);
-	// exit(0);
 
 	i = 0;
 	f = NULL;
