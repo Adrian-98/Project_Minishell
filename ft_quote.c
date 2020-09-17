@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_quote.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adrian <adrian@student.42.fr>              +#+  +:+       +#+        */
+/*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 18:58:15 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/16 22:59:27 by adrian           ###   ########.fr       */
+/*   Updated: 2020/09/17 17:28:02 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ void	ft_quote2(t_shell *f)
 	t = 0;
 	if (ft_strnstr(f->line, "echo", ft_strlen(f->line)))
 		t = 1;
-	printf("valor de t =%i\n", t);
 	if (t == 1)
 		while (1)
 		{
