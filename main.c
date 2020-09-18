@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 18:10:01 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/18 16:52:55 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/09/18 17:42:43 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,16 @@ void				ft_get_path(t_shell *f)
 {
 	while (*f->envv)
 	{
-		if (!ft_strncmp(*f->envv, "PATH=", 5))
+		printf("%s\n", *f->envv);
+		if (ft_strnstr(*f->envv, "PATH=", 5))
 		{
 			f->path = ft_split1(*f->envv + 5, ':', f);
 			break ;
 		}
 		f->envv++;
 	}
+	// while (*f->path++)
+	// 	printf("%s\n", *f->path);
 }
 
 int					main(int argc, char **argv, char **env)
