@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 12:05:03 by adrian            #+#    #+#             */
-/*   Updated: 2020/09/18 16:55:02 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/09/18 17:10:39 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void		ft_exit(t_shell *f)
 {
 	int i;
 
-	printf("entra aqui\n");
 	i = 0;
 	while (f->arguments[i])
 		i++;
