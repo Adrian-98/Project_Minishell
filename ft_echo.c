@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cases.c                                         :+:      :+:    :+:   */
+/*   ft_echo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 11:33:02 by adrian            #+#    #+#             */
-/*   Updated: 2020/09/01 19:58:49 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/09/18 15:29:59 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	ft_echo_var(t_shell *f, int i)
 
 	j = 0;
 	str = &f->arguments[i][1];
-
 	while (f->envv[j])
 	{
 		k = 0;
@@ -43,8 +42,6 @@ void	ft_echo(t_shell *f)
 	int	j;
 
 	i = 1;
-	//printf("hola");
-	//if (ft_strncp,f->arguments)
 	while (f->arguments[i])
 	{
 		if (*f->arguments[i] == '$')

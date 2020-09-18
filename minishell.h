@@ -6,11 +6,11 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 19:20:28 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/17 18:21:06 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/09/18 16:15:54 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef  MINISHELL_H
+# ifndef  MINISHELL_H
 # define MINISHELL_H
 
 # include "libft/libft.h"
@@ -19,7 +19,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdarg.h>
-#include <signal.h>
+# include <signal.h>
 # include <stdio.h>
 # include <fcntl.h>
 # include <string.h>
@@ -39,9 +39,10 @@ int			ft_quotes(t_shell *f);
 void		ft_quote2(t_shell *f);
 int			ft_quotes1(t_shell *f);
 void		ft_bash(t_shell *f);
-int 		chdir( const char* path);
+int			chdir(const char *path);
 void		ft_cd(t_shell *f);
-
-
+void		ft_extra2(char *temp, t_shell *f);
+void		ft_extra(char *temp, t_shell *f);
+void		display_msg1(t_shell *f);
 
 #endif

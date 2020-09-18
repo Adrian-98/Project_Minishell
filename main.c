@@ -6,49 +6,48 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 18:10:01 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/17 17:51:02 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/09/18 16:52:55 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "minishell.h"
+#include "minishell.h"
 
-static	t_shell		*ft_create_struct(t_shell *f)
+static	t_shell		*ft_create_struct(t_shell *f, char **env)
 {
 	if (!(f = malloc(sizeof(t_shell))))
-		return 0;
+		return (0);
 	f->pwd = getcwd(f->pwd, 4096);
 	f->c = 32;
 	f->flag = 0;
-	return(f);
+	f->envv = env;
+	return (f);
 }
 
-void	ft_get_path(t_shell *f)
+void				ft_get_path(t_shell *f)
 {
 	while (*f->envv)
 	{
 		if (!ft_strncmp(*f->envv, "PATH=", 5))
 		{
 			f->path = ft_split1(*f->envv + 5, ':', f);
-			break;
+			break ;
 		}
 		f->envv++;
 	}
 }
 
-int main(int argc, char **argv, char **env)
+int					main(int argc, char **argv, char **env)
 {
-	int i;
+	int		i;
 	t_shell *f;
 	char	*proceso;
 
 	i = 0;
-	f = NULL;
-	f = ft_create_struct(f);
-	f->envv = env;
+	f = ft_create_struct(f, env);
 	ft_get_path(f);
 	while (1)
 	{
-		display_msg(f);			
+		display_msg(f);
 		get_next_line(0, &f->line);
 		i = ft_quotes(f);
 		if (i == 1)
@@ -63,5 +62,5 @@ int main(int argc, char **argv, char **env)
 		}
 		free(f->line);
 	}
-	return 0;
+	return (0);
 }

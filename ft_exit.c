@@ -6,13 +6,13 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 12:05:03 by adrian            #+#    #+#             */
-/*   Updated: 2020/09/16 17:54:05 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/09/18 16:55:02 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	ft_exit1(t_shell *f)
+void		ft_exit1(t_shell *f)
 {
 }
 
@@ -20,6 +20,7 @@ void		ft_exit(t_shell *f)
 {
 	int i;
 
+	printf("entra aqui\n");
 	i = 0;
 	while (f->arguments[i])
 		i++;
@@ -46,4 +47,3 @@ void		ft_404_kill(t_shell *f)
 	printf("zsh: command not found: %s\n", f->line);
 	exit(0);
 }
-

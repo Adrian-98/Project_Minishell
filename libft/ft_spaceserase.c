@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_spaceserase.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adrian <adrian@student.42.fr>              +#+  +:+       +#+        */
+/*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 20:51:16 by adrian            #+#    #+#             */
-/*   Updated: 2020/08/28 21:30:01 by adrian           ###   ########.fr       */
+/*   Updated: 2020/09/18 15:39:09 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char    *ft_spaceserase(char *str)
+char	*ft_spaceserase(char *str)
 {
-    char	*new_str;
+	char	*new_str;
 	int		start;
 	int		i;
 

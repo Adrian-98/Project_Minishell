@@ -6,10 +6,9 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/11 18:47:21 by glopez-a          #+#    #+#             */
-/*   Updated: 2020/09/16 18:40:52 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/09/18 16:14:01 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "libft.h"
 
@@ -48,7 +47,6 @@ static int		ft_rows(char const *s, char *c)
 
 	i = 0;
 	rows = 0;
-
 	while (s[i] && (s[i] == c[0] || s[i] == c[1]))
 	{
 		i++;
@@ -62,21 +60,20 @@ static int		ft_rows(char const *s, char *c)
 		while (s[i] && s[i] != c[0] && s[i] != c[1])
 			i++;
 		if (s[i] == c[0] || s[i] == c[1])
-		{
 			while (s[i] && (s[i] == c[0] || s[i] == c[1]))
 				i++;
-		}
 		else
 			i++;
 	}
 	return (rows);
 }
 
-static	char	*ft_str_malloc(char const *s, char *c)
+static	char	*ft_str_malloc(char const *s, char *c, t_shell *f)
 {
 	int		i;
 	char	*str;
 
+	ft_info(s, c, f);
 	i = 0;
 	while (s[i] && s[i] != c[0] && s[i] != c[1])
 		i++;
@@ -94,7 +91,6 @@ char			**ft_split_cmd(char const *s, char *c, t_shell *f)
 
 	if (!s)
 		return (NULL);
-	ft_info(s, c, f);
 	rows = ft_rows(s, c);
 	i = -1;
 	if (!(tab = malloc(sizeof(char *) * (rows + 1))))
@@ -103,7 +99,7 @@ char			**ft_split_cmd(char const *s, char *c, t_shell *f)
 	{
 		while (*s == c[0] || *s == c[1])
 			s++;
-		if (!(tab[i] = ft_str_malloc(s, c)))
+		if (!(tab[i] = ft_str_malloc(s, c, f)))
 		{
 			while (i > 0)
 				free(tab[i--]);

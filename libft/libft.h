@@ -6,11 +6,11 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 15:44:40 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/17 18:11:13 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/09/18 16:52:18 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
+# ifndef LIBFT_H
 # define LIBFT_H
 # include <string.h>
 # include <stddef.h>
@@ -23,7 +23,6 @@ typedef	struct	s_list
 	void			*content;
 	struct s_list	*next;
 }				t_list;
-
 
 typedef struct	shell_struct
 {
@@ -42,6 +41,7 @@ typedef struct	shell_struct
 char			*ft_strjoin2(char const *s1, char const *s2);
 char			*ft_strjoin1(char const *s1, char const *s2);
 char			**ft_split1(char const *s, char c, t_shell *f);
+char			**ft_split(char const *s, char c, t_shell *f);
 char			**ft_split_cmd(char const *s, char *c, t_shell *f);
 int				get_next_line(int fd, char **line);
 void			*ft_memset(void *b, int c, size_t len);
@@ -73,7 +73,6 @@ char			*ft_substr(char const *s, unsigned int start, size_t len);
 char			*ft_substr(char const *s, unsigned int start, size_t len);
 char			*ft_strjoin(char const *s1, char const *s2);
 char			*ft_strtrim(char const *s1, char const *set);
-char			**ft_split(char const *s, char c, t_shell *f);
 char			*ft_itoa(int n);
 char			*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void			ft_putchar_fd(char c, int fd);
@@ -95,4 +94,5 @@ char    		*ft_spaceserase(char *str);
 char			*ft_strsub(char *str, int start, size_t len);
 char			*ft_strnew(size_t size);
 size_t			ft_strlcpy1(char *dst, const char *src, size_t dstsize);
+
 #endif

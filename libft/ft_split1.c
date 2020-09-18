@@ -3,25 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split1.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glopez-a <glopez-a@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 14:00:29 by glopez-a          #+#    #+#             */
-/*   Updated: 2020/09/15 18:21:48 by glopez-a         ###   ########.fr       */
+/*   Updated: 2020/09/18 16:51:00 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
 
-static	int	ft_rows(const char *s, char c)
+static int			ft_rows_extra(const char *s, char c, int i, int size)
 {
-	int i;
-	int size;
-
-	if (!s)
-		return (-1);
-	i = 0;
-	size = 0;
 	while (s[i] != '\0')
 	{
 		if (s[i] == '"')
@@ -44,7 +37,20 @@ static	int	ft_rows(const char *s, char c)
 	return (size);
 }
 
-static	char	*ft_str_malloc(char const *s, char c, int k, t_shell *f)
+static int			ft_rows(const char *s, char c)
+{
+	int i;
+	int size;
+
+	if (!s)
+		return (-1);
+	i = 0;
+	size = 0;
+	size = ft_rows_extra(s, c, i, size);
+	return (size);
+}
+
+static char			*ft_str_malloc(char const *s, char c, int k, t_shell *f)
 {
 	int		i;
 	char	*str;
@@ -59,10 +65,8 @@ static	char	*ft_str_malloc(char const *s, char c, int k, t_shell *f)
 		i -= 1;
 	}
 	else
-	{
 		while (s[i + k] && s[i + k] != c && s[i + k] != '"')
 			i++;
-	}
 	if (!(str = (char *)malloc(sizeof(char) * (i + 1))))
 		return (NULL);
 	if (f->flag == 1)
@@ -75,7 +79,19 @@ static	char	*ft_str_malloc(char const *s, char c, int k, t_shell *f)
 	return (str);
 }
 
-char			**ft_split1(char const *s, char c, t_shell *f)
+static int			ft_split_extra1(char **tab, int i, t_shell *f)
+{
+	int j;
+
+	j = 0;
+	j += ft_strlen(tab[i]);
+	if (f->flag == 1)
+		j += 2;
+	f->flag = 0;
+	return (j);
+}
+
+char				**ft_split1(char const *s, char c, t_shell *f)
 {
 	int		rows;
 	int		i;
@@ -83,8 +99,6 @@ char			**ft_split1(char const *s, char c, t_shell *f)
 	char	**tab;
 
 	j = 0;
-	if (!s)
-		return (NULL);
 	rows = ft_rows(s, c);
 	i = -1;
 	if (!(tab = malloc(sizeof(char *) * (rows + 1))))
@@ -100,12 +114,7 @@ char			**ft_split1(char const *s, char c, t_shell *f)
 			free(tab);
 			return (NULL);
 		}
-		j += ft_strlen(tab[i]);
-		if (f->flag == 1)
-		{
-			j += 2;
-			f->flag = 0;
-		}
+		j += ft_split_extra1(tab, i, f);
 	}
 	tab[i] = 0;
 	return (tab);

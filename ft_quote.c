@@ -6,13 +6,13 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 18:58:15 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/17 17:28:02 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/09/18 15:26:06 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include  "minishell.h"
+#include "minishell.h"
 
-static void	display_msg1(t_shell *f)
+void			display_msg1(t_shell *f)
 {
 	if (f->quote == 1)
 		ft_putstr("dquote> ");
@@ -20,7 +20,7 @@ static void	display_msg1(t_shell *f)
 		ft_putstr("quote> ");
 }
 
-int		ft_quotes(t_shell *f)
+int				ft_quotes(t_shell *f)
 {
 	int i;
 	int j;
@@ -42,7 +42,7 @@ int		ft_quotes(t_shell *f)
 	return (ft_quotes1(f));
 }
 
-int		ft_quotes1(t_shell *f)
+int				ft_quotes1(t_shell *f)
 {
 	int	i;
 	int	j;
@@ -64,7 +64,7 @@ int		ft_quotes1(t_shell *f)
 	return (0);
 }
 
-void	ft_quote2(t_shell *f)
+void			ft_quote2(t_shell *f)
 {
 	char	*temp;
 	int		t;
@@ -73,34 +73,7 @@ void	ft_quote2(t_shell *f)
 	if (ft_strnstr(f->line, "echo", ft_strlen(f->line)))
 		t = 1;
 	if (t == 1)
-		while (1)
-		{
-			temp = f->line;
-			display_msg1(f);
-			get_next_line(0, &f->line);
-			if (ft_strchr(f->line, '"') != 0)
-			{
-				f->line = ft_strjoin1(temp, f->line);
-				free(temp);
-				break ;
-			}
-			f->line = ft_strjoin1(temp, f->line);
-			free(temp);
-		}
+		ft_extra(temp, f);
 	else
-		while (1)
-		{
-			temp = f->line;
-			display_msg1(f);
-			get_next_line(0, &f->line);
-			if (ft_strchr(f->line, '"') != 0)
-			{
-				f->line = ft_strjoin2(temp, f->line);
-				free(temp);
-				break ;
-			}
-			f->line = ft_strjoin2(temp, f->line);
-			free(temp);
-		}
+		ft_extra2(temp, f);
 }
-
