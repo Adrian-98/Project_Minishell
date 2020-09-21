@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 11:33:02 by adrian            #+#    #+#             */
-/*   Updated: 2020/09/21 18:01:10 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/09/21 19:27:13 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_cases(t_shell *f)
 			ft_strlen("cd")) == 0)
 		ft_cd(f);
 	else
-		ft_bash(f);
+		ft_bash(f->path, f);
 	f->line = 0;
 	f->arguments = 0;
 }
