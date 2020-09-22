@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 19:20:28 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/21 20:24:11 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/09/22 19:36:23 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # include <sys/wait.h>
 # include <errno.h>
 
+int		ft_export(t_shell *f);
 void		display_msg(t_shell *f);
 void		ft_pwd(t_shell *f);
 void		ft_cases(t_shell *f);

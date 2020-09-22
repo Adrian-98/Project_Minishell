@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 15:44:40 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/22 16:32:10 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/09/22 19:43:31 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct	shell_struct
 	char	*erno;
 }				t_shell;
 
+char			*ft_strndup(const char *src, size_t chars);
 char			*ft_strjoin3(char const *s1, char const *s2);
 char			*ft_strjoin2(char const *s1, char const *s2);
 char			*ft_strjoin1(char const *s1, char const *s2);

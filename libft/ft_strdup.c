@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 21:18:32 by amunoz-p          #+#    #+#             */
-/*   Updated: 2019/11/07 21:32:21 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/09/22 19:48:18 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,20 @@ char	*ft_strdup(const char *s1)
 	}
 	p[i] = '\0';
 	return (p);
+}
+
+char	*ft_strndup(const char *src, size_t chars)
+{
+	char	*str;
+	char	*strptr;
+	
+	if (!src)
+		return (0);
+	if (!(str = malloc((chars + 1) * sizeof(char))))
+		return (0);
+	strptr = str;
+	while (*src && chars--)
+		*(strptr++) = *(src++);
+	*strptr = 0;
+	return (str);
 }
