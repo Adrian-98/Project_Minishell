@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 18:10:01 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/21 20:27:41 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/09/22 16:38:14 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ static	t_shell		*ft_create_struct(t_shell *f, char **env)
 	f->c = 32;
 	f->flag = 0;
 	f->envv = env;
+	f->erno = NULL;
 	return (f);
 }
 

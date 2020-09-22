@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 11:33:02 by adrian            #+#    #+#             */
-/*   Updated: 2020/09/21 20:17:03 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/09/22 16:43:54 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,18 @@ void	ft_bash(char **path, t_shell *f)
 		{
 			aux = ft_strjoin3(f->path[i], *f->arguments);
 			tmp = aux;
-			printf("valor de aux  [%s]\n", aux);
-			printf("valor de function  [%s]\n",	*f->arguments);
 			j = execve(tmp, f->arguments, f->envv);
 			free(aux);
 			i++;
 		}
 		aux = ft_strjoin3(f->pwd, *f->arguments);
 		j = execve(aux, f->arguments, f->envv);
-		printf("valor de j [%d]\n", j);
-
+		f->erno = strerror(errno);
 		free(aux);
-		ft_404_kill(f);
+		if (**f->arguments == '/')
+			ft_404_kill(f);
+		else
+			ft_404(f);
 	}
 	else
 		wait(0);
