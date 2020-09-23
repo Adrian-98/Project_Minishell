@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adrian <adrian@student.42.fr>              +#+  +:+       +#+        */
+/*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/22 17:58:40 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/23 12:11:08 by adrian           ###   ########.fr       */
+/*   Updated: 2020/09/23 18:12:49 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ static	int		ft_already(t_shell *f, char *aux)
 			return (i);
 		i++;
 	}
-	return (0);
+	return (-1);
 }
 
 int		ft_export(t_shell *f)
 {
 	char	**tmp;
 	char	*aux;
-	char 	*aux1;
+	char	*aux1;
 	int		i;
 	int		j;
 	int		k;
@@ -42,46 +42,44 @@ int		ft_export(t_shell *f)
 		printf("%i --%s\n", i, f->envv[i]);
 		i++;
 	}
-	if (!(tmp = malloc(sizeof(i + 1))))
+	printf(" original^^^^^^^-----------------------------\n");
+	if (!(tmp = malloc(sizeof(char *) * (i + 1))))
 		return (0);
 	k = i + 1;
-	printf("valor de  k =%i\n", k);
 	i = 0;
 	while (f->arguments[i])
 		i++;
 	if (i > 2 || f->arguments[1] == 0)
 		return (0);
 	aux = ft_strndup(f->arguments[1],
-	ft_strchr(f->arguments[1], '=') - f->arguments[1] + 1);
+		ft_strchr(f->arguments[1], '=') - f->arguments[1] + 1);
 	aux1 = ft_strdup(ft_strrchr(f->arguments[1], '=') + 1);
-	//printf("aux     %s\naux1      %s\n", aux, aux1);
 	i = ft_already(f, aux);
-	printf("valor de i ====%i\n", i);
+	printf("valor de i =%i\n", i);
 	j = -1;
-	if (i != 0)
+	if (i >= 0)
 	{
-		// printf("aux     %s\naux1      %s\n", aux, aux1);
-		tmp[i + 1] = ft_strjoin(aux, aux1);
+		tmp[i] = ft_strjoin(aux, aux1);
+		free(aux);
+		free(aux1);
 		while (++j < i)
 		{
 			tmp[j] = ft_strdup(f->envv[j]);
-			printf("%i--%s\n", j, tmp[j]);
+			printf("%i-->%s\n", j, tmp[j]);
 		}
-		printf("valor de i=%i\n", i);
-		tmp[i] = ft_strjoin("OLD", f->envv[i]);
-		printf("%i--%s\n", i, tmp[i]);
-		printf("%i--%s\n", (i + 1), tmp[i + 1]);
-		i++;
-		
-		
-		printf("valor de i=%i\nvalor de k=%i\n valor de j%i\n", i, k, j);
-		while (++i <= k)
+		printf("%i-->%s\n", i, tmp[i]);
+		while (++i < k)
 		{
-		 	tmp[i] = ft_strdup(f->envv[++j]);
-			printf("%i--%s\n", i, tmp[i]);
+			tmp[i] = ft_strdup(f->envv[++j]);
+			printf("%i-->%s\n", i, tmp[j]);
 		}
-		printf("--------------------------------------------------------------\n");
-		tmp[k] = 0;
+		printf("-----------------------------\n");
+		i = 0;
+		while (tmp[i])
+		{
+			printf("%s\n", tmp[i]);
+			i++;
+		}
 	}
 	return (0);
 }

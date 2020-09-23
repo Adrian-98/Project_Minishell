@@ -6,7 +6,7 @@
 #    By: glopez-a <glopez-a@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/04 17:26:05 by amunoz-p          #+#    #+#              #
-#    Updated: 2020/09/15 18:20:48 by glopez-a         ###   ########.fr        #
+#    Updated: 2020/09/23 18:08:32 by amunoz-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ BONS		=	ft_lstmap_bonus.c ft_lstiter_bonus.c ft_lstclear_bonus.c\
 ft_lstdelone_bonus.c ft_lstadd_back_bonus.c ft_lstsize_bonus.c\
 ft_lstlast_bonus.c ft_lstadd_front_bonus.c ft_lstnew_bonus.c\
 
-GCC			=	@gcc -Wall -Wextra -Werror
+GCC			=	@gcc -Wall -Wextra -Werror -g3
 
 OBJS		=	$(SRCS:.c=.o)
 

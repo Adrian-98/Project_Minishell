@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adrian <adrian@student.42.fr>              +#+  +:+       +#+        */
+/*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 21:18:32 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/23 12:17:42 by adrian           ###   ########.fr       */
+/*   Updated: 2020/09/23 17:14:44 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*ft_strndup(const char *src, size_t chars)
 {
 	char	*str;
 	char	*strptr;
-	
+
 	if (!src)
 		return (0);
 	if (!(str = malloc((chars + 1) * sizeof(char))))
