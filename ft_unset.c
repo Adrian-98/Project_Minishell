@@ -1,35 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_export.c                                        :+:      :+:    :+:   */
+/*   ft_unset.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/22 17:58:40 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/23 20:09:40 by amunoz-p         ###   ########.fr       */
+/*   Created: 2020/09/23 19:55:12 by amunoz-p          #+#    #+#             */
+/*   Updated: 2020/09/23 20:35:00 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int		ft_already(t_shell *f, char *aux)
+int			ft_unset(t_shell *f)
 {
-	int i;
-
-	i = 0;
-	while (f->envv[i])
-	{
-		if (!ft_strncmp(f->envv[i], aux,
-			ft_strlen(aux)))
-			return (i);
-		i++;
-	}
-	return (-1);
-}
-
-int		ft_export(t_shell *f)
-{
-	char	**tmp;
+	char	**temporal;
 	char	*aux;
 	char	*aux1;
 	int		i;
@@ -38,10 +23,15 @@ int		ft_export(t_shell *f)
 
 	i = 0;
 	while (f->envv[i])
+	{
+		printf("%i-->%s\n", i, f->envv[i]);
 		i++;
-	if (!(tmp = malloc(sizeof(char *) * (i + 2))))
+	}
+	printf("----------------------\n");
+	if (!(temporal = malloc(sizeof(char *) * (i + 1))))
 		return (0);
-	k = i + 1;
+	printf("----------------------\n");
+	k = i;
 	i = 0;
 	while (f->arguments[i])
 		i++;
@@ -52,27 +42,15 @@ int		ft_export(t_shell *f)
 	aux1 = ft_strdup(ft_strrchr(f->arguments[1], '=') + 1);
 	i = ft_already(f, aux);
 	j = -1;
-	if (i >= 0)
+	while (++j < i)
+		temporal[j] = ft_strdup(f->envv[j]);
+	while (i++ < k)
+		temporal[i] = ft_strdup(f->envv[j++]);
+	while (temporal[i])
 	{
-		tmp[i] = ft_strjoin(aux, aux1);
-		free(aux);
-		free(aux1);
-		while (++j < i)
-			tmp[j] = ft_strdup(f->envv[j]);
-		while (++i < k)
-			tmp[i] = ft_strdup(f->envv[++j]);
-	}
-	else
-	{
-		i = 0;
-		while (i++ < k - 2)
-			tmp[i] = ft_strdup(f->envv[i]);
-		tmp[i] = ft_strjoin(aux, aux1);
+		printf("%i-->%s\n", i, temporal[i]);
 		i++;
-		tmp[i] = ft_strdup(f->envv[i - 1]);
-		tmp[++i] = 0;
 	}
-	f->envv = tmp;
-	ft_get_path(f);
+
 	return (0);
 }
