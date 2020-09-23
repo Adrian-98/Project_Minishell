@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 18:10:01 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/22 20:17:48 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/09/23 19:39:50 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,6 @@ static	t_shell		*ft_create_struct(t_shell *f, char **env)
 
 void    ft_get_path(t_shell *f)
 {
-    char    **str;
-    pid_t   id;
-    str = malloc(sizeof(char *) * 2);
-    str[0] = "clear";
-    str[1] = 0;
     while (*f->envv)
     {
         if (!ft_strncmp(*f->envv, "PATH=", 5))
@@ -76,10 +71,6 @@ void    ft_get_path(t_shell *f)
         }
         f->envv++;
     }
-    id = fork();
-    if (id == 0)
-        execve("/usr/bin/clear", str, f->envv);
-    wait(0);
 }
 
 int					main(int argc, char **argv, char **env)
@@ -91,6 +82,7 @@ int					main(int argc, char **argv, char **env)
 	i = 0;
 	f = ft_create_struct(f, env);
 	ft_get_path(f);
+	ft_clear(f);
 	while (1)
 	{
 		display_msg(f);

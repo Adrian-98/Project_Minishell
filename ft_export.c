@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/22 17:58:40 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/23 19:07:20 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/09/23 19:41:40 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,7 @@ int		ft_export(t_shell *f)
 
 	i = 0;
 	while (f->envv[i])
-	{
-		printf("%i --%s\n", i, f->envv[i]);
 		i++;
-	}
-	printf(" original^^^^^^^-----------------------------\n");
 	if (!(tmp = malloc(sizeof(char *) * (i + 2))))
 		return (0);
 	k = i + 1;
@@ -69,24 +65,14 @@ int		ft_export(t_shell *f)
 	else
 	{
 		i = 0;
-		printf("valor de i=%i valor de k= %i\n  ", i, k);
-		while (i < k - 2)
-		{
+		while (i++ < k - 2)
 			tmp[i] = ft_strdup(f->envv[i]);
-			printf("%i-->%s\n", i, tmp[i]);
-			i++;
-		}
 		tmp[i] = ft_strjoin(aux, aux1);
 		i++;
 		tmp[i] = ft_strdup(f->envv[i - 1]);
 		tmp[++i] = 0;
 	}
-	i = 0;
-	printf(" original^^^^^^^-----------------------------\n");
-	while (tmp[i])
-	{
-		printf("%i-->%s\n", i, tmp[i]);
-		i++;
-	}
+	f->envv = tmp;
+	ft_get_path(f);
 	return (0);
 }
