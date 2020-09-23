@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/22 17:58:40 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/23 18:12:49 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/09/23 19:07:20 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int		ft_export(t_shell *f)
 		i++;
 	}
 	printf(" original^^^^^^^-----------------------------\n");
-	if (!(tmp = malloc(sizeof(char *) * (i + 1))))
+	if (!(tmp = malloc(sizeof(char *) * (i + 2))))
 		return (0);
 	k = i + 1;
 	i = 0;
@@ -55,7 +55,6 @@ int		ft_export(t_shell *f)
 		ft_strchr(f->arguments[1], '=') - f->arguments[1] + 1);
 	aux1 = ft_strdup(ft_strrchr(f->arguments[1], '=') + 1);
 	i = ft_already(f, aux);
-	printf("valor de i =%i\n", i);
 	j = -1;
 	if (i >= 0)
 	{
@@ -63,23 +62,31 @@ int		ft_export(t_shell *f)
 		free(aux);
 		free(aux1);
 		while (++j < i)
-		{
 			tmp[j] = ft_strdup(f->envv[j]);
-			printf("%i-->%s\n", j, tmp[j]);
-		}
-		printf("%i-->%s\n", i, tmp[i]);
 		while (++i < k)
-		{
 			tmp[i] = ft_strdup(f->envv[++j]);
-			printf("%i-->%s\n", i, tmp[j]);
-		}
-		printf("-----------------------------\n");
+	}
+	else
+	{
 		i = 0;
-		while (tmp[i])
+		printf("valor de i=%i valor de k= %i\n  ", i, k);
+		while (i < k - 2)
 		{
-			printf("%s\n", tmp[i]);
+			tmp[i] = ft_strdup(f->envv[i]);
+			printf("%i-->%s\n", i, tmp[i]);
 			i++;
 		}
+		tmp[i] = ft_strjoin(aux, aux1);
+		i++;
+		tmp[i] = ft_strdup(f->envv[i - 1]);
+		tmp[++i] = 0;
+	}
+	i = 0;
+	printf(" original^^^^^^^-----------------------------\n");
+	while (tmp[i])
+	{
+		printf("%i-->%s\n", i, tmp[i]);
+		i++;
 	}
 	return (0);
 }
