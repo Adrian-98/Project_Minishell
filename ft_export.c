@@ -6,13 +6,13 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/22 17:58:40 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/23 19:41:40 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/09/24 17:26:14 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static	int		ft_already(t_shell *f, char *aux)
+int		ft_already(t_shell *f, char *aux)
 {
 	int i;
 
@@ -27,7 +27,20 @@ static	int		ft_already(t_shell *f, char *aux)
 	return (-1);
 }
 
-int		ft_export(t_shell *f)
+int			ft_export_while(t_shell *f)
+{
+	int i;
+
+	i = 1;
+	while (f->arguments[i] != 0)
+	{
+		ft_export(f, f->arguments[i]);
+		i++;
+	}
+	return (0);
+}
+
+int		ft_export(t_shell *f, char *str)
 {
 	char	**tmp;
 	char	*aux;
@@ -43,13 +56,14 @@ int		ft_export(t_shell *f)
 		return (0);
 	k = i + 1;
 	i = 0;
-	while (f->arguments[i])
-		i++;
-	if (i > 2 || f->arguments[1] == 0)
+	if (!(str))
 		return (0);
-	aux = ft_strndup(f->arguments[1],
-		ft_strchr(f->arguments[1], '=') - f->arguments[1] + 1);
-	aux1 = ft_strdup(ft_strrchr(f->arguments[1], '=') + 1);
+	// while (f->arguments[i])
+	// 	i++;
+	// if (i > 2 || f->arguments[1] == 0)
+	// 	return (0);
+	aux = ft_strndup(str, ft_strchr(str, '=') - str + 1);
+	aux1 = ft_strdup(ft_strrchr(str, '=') + 1);
 	i = ft_already(f, aux);
 	j = -1;
 	if (i >= 0)
@@ -64,9 +78,11 @@ int		ft_export(t_shell *f)
 	}
 	else
 	{
-		i = 0;
-		while (i++ < k - 2)
+		i = -1;
+		while (++i < k - 2)
+		{
 			tmp[i] = ft_strdup(f->envv[i]);
+		}
 		tmp[i] = ft_strjoin(aux, aux1);
 		i++;
 		tmp[i] = ft_strdup(f->envv[i - 1]);
