@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 18:10:01 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/23 19:39:50 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/09/24 16:25:04 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,6 @@ static	t_shell		*ft_create_struct(t_shell *f, char **env)
 	f->pwd = getcwd(f->pwd, 4096);
 	f->c = 32;
 	f->flag = 0;
-	// while (env[i])
-	// 	i++;
-	// if (!(f->envv = malloc(sizeof(i + 1))))
-	// 	return (0);
 	f->envv = env;
 	f->erno = NULL;
 	return (f);
