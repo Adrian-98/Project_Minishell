@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 17:57:14 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/23 19:40:13 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/09/24 20:15:36 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ void		ft_cd(t_shell *f)
 	else if ((f->arguments[1]) == 0)
 	{
 		if (chdir("/Users/amunoz-p/") != 0)
-			printf("%s\n", strerror(errno));
+			ft_printf("%s\n", strerror(errno));
 	}
 	else if (chdir(f->arguments[1]) != 0)
-		printf("cd: %s: %s\n", strerror(errno), f->arguments[1]);
+		ft_printf("cd: %s: %s\n", strerror(errno), f->arguments[1]);
 }
 
 void		ft_clear(t_shell *f)

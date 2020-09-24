@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 11:33:02 by adrian            #+#    #+#             */
-/*   Updated: 2020/09/21 20:22:46 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/09/24 20:15:46 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,12 @@ void	ft_echo(t_shell *f)
 	int j;
 
 	i = 1;
-	//printf("hola");
+	//ft_printf("hola");
 	//if (ft_strncp,f->arguments)
 	while (f->arguments[i])
 	{
-		printf("%s ", f->arguments[i]);
+		ft_printf("%s ", f->arguments[i]);
 		i++;
 	}
-	printf("\n");
+	ft_printf("\n");
 }
