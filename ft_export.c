@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/22 17:58:40 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/24 17:26:14 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/09/24 18:13:16 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,20 +29,22 @@ int		ft_already(t_shell *f, char *aux)
 
 int			ft_export_while(t_shell *f)
 {
-	int i;
+	int		i;
+	char	**tmp;
 
 	i = 1;
 	while (f->arguments[i] != 0)
 	{
-		ft_export(f, f->arguments[i]);
+		if (!(ft_strchr(f->arguments[i], '=')))
+			return (0);
+		ft_export(f, f->arguments[i], tmp);
 		i++;
 	}
 	return (0);
 }
 
-int		ft_export(t_shell *f, char *str)
+int		ft_export(t_shell *f, char *str, char **tmp)
 {
-	char	**tmp;
 	char	*aux;
 	char	*aux1;
 	int		i;
@@ -58,10 +60,6 @@ int		ft_export(t_shell *f, char *str)
 	i = 0;
 	if (!(str))
 		return (0);
-	// while (f->arguments[i])
-	// 	i++;
-	// if (i > 2 || f->arguments[1] == 0)
-	// 	return (0);
 	aux = ft_strndup(str, ft_strchr(str, '=') - str + 1);
 	aux1 = ft_strdup(ft_strrchr(str, '=') + 1);
 	i = ft_already(f, aux);
@@ -69,8 +67,6 @@ int		ft_export(t_shell *f, char *str)
 	if (i >= 0)
 	{
 		tmp[i] = ft_strjoin(aux, aux1);
-		free(aux);
-		free(aux1);
 		while (++j < i)
 			tmp[j] = ft_strdup(f->envv[j]);
 		while (++i < k)
@@ -88,6 +84,8 @@ int		ft_export(t_shell *f, char *str)
 		tmp[i] = ft_strdup(f->envv[i - 1]);
 		tmp[++i] = 0;
 	}
+	free(aux);
+	free(aux1);
 	f->envv = tmp;
 	ft_get_path(f);
 	return (0);
