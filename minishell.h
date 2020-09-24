@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 19:20:28 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/24 17:24:35 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/09/24 18:05:43 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # include <sys/wait.h>
 # include <errno.h>
 
-int			ft_export(t_shell *f, char *str);
+int			ft_export(t_shell *f, char *str, char **tmp);
 void		display_msg(t_shell *f);
 void		ft_pwd(t_shell *f);
 void		ft_cases(t_shell *f);
@@ -49,7 +49,8 @@ char    	*ft_var(char *str, t_shell *f);
 void    	ft_get_path(t_shell *f);
 void		ft_clear(t_shell *f);
 int			ft_already(t_shell *f, char *aux);
-int			ft_unset(t_shell *f);
 int			ft_export_while(t_shell *f);
+int			ft_unset(t_shell *f, char *str, char **tmp);
+int			ft_unset_while(t_shell *f);
 
 #endif
