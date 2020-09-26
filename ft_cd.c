@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adrian <adrian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 17:57:14 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/24 20:15:36 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/09/26 13:52:16 by adrian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 void		ft_cd(t_shell *f)
 {
 	int i;
+	char	**tmp;
+
+
 
 	i = 0;
 	while (f->arguments[i])
@@ -23,11 +26,20 @@ void		ft_cd(t_shell *f)
 		ft_too_many(f);
 	else if ((f->arguments[1]) == 0)
 	{
+		ft_printf("entra aqui\n");
 		if (chdir("/Users/amunoz-p/") != 0)
 			ft_printf("%s\n", strerror(errno));
+		f->pwd = getcwd(f->pwd, 4096);
+		ft_export(f, ft_strjoin("PWD=", f->pwd), tmp);
+		
 	}
-	else if (chdir(f->arguments[1]) != 0)
-		ft_printf("cd: %s: %s\n", strerror(errno), f->arguments[1]);
+	else 
+	{
+		if (chdir(f->arguments[1]) != 0)	
+			ft_printf("cd: %s: %s\n", strerror(errno), f->arguments[1]);
+		f->pwd = getcwd(f->pwd, 4096);
+		ft_export(f, ft_strjoin("PWD=", f->pwd), tmp);
+	}
 }
 
 void		ft_clear(t_shell *f)
