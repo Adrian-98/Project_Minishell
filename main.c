@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adrian <adrian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 18:10:01 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/24 16:25:04 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/09/26 14:08:41 by adrian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,17 +56,37 @@ static	t_shell		*ft_create_struct(t_shell *f, char **env)
 	return (f);
 }
 
-void    ft_get_path(t_shell *f)
+void    ft_get_user(t_shell *f)
 {
-    while (*f->envv)
+	int i;
+
+	i = 0;
+    while (f->envv[i])
     {
-        if (!ft_strncmp(*f->envv, "PATH=", 5))
+        if (!ft_strncmp(f->envv[i], "HOME=", 5))
         {
-            f->path = ft_split(*f->envv + 5, ':', f);
+            f->home = ft_strdup(f->envv[i] + 5);
             break;
         }
-        f->envv++;
+       i++;
     }
+}
+
+void    ft_get_path(t_shell *f)
+{
+	int i;
+
+	i = 0;
+    while (f->envv[i])
+    {
+        if (!ft_strncmp(f->envv[i], "PATH=", 5))
+        {
+            f->path = ft_split(f->envv[i] + 5, ':', f);
+            break;
+        }
+       i++;
+    }
+	ft_get_user(f);
 }
 
 int					main(int argc, char **argv, char **env)

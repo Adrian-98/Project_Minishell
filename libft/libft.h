@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adrian <adrian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 15:44:40 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/24 20:17:58 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/09/26 14:02:42 by adrian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct	shell_struct
 	char	**process;
 	char	*info;
 	char	*erno;
+	char	*home;
 }				t_shell;
 
 char			*ft_strndup(const char *src, size_t chars);

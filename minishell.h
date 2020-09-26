@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adrian <adrian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 19:20:28 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/24 20:16:42 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/09/26 13:57:33 by adrian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void		ft_echo(t_shell *f);
 int			ft_quotes(t_shell *f);
 void		ft_quote2(t_shell *f);
 int			ft_quotes1(t_shell *f);
+void    	ft_get_user(t_shell *f);
 void		ft_bash(char **path, t_shell *f);
 int			chdir(const char *path);
 void		ft_cd(t_shell *f);
