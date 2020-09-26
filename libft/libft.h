@@ -6,7 +6,7 @@
 /*   By: adrian <adrian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 15:44:40 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/26 14:02:42 by adrian           ###   ########.fr       */
+/*   Updated: 2020/09/26 15:04:20 by adrian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct	shell_struct
 	char	*home;
 }				t_shell;
 
+int				ft_strcmp(const char *s1, const char *s2);
 char			*ft_strndup(const char *src, size_t chars);
 char			*ft_strjoin3(char const *s1, char const *s2);
 char			*ft_strjoin2(char const *s1, char const *s2);
