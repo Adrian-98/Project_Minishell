@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 18:10:01 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/28 19:48:43 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/09/28 21:08:16 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,8 @@ int					main(int argc, char **argv, char **env)
 		display_msg();		
 		signal(SIGINT, signal_handler);
 		signal(SIGQUIT, signal1);
-		get_next_line(0, &f->line);
+		if (get_next_line(0, &f->line) == 0 && !*f->line)
+			signal1(1);
 		i = ft_quotes(f);
 		if (i == 1)
 			ft_quote2(f);
