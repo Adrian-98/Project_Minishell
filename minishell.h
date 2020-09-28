@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adrian <adrian@student.42.fr>              +#+  +:+       +#+        */
+/*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 19:20:28 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/26 14:37:48 by adrian           ###   ########.fr       */
+/*   Updated: 2020/09/28 19:40:23 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,6 @@ int			ft_unset(t_shell *f, char *str, char **tmp);
 int			ft_unset_while(t_shell *f);
 void		proc_signal_handler(int signo);
 void		signal_handler(int signo);
+void		signal1(int signo);
+void		signal2(int signo);
 #endif

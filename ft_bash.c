@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bash.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adrian <adrian@student.42.fr>              +#+  +:+       +#+        */
+/*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 11:33:02 by adrian            #+#    #+#             */
-/*   Updated: 2020/09/26 14:51:06 by adrian           ###   ########.fr       */
+/*   Updated: 2020/09/28 19:40:50 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,11 @@ void	ft_bash(char **path, t_shell *f)
 	int		j;
 	pid_t	id;
 
-	// signal(SIGINT, handle_sigint);
 	i = 0;
 	id = fork();
 	signal(SIGINT, proc_signal_handler);
+	signal(SIGQUIT, signal1);
+	signal(SIGQUIT, signal2);
 	if (id == 0)
 	{
 		while (f->path[i])

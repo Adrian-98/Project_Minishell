@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adrian <adrian@student.42.fr>              +#+  +:+       +#+        */
+/*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 18:10:01 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/26 14:36:37 by adrian           ###   ########.fr       */
+/*   Updated: 2020/09/28 19:48:43 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,8 +101,9 @@ int					main(int argc, char **argv, char **env)
 	ft_clear(f);
 	while (1)
 	{
-		display_msg();
+		display_msg();		
 		signal(SIGINT, signal_handler);
+		signal(SIGQUIT, signal1);
 		get_next_line(0, &f->line);
 		i = ft_quotes(f);
 		if (i == 1)
