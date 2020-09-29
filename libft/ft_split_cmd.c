@@ -6,11 +6,26 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/11 18:47:21 by glopez-a          #+#    #+#             */
-/*   Updated: 2020/09/18 16:14:01 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/09/29 18:09:09 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static void		ft_pipe_counter(t_shell *f)
+{
+	int i;
+
+	f->p = 0;
+	i = 0;
+	while (f->info[i])
+	{
+		if (f->info[i] == '|')
+			f->p++;
+		i++;
+	}
+}
+
 
 static void		ft_info(const char *s, char *c, t_shell *f)
 {
@@ -38,6 +53,7 @@ static void		ft_info(const char *s, char *c, t_shell *f)
 		i++;
 	}
 	f->info[j] = 0;
+	ft_pipe_counter(f);
 }
 
 static int		ft_rows(char const *s, char *c)
@@ -73,7 +89,7 @@ static	char	*ft_str_malloc(char const *s, char *c, t_shell *f)
 	int		i;
 	char	*str;
 
-	ft_info(s, c, f);
+	(void)f;
 	i = 0;
 	while (s[i] && s[i] != c[0] && s[i] != c[1])
 		i++;
@@ -91,6 +107,7 @@ char			**ft_split_cmd(char const *s, char *c, t_shell *f)
 
 	if (!s)
 		return (NULL);
+	ft_info(s, c, f);
 	rows = ft_rows(s, c);
 	i = -1;
 	if (!(tab = malloc(sizeof(char *) * (rows + 1))))

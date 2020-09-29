@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 19:20:28 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/28 19:40:23 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/09/29 17:32:07 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@
 # include <string.h>
 # include <sys/wait.h>
 # include <errno.h>
+
+# define READ_END	0
+# define WRITE_END	1
 
 int			ft_export(t_shell *f, char *str, char **tmp);
 void		display_msg(void);

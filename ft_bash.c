@@ -6,18 +6,11 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 11:33:02 by adrian            #+#    #+#             */
-/*   Updated: 2020/09/28 20:53:00 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/09/28 21:25:17 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-// static 	void handle_sigint(int sig)
-// {
-// 	ft_printf("entro aqui\n");
-// 	kill(getpid(), 3);
-// }
-
 
 void	ft_bash(char **path, t_shell *f)
 {

@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 18:10:01 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/28 21:08:16 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/09/29 17:57:54 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ static	t_shell		*ft_create_struct(t_shell *f, char **env)
 	f->c = 32;
 	f->flag = 0;
 	f->envv = env;
+	f->p = 0; 
 	f->erno = NULL;
 	return (f);
 }
@@ -114,7 +115,6 @@ int					main(int argc, char **argv, char **env)
 		while (*f->process)
 		{
 			f->arguments = ft_split(*f->process, f->c, f);
-			ft_$(f->arguments, f);
 			ft_cases(f);
 			f->process++;
 		}
