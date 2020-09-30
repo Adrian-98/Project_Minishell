@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 18:10:01 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/30 22:12:21 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/09/30 22:25:15 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,36 +133,31 @@ int					main(int argc, char **argv, char **env)
 		cv = 0;
 		while (f->process[cv])
 		{
-			// printf("process = [%s]\n", f->process[cv]);
 			f->pipes = ft_split(f->process[cv], '|', f);
-			//f->save[0] = dup(STDIN_FILENO);
-			//f->save[1] = dup(STDOUT_FILENO);
+			f->save[0] = dup(STDIN_FILENO);
+			f->save[1] = dup(STDOUT_FILENO);
 			f->i = 0;
 			while (f->pipes[f->i])
 			{
-				// printf("valor de pipes = %s\n", f->pipes[f->i]);
 				if (f->pipes[f->i + 1])
 				{
 					f->pid = fork();
-					// printf("entra en pipes\n");
 					pipe(f->fd1);
 					if(f->pid == 0)             
 					{
 						close(f->fd1[READ_END]);
-						dup2(f->fd1[WRITE_END], STDOUT_FILENO); 
+						dup2(f->fd1[WRITE_END], STDIN_FILENO); 
 						ft_body(f);
 						exit(0);
 					}
 					else if  (f->pid > 0)
 					{
-						
 						close(f->fd1[WRITE_END]);
-						dup2(f->fd1[READ_END], STDIN_FILENO);	
+						dup2(f->fd1[READ_END], STDOUT_FILENO);	
 					}
 				}
 				else
 				{
-					// printf("GGGGGGGGGGGGGAAAAAAA\n");
 					ft_body(f);
 				}
 				f->i++;
@@ -171,7 +166,6 @@ int					main(int argc, char **argv, char **env)
 			}
 			free(f->pipes);
 			cv++;
-			// printf("\ncuantas veces entra en process = %i\n", cv);
 		}
 		free(f->line);
 	}
