@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 18:10:01 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/30 20:00:37 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/09/30 22:12:21 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void    ft_get_path(t_shell *f)
 
 void 	ft_body(t_shell *f)
 {
-	f->arguments = ft_split(*f->pipes, f->c, f);
+	f->arguments = ft_split(f->pipes[f->i], f->c, f);
 	//ft_$(f->arguments, f);
 	ft_cases(f);
 }
@@ -101,7 +101,7 @@ int 	ft_count_pipes(t_shell *f)
 {
 	while(f->pipes[f->p])
 	{
-		// printf("valor de cada pipe = %s\n", f->pipes[f->p]);
+		//printf("valor de cada pipe = %s\n", f->pipes[f->p]);
 		f->p++;
 	}
 	return (f->p);
@@ -129,55 +129,49 @@ int					main(int argc, char **argv, char **env)
 			ft_quote2(f);
 		proceso = f->line;
 		f->process = ft_split(f->line, ';', f);
-		while (*f->process)
+		int	cv;
+		cv = 0;
+		while (f->process[cv])
 		{
-			// printf("valor de proces=   %s\n", *f->process);
-			f->pipes = ft_split(f->line, '|', f);
-			f->p = ft_count_pipes(f);
-			if (f->p == 1)
+			// printf("process = [%s]\n", f->process[cv]);
+			f->pipes = ft_split(f->process[cv], '|', f);
+			//f->save[0] = dup(STDIN_FILENO);
+			//f->save[1] = dup(STDOUT_FILENO);
+			f->i = 0;
+			while (f->pipes[f->i])
 			{
-				ft_body(f);
-			}
-			else
-			{
-				
-				printf("----------\n");
-				f->save[0] = dup(STDIN_FILENO);
-				f->save[1] = dup(STDOUT_FILENO);
-				while (f->pipes[f->i])
+				// printf("valor de pipes = %s\n", f->pipes[f->i]);
+				if (f->pipes[f->i + 1])
 				{
-					printf("----------1\n");
-					if (f->pipes[++f->i])
+					f->pid = fork();
+					// printf("entra en pipes\n");
+					pipe(f->fd1);
+					if(f->pid == 0)             
 					{
-						pipe(f->fd1);
-						f->pid = fork();
-						if(f->pid == 0)             
-   					 	{      		
-							printf("----------2\n");
-        					close(f->fd1[READ_END]);
-        					dup2(f->fd1[WRITE_END], STDOUT_FILENO); 
-							ft_body(f);
-							exit(0);
-						}
-						else if  (f->pid > 0)
-						{
-							printf("----------3\n");
-							close(f->fd1[WRITE_END]);
-							dup2(f->fd1[READ_END], STDIN_FILENO);	
-							printf("----------4\n");		
-						}
-						else
-						{
-							printf("error crear proceso\n");
-							return (0);
-						}
+						close(f->fd1[READ_END]);
+						dup2(f->fd1[WRITE_END], STDOUT_FILENO); 
+						ft_body(f);
+						exit(0);
 					}
-					f->i++;
+					else if  (f->pid > 0)
+					{
+						
+						close(f->fd1[WRITE_END]);
+						dup2(f->fd1[READ_END], STDIN_FILENO);	
+					}
 				}
-				dup2(STDIN_FILENO, f->save[0]);
-				dup2(STDOUT_FILENO, f->save[1]);
+				else
+				{
+					// printf("GGGGGGGGGGGGGAAAAAAA\n");
+					ft_body(f);
+				}
+				f->i++;
+				dup2(f->save[0], STDIN_FILENO);
+				dup2(f->save[1], STDOUT_FILENO);
 			}
-			f->process++;
+			free(f->pipes);
+			cv++;
+			// printf("\ncuantas veces entra en process = %i\n", cv);
 		}
 		free(f->line);
 	}
