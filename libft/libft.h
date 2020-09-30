@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 15:44:40 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/29 17:54:36 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/09/30 19:31:57 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,17 @@ typedef struct	shell_struct
 	char	c;
 	int		flag;
 	int		p;
+	int		i;
+	int 	fd1[2];
+	int 	save[2];
+	pid_t	pid;
 	int		quote;
 	char	**envv;
 	char	**process;
 	char	*info;
 	char	*erno;
 	char	*home;
+	char	**pipes;
 }				t_shell;
 
 int				ft_strcmp(const char *s1, const char *s2);

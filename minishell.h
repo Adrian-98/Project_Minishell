@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 19:20:28 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/29 17:32:07 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/09/29 19:56:45 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,6 @@ void		proc_signal_handler(int signo);
 void		signal_handler(int signo);
 void		signal1(int signo);
 void		signal2(int signo);
+void 		ft_body(t_shell *f);
+int 		ft_count_pipes(t_shell *f);
 #endif
