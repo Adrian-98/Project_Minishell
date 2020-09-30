@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: glopez-a <glopez-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 12:05:03 by adrian            #+#    #+#             */
-/*   Updated: 2020/09/24 20:15:52 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/09/29 21:28:13 by glopez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,6 @@ void		ft_404(t_shell *f)
 
 void		ft_404_kill(t_shell *f)
 {
-	ft_printf("zsh: %s: %s\n", f->erno, *f->arguments);
+	ft_printf("zsh: %s: %s\n", f->erno, f->arguments[0]);
 	exit(0);
 }

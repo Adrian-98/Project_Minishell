@@ -3,41 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: glopez-a <glopez-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 18:10:01 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/29 17:57:54 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/09/30 18:31:20 by glopez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static void ft_$(char **str, t_shell *f)
+static void ft_$(t_shell *f)
 {
     int     i;
     int     j;
     char    *tmp;
     char    *tmp2;
-    i = 0;
-    while (str[i])
+
+    i = -1;
+    while (f->arguments[++i])
     {
         j = 0;
-        while (str[i][j])
-        {
-            if (str[i][j] == '$')
-            {
-                str[i][j] = 0;
-                j++;
-                tmp2 = str[i];
-                tmp = ft_var(&str[i][j], f);
-                free(str[i]);
-                str[i] = ft_strjoin(tmp2, tmp);
-                while (str[i][j] != '$' && str[i][j])
-                    j++;
-            }
+        while (f->arguments[i][j] && f->arguments[i][j] != '$')
             j++;
+        tmp = ft_strndup(f->arguments[i], j);
+        while (f->arguments[i][j] && f->arguments[i][j] == '$')
+        {
+            tmp2 = ft_strjoin(tmp, ft_var(&f->arguments[i][++j], f));
+            free(tmp);      
+            tmp = ft_strdup(tmp2);
+			free(tmp2);
+            while (f->arguments[i][j] && f->arguments[i][j] != '$' && f->arguments[i][j] != ' ')
+                j++;
         }
-        i++;
+		free(f->arguments[i]);
+        f->arguments[i] = ft_strdup(tmp);
+        free(tmp);
     }
 }
 
@@ -115,6 +115,7 @@ int					main(int argc, char **argv, char **env)
 		while (*f->process)
 		{
 			f->arguments = ft_split(*f->process, f->c, f);
+			ft_$(f);
 			ft_cases(f);
 			f->process++;
 		}
