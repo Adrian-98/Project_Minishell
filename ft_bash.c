@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 11:33:02 by adrian            #+#    #+#             */
-/*   Updated: 2020/09/30 22:04:06 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/01 19:48:40 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,19 @@ void	ft_bash(char **path, t_shell *f)
 	{
 		while (f->path[i])
 		{
-			aux = ft_strjoin3(f->path[i], *f->arguments);
+			aux = ft_strjoin3(f->path[i], f->arguments[0]);
+			// printf("ls -l  %s\n", aux);
+			// printf("f->arguments[0]  %s\n", f->arguments[0]);
 			tmp = aux;
 			j = execve(tmp, f->arguments, f->envv);
 			free(aux);
 			i++;
 		}
-		aux = ft_strjoin3(f->pwd, *f->arguments);
+		aux = ft_strjoin3(f->pwd, f->arguments[0]);
 		j = execve(aux, f->arguments, f->envv);
 		f->erno = strerror(errno);
 		free(aux);
-		if (**f->arguments == '/')
+		if (f->arguments[0][0] == '/')
 			ft_404_kill(f);
 		else
 			ft_404(f);

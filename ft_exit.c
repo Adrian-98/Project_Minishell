@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 12:05:03 by adrian            #+#    #+#             */
-/*   Updated: 2020/09/30 17:08:22 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/01 19:47:51 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,6 @@ void		ft_404(t_shell *f)
 
 void		ft_404_kill(t_shell *f)
 {
-	ft_printf("zsh: %s: %s\n", f->erno, *f->arguments);
+	ft_printf("zsh: %s: %s\n", f->erno, f->arguments[0]);
 	exit(0);
 }

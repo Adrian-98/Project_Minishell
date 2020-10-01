@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: glopez-a <glopez-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 14:00:29 by glopez-a          #+#    #+#             */
-/*   Updated: 2020/09/18 16:51:41 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/01 16:55:42 by glopez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ static char			*ft_str_malloc(char const *s, char c, int k, t_shell *f)
 	}
 	else
 		ft_strlcpy(str, s + k, i + 1);
+	//printf("string es : %s\n", str);
 	return (str);
 }
 

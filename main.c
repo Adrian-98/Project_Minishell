@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 18:10:01 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/10/01 18:44:14 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/01 20:07:27 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ static void ft_$(t_shell *f)
             tmp2 = ft_strjoin(tmp, ft_var(&f->arguments[i][++j], f));
             free(tmp);      
             tmp = ft_strdup(tmp2);
-            free(tmp2);
+			free(tmp2);
             while (f->arguments[i][j] && f->arguments[i][j] != '$' && f->arguments[i][j] != ' ')
                 j++;
         }
-        free(f->arguments[i]);
+		free(f->arguments[i]);
         f->arguments[i] = ft_strdup(tmp);
         free(tmp);
     }
@@ -48,7 +48,6 @@ static	t_shell		*ft_create_struct(t_shell *f, char **env)
 	if (!(f = malloc(sizeof(t_shell))))
 		return (0);
 	f->pwd = getcwd(f->pwd, 4096);
-	f->c = 32;
 	f->flag = 0;
 	f->envv = env;
 	f->p = 0; 
@@ -92,8 +91,8 @@ void    ft_get_path(t_shell *f)
 
 void 	ft_body(t_shell *f)
 {
-	f->arguments = ft_split(f->pipes[f->i], f->c, f);
-	//ft_$(f->arguments, f);
+	f->arguments = ft_split(f->pipes[f->i], ' ', f);
+	ft_$(f);
 	ft_cases(f);
 }
 
@@ -128,12 +127,12 @@ int					main(int argc, char **argv, char **env)
 		if (i == 1)
 			ft_quote2(f);
 		proceso = f->line;
-		f->process = ft_split(f->line, ';', f);
+		f->process = ft_split2(f->line, ';');
 		int	cv;
 		cv = 0;
 		while (f->process[cv])
 		{
-			f->pipes = ft_split(f->process[cv], '|', f);
+			f->pipes = ft_split2(f->process[cv], '|');
 			f->save[0] = dup(STDIN_FILENO);
 			f->save[1] = dup(STDOUT_FILENO);
 			f->i = 0;
