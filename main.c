@@ -6,7 +6,7 @@
 /*   By: glopez-a <glopez-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 18:10:01 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/30 20:13:11 by glopez-a         ###   ########.fr       */
+/*   Updated: 2020/10/01 17:17:37 by glopez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ int					main(int argc, char **argv, char **env)
 		if (i == 1)
 			ft_quote2(f);
 		proceso = f->line;
-		f->process = ft_split(f->line, ';', f);
+		f->process = ft_split2(f->line, ';');
 		while (*f->process)
 		{
 			f->arguments = ft_split(*f->process, ' ', f);

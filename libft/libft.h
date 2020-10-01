@@ -6,7 +6,7 @@
 /*   By: glopez-a <glopez-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 15:44:40 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/30 20:12:58 by glopez-a         ###   ########.fr       */
+/*   Updated: 2020/10/01 17:17:42 by glopez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char			*ft_strndup(const char *src, size_t chars);
 char			*ft_strjoin3(char const *s1, char const *s2);
 char			*ft_strjoin2(char const *s1, char const *s2);
 char			*ft_strjoin1(char const *s1, char const *s2);
-char			**ft_split1(char const *s, char c, t_shell *f);
+char			**ft_split2(char const *s, char c);
 char			**ft_split(char const *s, char c, t_shell *f);
 char			**ft_split_cmd(char const *s, char *c, t_shell *f);
 int				get_next_line(int fd, char **line);

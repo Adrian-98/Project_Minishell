@@ -6,7 +6,7 @@
 /*   By: glopez-a <glopez-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 12:05:03 by adrian            #+#    #+#             */
-/*   Updated: 2020/09/29 21:28:13 by glopez-a         ###   ########.fr       */
+/*   Updated: 2020/10/01 17:53:17 by glopez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void		ft_too_many(t_shell *f)
 void		ft_404(t_shell *f)
 {
 	f->line = ft_spaceserase(f->line);
-	ft_printf("zsh: command not found: %s\n", f->line);
+	ft_printf("zsh: command not found: %s\n", f->arguments[0]);
 	exit(0);
 }
 
