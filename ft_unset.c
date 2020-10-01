@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/23 19:55:12 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/24 18:33:04 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/01 20:14:19 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int			ft_unset(t_shell *f, char *str, char **tmp)
 		return (0);
 	k = i;
 	i = 0;
+	str = ft_strjoin(str, "=");
 	if ((i = ft_already(f, str)) == -1)
 		return (0);
 	j = -1;

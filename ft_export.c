@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adrian <adrian@student.42.fr>              +#+  +:+       +#+        */
+/*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/22 17:58:40 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/26 13:34:43 by adrian           ###   ########.fr       */
+/*   Updated: 2020/10/01 20:12:02 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int		ft_already(t_shell *f, char *aux)
 	i = 0;
 	while (f->envv[i])
 	{
+		printf("valor de aux=%s\n", aux);
 		if (!ft_strncmp(f->envv[i], aux,
 			ft_strlen(aux)))
 			return (i);
