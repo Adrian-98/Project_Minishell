@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 18:10:01 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/30 22:25:15 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/01 17:46:26 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,15 +145,16 @@ int					main(int argc, char **argv, char **env)
 					pipe(f->fd1);
 					if(f->pid == 0)             
 					{
-						close(f->fd1[READ_END]);
-						dup2(f->fd1[WRITE_END], STDIN_FILENO); 
+						dup2(f->fd1[WRITE_END], STDOUT_FILENO);
 						ft_body(f);
 						exit(0);
 					}
 					else if  (f->pid > 0)
 					{
+						waitpid(f->pid, &f->status, 0);
 						close(f->fd1[WRITE_END]);
-						dup2(f->fd1[READ_END], STDOUT_FILENO);	
+						dup2(f->fd1[READ_END], STDIN_FILENO);
+						close(f->fd1[READ_END]);
 					}
 				}
 				else
@@ -161,9 +162,10 @@ int					main(int argc, char **argv, char **env)
 					ft_body(f);
 				}
 				f->i++;
-				dup2(f->save[0], STDIN_FILENO);
-				dup2(f->save[1], STDOUT_FILENO);
+
 			}
+			dup2(f->save[0], STDIN_FILENO);
+			dup2(f->save[1], STDOUT_FILENO);
 			free(f->pipes);
 			cv++;
 		}
