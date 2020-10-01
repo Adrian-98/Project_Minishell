@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 18:10:01 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/10/01 17:46:26 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/01 18:44:14 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,8 +141,8 @@ int					main(int argc, char **argv, char **env)
 			{
 				if (f->pipes[f->i + 1])
 				{
-					f->pid = fork();
 					pipe(f->fd1);
+					f->pid = fork();
 					if(f->pid == 0)             
 					{
 						dup2(f->fd1[WRITE_END], STDOUT_FILENO);
