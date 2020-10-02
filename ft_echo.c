@@ -6,7 +6,7 @@
 /*   By: glopez-a <glopez-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 11:33:02 by adrian            #+#    #+#             */
-/*   Updated: 2020/10/02 16:31:41 by glopez-a         ###   ########.fr       */
+/*   Updated: 2020/10/02 16:35:23 by glopez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,10 @@ void	ft_echo(t_shell *f)
 	i = 1;
 	while (f->arguments[i])
 	{
-		ft_printf("%s", f->arguments[i]);
+        if (!f->arguments[i + 1])
+		    ft_printf("%s", f->arguments[i]);
+        else
+		    ft_printf("%s ", f->arguments[i]);
 		i++;
 	}
 	ft_printf("\n");
