@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adrian <adrian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 12:05:03 by adrian            #+#    #+#             */
-/*   Updated: 2020/10/01 19:47:51 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/05 20:08:00 by adrian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void		ft_exit1(t_shell *f)
 {
+	dup2(f->save[0], STDIN_FILENO);
+	dup2(f->save[1], STDOUT_FILENO);
 }
 
 void		ft_exit(t_shell *f)
@@ -21,6 +23,8 @@ void		ft_exit(t_shell *f)
 	int i;
 
 	i = 0;
+	dup2(f->save[0], STDIN_FILENO);
+	dup2(f->save[1], STDOUT_FILENO);
 	while (f->arguments[i])
 		i++;
 	if (i >= 3)
@@ -31,11 +35,15 @@ void		ft_exit(t_shell *f)
 
 void		ft_too_many(t_shell *f)
 {
+	dup2(f->save[0], STDIN_FILENO);
+	dup2(f->save[1], STDOUT_FILENO);
 	ft_printf("%s: too many arguments\n", f->arguments[0]);
 }
 
 void		ft_404(t_shell *f)
 {
+	dup2(f->save[0], STDIN_FILENO);
+	dup2(f->save[1], STDOUT_FILENO);
 	f->line = ft_spaceserase(f->line);
 	ft_printf("zsh: command not found: %s\n", f->arguments[0]);
 	exit(0);
@@ -43,6 +51,8 @@ void		ft_404(t_shell *f)
 
 void		ft_404_kill(t_shell *f)
 {
+	dup2(f->save[0], STDIN_FILENO);
+	dup2(f->save[1], STDOUT_FILENO);
 	ft_printf("zsh: %s: %s\n", f->erno, f->arguments[0]);
 	exit(0);
 }
