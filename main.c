@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 18:10:01 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/10/06 20:40:21 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/06 20:57:23 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,14 +139,17 @@ int					main(int argc, char **argv, char **env)
 			while (f->pipes[f->i])
 			{
 				ft_redi(f->pipes[f->i], f);
-				if (f->pipes[f->i + 1] && f->z == 0 && f->x == 0 && f->c == 0)
+				if (f->pipes[f->i + 1] && f->z == 0 && f->x == 0)
 				{
 					pipe(f->fd1);
 					f->pid = fork();
 					if(f->pid == 0)             
 					{
 						dup2(f->fd1[WRITE_END], STDOUT_FILENO);
-						ft_body(f);
+						if (f->c == 1)
+							ft_body_redi(f);
+						else
+							ft_body(f);
 						exit(0);
 					}
 					else if  (f->pid > 0)

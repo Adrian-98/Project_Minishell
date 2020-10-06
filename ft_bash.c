@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 11:33:02 by adrian            #+#    #+#             */
-/*   Updated: 2020/10/06 17:58:58 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/06 20:51:08 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	ft_bash(char **path, t_shell *f)
 	int		j;
 	pid_t	id;
 
+	printf("valor de :%s,\n%s\n", f->arguments[0], f->arguments[1]);
 	i = 0;
 	id = fork();
 	signal(SIGINT, proc_signal_handler);

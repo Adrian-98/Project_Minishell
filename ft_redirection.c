@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 17:01:34 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/10/06 20:39:14 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/06 21:01:53 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int			ft_redi(char *str, t_shell *f)
 			f->c = 1;
 		i++;
 	}
+	printf("z =%i\n, x =%i\n, c = %i\n", f->z, f->x, f->c);
 	free(temp);
 	return (0);
 }
@@ -43,6 +44,7 @@ void		ft_body_redi(t_shell *f)
 		f->redi = ft_split_cmd(f->pipes[f->i], ">>", f);
 	else if (f->c == 1)
 		f->redi = ft_split2(f->pipes[f->i], '<');
+	printf("valor de REDI = %s\n", f->redi[0]);
 	if (f->z == 1)
 	{
 		f->fd2 = open(f->redi[1], O_CREAT | O_WRONLY);
@@ -55,7 +57,7 @@ void		ft_body_redi(t_shell *f)
 		ft_body_redi2(f);
 		close(f->fd2);
 	}
-	if (f->x == 1)
+	else if (f->x == 1)
 	{
 		f->fd2 = open(f->redi[1], O_APPEND);
 		if (f->fd2  < 0)
@@ -64,6 +66,19 @@ void		ft_body_redi(t_shell *f)
 			exit (1);
 		}
 		f->ret = dup2(f->fd2, 1);
+		ft_body_redi2(f);
+		close(f->fd2);
+	}
+	else if (f->c == 1)
+	{
+		f->fd2 = open(f->redi[1], O_RDONLY);
+		printf("hiadsa\n");
+		if (f->fd2  < 0)
+		{
+			ft_printf("error :%s\n", strerror(errno));
+			exit (1);
+		}
+		f->ret = dup2(f->fd2, 0);
 		ft_body_redi2(f);
 		close(f->fd2);
 	}
