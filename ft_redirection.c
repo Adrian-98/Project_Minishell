@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 17:01:34 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/10/06 19:36:26 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/06 20:39:14 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,29 @@ void		ft_body_redi(t_shell *f)
 		f->redi = ft_split_cmd(f->pipes[f->i], ">>", f);
 	else if (f->c == 1)
 		f->redi = ft_split2(f->pipes[f->i], '<');
-	if (f->z)
+	if (f->z == 1)
 	{
-		f->fd2 = open(f->redi[1], O_CREAT | O_WRONLY);
+		f->fd2 = open(f->redi[1], O_CREAT | O_WRONLY);
 		if (f->fd2  < 0)
 		{
 			ft_printf("%s\n", strerror(errno));
 			exit (1);
 		}
-		f->ret = dup2(f->fd2, WRITE_END);
-		ft_body_redi(f);
+		f->ret = dup2(f->fd2, 1);
+		ft_body_redi2(f);
+		close(f->fd2);
+	}
+	if (f->x == 1)
+	{
+		f->fd2 = open(f->redi[1], O_APPEND);
+		if (f->fd2  < 0)
+		{
+			ft_printf("%s\n", strerror(errno));
+			exit (1);
+		}
+		f->ret = dup2(f->fd2, 1);
+		ft_body_redi2(f);
+		close(f->fd2);
 	}
 }
 
