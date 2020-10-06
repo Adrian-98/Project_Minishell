@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 11:33:02 by adrian            #+#    #+#             */
-/*   Updated: 2020/10/01 19:48:40 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/06 17:58:58 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ void	ft_bash(char **path, t_shell *f)
 		while (f->path[i])
 		{
 			aux = ft_strjoin3(f->path[i], f->arguments[0]);
-			// printf("ls -l  %s\n", aux);
-			// printf("f->arguments[0]  %s\n", f->arguments[0]);
 			tmp = aux;
 			j = execve(tmp, f->arguments, f->envv);
 			free(aux);

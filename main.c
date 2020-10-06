@@ -6,13 +6,13 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 18:10:01 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/10/01 20:07:27 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/06 19:25:28 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static void ft_$(t_shell *f)
+void			ft_$(t_shell *f)
 {
     int     i;
     int     j;
@@ -52,6 +52,9 @@ static	t_shell		*ft_create_struct(t_shell *f, char **env)
 	f->envv = env;
 	f->p = 0; 
 	f->i = 0;
+	f->z = 0;
+	f->x = 0;
+	f->c = 0;
 	f->erno = NULL;
 	return (f);
 }
@@ -99,10 +102,7 @@ void 	ft_body(t_shell *f)
 int 	ft_count_pipes(t_shell *f)
 {
 	while(f->pipes[f->p])
-	{
-		//printf("valor de cada pipe = %s\n", f->pipes[f->p]);
 		f->p++;
-	}
 	return (f->p);
 }
 
@@ -138,7 +138,8 @@ int					main(int argc, char **argv, char **env)
 			f->i = 0;
 			while (f->pipes[f->i])
 			{
-				if (f->pipes[f->i + 1])
+				ft_redi(f->pipes[f->i], f);
+				if (f->pipes[f->i + 1] && f->z == 0 && f->x == 0 && f->c == 0)
 				{
 					pipe(f->fd1);
 					f->pid = fork();
@@ -156,10 +157,10 @@ int					main(int argc, char **argv, char **env)
 						close(f->fd1[READ_END]);
 					}
 				}
-				else
-				{
+				else if (f->z == 0 && f->x == 0 && f->c == 0)
 					ft_body(f);
-				}
+				else 
+					ft_body_redi(f);
 				f->i++;
 
 			}
