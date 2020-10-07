@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adrian <adrian@student.42.fr>              +#+  +:+       +#+        */
+/*   By: glopez-a <glopez-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 17:57:14 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/26 14:04:07 by adrian           ###   ########.fr       */
+/*   Updated: 2020/10/07 21:25:10 by glopez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,5 @@ void		ft_clear(t_shell *f)
 	if (id == 0)
 		execve("/usr/bin/clear", str, f->envv);
 	wait(0);
+	free(str);
 }

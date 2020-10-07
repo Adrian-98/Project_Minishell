@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_redirection.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: glopez-a <glopez-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 17:01:34 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/10/07 17:59:54 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/07 21:26:15 by glopez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int			ft_redi(char *str, t_shell *f)
 			f->c = 1;
 		i++;
 	}
-	free(temp);
+	ft_free_matrix(temp);
 	return (0);
 }
 

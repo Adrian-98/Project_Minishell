@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: glopez-a <glopez-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 18:10:01 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/10/07 17:47:12 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/07 22:02:07 by glopez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,10 +175,13 @@ int					main(int argc, char **argv, char **env)
 			}
 			dup2(f->save[0], STDIN_FILENO);
 			dup2(f->save[1], STDOUT_FILENO);
-			free(f->pipes);
+			ft_free_matrix(f->pipes);
 			cv++;
 		}
+		ft_free_matrix(f->process);
 		free(f->line);
+		// system("leaks minishell");
+        // exit(0);
 	}
 	return (0);
 }

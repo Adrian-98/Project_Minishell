@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_echo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: glopez-a <glopez-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 11:33:02 by adrian            #+#    #+#             */
-/*   Updated: 2020/10/07 17:53:42 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/07 21:38:21 by glopez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,5 @@ void	ft_echo(t_shell *f)
 	if (ft_strcmp(f->arguments[1], "-n") == 0)
 		ft_printf("%%");
 	ft_printf("\n");
+    //ft_free_matrix(f->arguments);
 }
