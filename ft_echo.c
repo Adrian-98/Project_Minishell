@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_echo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glopez-a <glopez-a@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 11:33:02 by adrian            #+#    #+#             */
-/*   Updated: 2020/10/02 16:35:23 by glopez-a         ###   ########.fr       */
+/*   Updated: 2020/10/07 17:53:42 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ void	ft_echo(t_shell *f)
 	int j;
 
 	i = 1;
+	if (ft_strcmp(f->arguments[1], "-n") == 0)
+		i++;
 	while (f->arguments[i])
 	{
         if (!f->arguments[i + 1])
@@ -54,5 +56,7 @@ void	ft_echo(t_shell *f)
 		    ft_printf("%s ", f->arguments[i]);
 		i++;
 	}
+	if (ft_strcmp(f->arguments[1], "-n") == 0)
+		ft_printf("%%");
 	ft_printf("\n");
 }

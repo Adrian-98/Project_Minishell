@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adrian <adrian@student.42.fr>              +#+  +:+       +#+        */
+/*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 19:20:28 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/10/07 10:47:27 by adrian           ###   ########.fr       */
+/*   Updated: 2020/10/07 17:29:13 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,5 @@ int			ft_redi(char *str, t_shell *f);
 void		ft_body_redi(t_shell *f);
 void		ft_body_redi2(t_shell *f);
 void		ft_$(t_shell *f);
+
 #endif
