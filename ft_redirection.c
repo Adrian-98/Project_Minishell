@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 17:01:34 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/10/07 17:43:34 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/07 17:59:54 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ void		ft_body_redi(t_shell *f)
 	{
 		//printf("-----------------------\n");
 		f->redi[1] = ft_strtrim(f->redi[1], " ");
-		//printf("valor de archivo a abrir= [%s]\n", f->redi[1]);
-		f->fd2 = open(f->redi[1], O_APPEND | O_WRONLY, 0777);
+		printf("valor de archivo a abrir= [%s]\n", f->redi[1]);
+		f->fd2 = open(f->redi[1], O_CREAT | O_APPEND | O_WRONLY, 0777);
 		if (f->fd2  < 0)
 		{
 			ft_printf("error :%s\n", strerror(errno));

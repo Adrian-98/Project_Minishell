@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adrian <adrian@student.42.fr>              +#+  +:+       +#+        */
+/*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 12:05:03 by adrian            #+#    #+#             */
-/*   Updated: 2020/10/05 20:08:00 by adrian           ###   ########.fr       */
+/*   Updated: 2020/10/07 18:16:46 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ void		ft_exit1(t_shell *f)
 void		ft_exit(t_shell *f)
 {
 	int i;
+	int j;
 
+	j = 0;
 	i = 0;
 	dup2(f->save[0], STDIN_FILENO);
 	dup2(f->save[1], STDOUT_FILENO);
@@ -30,7 +32,10 @@ void		ft_exit(t_shell *f)
 	if (i >= 3)
 		ft_too_many(f);
 	else
-		exit(0);
+	{
+		j = ft_atoi(f->arguments[1]);
+		exit(j);
+	}
 }
 
 void		ft_too_many(t_shell *f)
