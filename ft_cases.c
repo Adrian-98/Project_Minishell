@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cases.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adrian <adrian@student.42.fr>              +#+  +:+       +#+        */
+/*   By: glopez-a <glopez-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 11:33:02 by adrian            #+#    #+#             */
-/*   Updated: 2020/09/26 15:07:42 by adrian           ###   ########.fr       */
+/*   Updated: 2020/10/07 21:38:17 by glopez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ void	ft_cases(t_shell *f)
 	else
 		ft_bash(f->path, f);
 	f->line = 0;
+    ft_free_matrix(f->arguments);
 	f->arguments = 0;
 }

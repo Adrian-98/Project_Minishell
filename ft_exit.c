@@ -6,11 +6,21 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 12:05:03 by adrian            #+#    #+#             */
-/*   Updated: 2020/10/08 17:05:15 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/08 17:10:21 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+void		ft_free_matrix(char **str)
+{
+	int	i;
+
+	i = -1;
+	while (str[++i])
+		free(str[i]);
+	free(str);
+}
 
 void		ft_exit1(t_shell *f)
 {
@@ -31,12 +41,13 @@ void		ft_exit(t_shell *f)
 		i++;
 	if (i >= 3)
 		ft_too_many(f);
-	else
+	else if (f->arguments[1])
 	{
 		//system("leaks minishell");
 		j = ft_atoi(f->arguments[1]);
 		exit(j);
 	}
+	exit(0);
 }
 
 void		ft_too_many(t_shell *f)

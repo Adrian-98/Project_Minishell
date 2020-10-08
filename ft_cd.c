@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 17:57:14 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/10/08 16:22:15 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/08 17:10:52 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,5 @@ void		ft_clear(t_shell *f)
 	if (id == 0)
 		execve("/usr/bin/clear", str, f->envv);
 	wait(0);
+	free(str);
 }
