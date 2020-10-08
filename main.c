@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 18:10:01 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/10/08 21:14:54 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/08 21:20:40 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void			ft_$(t_shell *f)
     int     j;
     char    *tmp;
     char    *tmp2;
+
     i = -1;
     while (f->arguments[++i])
     {
@@ -49,6 +50,7 @@ static	t_shell		*ft_create_struct(t_shell *f, char **env)
 		return (0);
 	f->pwd = getcwd(f->pwd, 4096);
 	f->flag = 0;
+	f->flag1 = 0;
 	f->envv = env;
 	f->quote = 0;
 	f->p = 0; 

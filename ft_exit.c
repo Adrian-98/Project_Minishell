@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: glopez-a <glopez-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 12:05:03 by adrian            #+#    #+#             */
-/*   Updated: 2020/10/08 17:37:39 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/08 21:18:03 by glopez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void		ft_404(t_shell *f)
 	dup2(f->save[1], STDOUT_FILENO);
 	f->line = ft_spaceserase(f->line);
 	ft_printf("zsh: command not found: %s\n", f->arguments[0]);
-	exit(0);
+	exit(127);
 }
 
 void		ft_404_kill(t_shell *f)
@@ -70,5 +70,5 @@ void		ft_404_kill(t_shell *f)
 	dup2(f->save[0], STDIN_FILENO);
 	dup2(f->save[1], STDOUT_FILENO);
 	ft_printf("zsh: %s: %s\n", f->erno, f->arguments[0]);
-	exit(0);
+	exit(127);
 }
