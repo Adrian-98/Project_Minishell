@@ -6,7 +6,7 @@
 /*   By: glopez-a <glopez-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 14:00:29 by glopez-a          #+#    #+#             */
-/*   Updated: 2020/10/08 20:53:45 by glopez-a         ###   ########.fr       */
+/*   Updated: 2020/10/08 21:12:16 by glopez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,14 @@ static char			*ft_str_malloc(char const *s, char c, int k, t_shell *f)
 			i++;
 	if (!(str = (char *)malloc(sizeof(char) * (i + 1))))
 		return (NULL);
-	if (f->flag == 1 || f->flag1 == 1)
+	if (f->flag1 == 1)
 	{
 		ft_strlcpy(str, s + k + 1, i + 1);
+		s += 1;
+	}
+	else if (f->flag == 1)
+	{
+		ft_strlcpy2(str, s + k + 1, i + 1);
 		s += 1;
 	}
 	else
