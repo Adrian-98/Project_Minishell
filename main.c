@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 18:10:01 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/10/08 17:13:14 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/08 21:14:54 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ static	t_shell		*ft_create_struct(t_shell *f, char **env)
 	f->pwd = getcwd(f->pwd, 4096);
 	f->flag = 0;
 	f->envv = env;
+	f->quote = 0;
 	f->p = 0; 
 	f->i = 0;
 	f->z = 0;
@@ -76,7 +77,7 @@ void    ft_get_user(t_shell *f)
     }
 }
 
-void    ft_get_path(t_shell *f)
+void     ft_get_path(t_shell *f)
 {
 	int i;
 
@@ -95,7 +96,6 @@ void    ft_get_path(t_shell *f)
 
 void 	ft_body(t_shell *f)
 {
-	//printf("%i---valor de pipes=%s\n", f->i, f->pipes[f->i]);
 	f->arguments = ft_split(f->pipes[f->i], ' ', f);
 	ft_$(f);
 	ft_cases(f);
@@ -126,6 +126,7 @@ int					main(int argc, char **argv, char **env)
 		if (get_next_line(0, &f->line) == 0 && !*f->line)
 			signal1(1);
 		i = ft_quotes(f);
+		printf("valor de return = %i\n", i);
 		if (i == 1)
 			ft_quote2(f);
 		proceso = f->line;
@@ -140,12 +141,9 @@ int					main(int argc, char **argv, char **env)
 			f->i = 0;
 			while (f->pipes[f->i])
 			{
-				//printf(" ANTES z=%i x = %i c = %i\n", f->z, f->x, f->c);
 				ft_redi(f->pipes[f->i], f);
-				//printf(" DESPUES z=%i x = %i c = %i\n", f->z, f->x, f->c);
 				if (f->pipes[f->i + 1] && f->z == 0 && f->x == 0)
 				{
-					//printf("\n%ientra\n", f->i);
 					pipe(f->fd1);
 					f->pid = fork();
 					if(f->pid == 0)             
