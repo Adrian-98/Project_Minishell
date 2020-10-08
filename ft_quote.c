@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_quote.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: glopez-a <glopez-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 18:58:15 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/18 15:26:06 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/08 20:54:48 by glopez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,9 @@ int				ft_quotes1(t_shell *f)
 			k++;
 		j++;
 	}
-	if (i % 2 != 0 || k % 2 != 0)
+	printf("i : %i\n", i);
+	printf("k : %i\n", k);
+	if ((i % 2 != 0 && f->quote == 1)|| (k % 2 != 0 && f->quote == 2))
 		return (1);
 	return (0);
 }

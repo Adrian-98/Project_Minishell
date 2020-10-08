@@ -6,7 +6,7 @@
 /*   By: glopez-a <glopez-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 18:10:01 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/10/08 17:24:55 by glopez-a         ###   ########.fr       */
+/*   Updated: 2020/10/08 20:55:36 by glopez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ static	t_shell		*ft_create_struct(t_shell *f, char **env)
 		return (0);
 	f->pwd = getcwd(f->pwd, 4096);
 	f->flag = 0;
+	f->flag1 = 0;
 	f->envv = env;
 	f->p = 0; 
 	f->i = 0;
@@ -126,9 +127,9 @@ int					main(int argc, char **argv, char **env)
 		signal(SIGQUIT, signal1);
 		if (get_next_line(0, &f->line) == 0 && !*f->line)
 			signal1(1);
-		i = ft_quotes(f);
+		/*i = ft_quotes(f);
 		if (i == 1)
-			ft_quote2(f);
+			ft_quote2(f);*/
 		proceso = f->line;
 		f->process = ft_split2(f->line, ';');
 		int	cv;
