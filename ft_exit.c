@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 12:05:03 by adrian            #+#    #+#             */
-/*   Updated: 2020/10/08 17:10:21 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/08 17:37:39 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ void		ft_exit(t_shell *f)
 		j = ft_atoi(f->arguments[1]);
 		exit(j);
 	}
-	exit(0);
 }
 
 void		ft_too_many(t_shell *f)

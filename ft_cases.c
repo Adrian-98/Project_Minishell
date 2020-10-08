@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cases.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glopez-a <glopez-a@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 11:33:02 by adrian            #+#    #+#             */
-/*   Updated: 2020/10/07 21:38:17 by glopez-a         ###   ########.fr       */
+/*   Updated: 2020/10/08 18:34:11 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	ft_cases(t_shell *f)
 		ft_export_while(f);
 	else if (ft_strcmp("unset", f->arguments[0]) == 0)
 		ft_unset_while(f);
+	else if (ft_strcmp("env", f->arguments[0]) == 0)
+		ft_env(f);
 	else
 		ft_bash(f->path, f);
 	f->line = 0;
