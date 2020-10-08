@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 15:44:40 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/10/06 19:18:23 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/08 17:03:51 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct	shell_struct
 	int		ret;
 	int 	save[2];
 	int		status;
+	int 	statuss;
 	pid_t	pid;
 	int		quote;
 	char	**envv;

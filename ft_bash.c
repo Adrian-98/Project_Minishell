@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 11:33:02 by adrian            #+#    #+#             */
-/*   Updated: 2020/10/07 17:42:49 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/08 17:03:22 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,5 @@ void	ft_bash(char **path, t_shell *f)
 			ft_404(f);
 	}
 	else
-		wait(0);
+		waitpid(id, &f->statuss, 0);
 }

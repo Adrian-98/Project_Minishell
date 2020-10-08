@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 12:05:03 by adrian            #+#    #+#             */
-/*   Updated: 2020/10/07 18:16:46 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/08 17:05:15 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void		ft_exit(t_shell *f)
 		ft_too_many(f);
 	else
 	{
+		//system("leaks minishell");
 		j = ft_atoi(f->arguments[1]);
 		exit(j);
 	}

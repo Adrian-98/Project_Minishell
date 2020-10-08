@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adrian <adrian@student.42.fr>              +#+  +:+       +#+        */
+/*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 17:57:14 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/26 14:04:07 by adrian           ###   ########.fr       */
+/*   Updated: 2020/10/08 16:22:15 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void		ft_cd(t_shell *f)
+int		ft_cd(t_shell *f)
 {
-	int i;
+	int		i;
 	char	**tmp;
 
 	i = 0;
@@ -28,15 +28,15 @@ void		ft_cd(t_shell *f)
 			ft_printf("%s\n", strerror(errno));
 		f->pwd = getcwd(f->pwd, 4096);
 		ft_export(f, ft_strjoin("PWD=", f->pwd), tmp);
-		
 	}
-	else 
+	else
 	{
-		if (chdir(f->arguments[1]) != 0)	
+		if (chdir(f->arguments[1]) != 0)
 			ft_printf("cd: %s: %s\n", strerror(errno), f->arguments[1]);
 		f->pwd = getcwd(f->pwd, 4096);
 		ft_export(f, ft_strjoin("PWD=", f->pwd), tmp);
 	}
+	return (0);
 }
 
 void		ft_clear(t_shell *f)
