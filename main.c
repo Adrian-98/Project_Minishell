@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 18:10:01 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/10/08 21:20:40 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/08 21:23:52 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,6 @@ int					main(int argc, char **argv, char **env)
 		if (get_next_line(0, &f->line) == 0 && !*f->line)
 			signal1(1);
 		i = ft_quotes(f);
-		printf("valor de return = %i\n", i);
 		if (i == 1)
 			ft_quote2(f);
 		proceso = f->line;

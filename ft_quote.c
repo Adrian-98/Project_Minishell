@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/03 18:58:15 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/10/08 21:20:13 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/08 21:24:02 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,6 @@ int				ft_quotes1(t_shell *f)
 			k++;
 		j++;
 	}
-	printf("i = %i\n", i);
-	printf("k = %i\n", k);
-	printf("quote = %i\n", f->quote);
 	if ((i % 2 != 0 && f->quote == 1) || (k % 2 != 0 && f->quote == 2))
 		return (1);
 	return (0);
@@ -73,7 +70,6 @@ void			ft_quote2(t_shell *f)
 	char	*temp;
 	int		t;
 
-	printf("ENTRAAA\n");
 	t = 0;
 	if (ft_strnstr(f->line, "echo", ft_strlen(f->line)))
 		t = 1;
