@@ -6,7 +6,7 @@
 /*   By: glopez-a <glopez-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 15:44:40 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/10/08 20:16:55 by glopez-a         ###   ########.fr       */
+/*   Updated: 2020/10/08 21:12:54 by glopez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,5 +114,6 @@ char    		*ft_spaceserase(char *str);
 char			*ft_strsub(char *str, int start, size_t len);
 char			*ft_strnew(size_t size);
 size_t			ft_strlcpy1(char *dst, const char *src, size_t dstsize);
+size_t			ft_strlcpy2(char *dst, const char *src, size_t dstsize);
 
 #endif
