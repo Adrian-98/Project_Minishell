@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 11:33:02 by adrian            #+#    #+#             */
-/*   Updated: 2020/10/08 17:10:17 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/08 17:18:13 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,7 @@ void	ft_echo(t_shell *f)
 
 	while (f->arguments[i])
 	{
-		if (ft_strcmp(f->arguments[i], "$?"))
-			ft_printf("%i", f->statuss);
-		else if (!f->arguments[i + 1])
+		if (!f->arguments[i + 1])
 			ft_printf("%s", f->arguments[i]);
 		else
 			ft_printf("%s ", f->arguments[i]);

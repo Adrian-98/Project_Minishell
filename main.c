@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glopez-a <glopez-a@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 18:10:01 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/10/07 22:02:07 by glopez-a         ###   ########.fr       */
+/*   Updated: 2020/10/08 17:13:14 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ static	t_shell		*ft_create_struct(t_shell *f, char **env)
 	f->z = 0;
 	f->x = 0;
 	f->c = 0;
+	f->statuss = 0;
 	f->erno = NULL;
 	return (f);
 }
