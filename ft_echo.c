@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_echo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: glopez-a <glopez-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 11:33:02 by adrian            #+#    #+#             */
-/*   Updated: 2020/10/08 17:18:13 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/08 19:15:46 by glopez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 char		*ft_var(char *str, t_shell *f)
 {
 	char	*str1;
+    char    *str2;
 	int		i;
 	int		j;
 	int		k;
@@ -23,6 +24,18 @@ char		*ft_var(char *str, t_shell *f)
 		return (0);
 	j = 0;
 	i = 0;
+    if (str[i] == '?')
+    {
+        i++;
+        j = i;
+        str1 = ft_itoa(f->statuss);
+        while (str[j] && str[j] != '$')
+            j++;
+        str2 = ft_strndup(&str[i], j);
+        ft_strlcat(str1, str2, j + ft_strlen(str1));
+        free(str2);
+        return (str1);
+    }
 	while (str[i] && str[i] != '$' && str[i] != ' ')
 		i++;
 	while (f->envv[j])

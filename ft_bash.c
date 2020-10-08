@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bash.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: glopez-a <glopez-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 11:33:02 by adrian            #+#    #+#             */
-/*   Updated: 2020/10/08 17:03:22 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/08 20:04:22 by glopez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,6 @@ void	ft_bash(char **path, t_shell *f)
 	}
 	else
 		waitpid(id, &f->statuss, 0);
+		f->statuss = f->statuss / 256;
+		printf("%i\n", f->statuss);
 }
