@@ -6,7 +6,7 @@
 /*   By: glopez-a <glopez-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 18:46:18 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/10/08 21:25:19 by glopez-a         ###   ########.fr       */
+/*   Updated: 2020/10/09 17:38:02 by glopez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,14 @@ size_t		ft_strlcpy2(char *dst, const char *src, size_t dstsize)
 	count = ft_strlen((char *)src);
 	if (dstsize > 0)
 	{
-		while (src[i] != '\0' && i < (dstsize - 1))
+		while (src[j + i] != '\0' && i + j < (dstsize - 1))
 		{
-			if (src[i] == '\\' && src[i + 1] == '\\')
+			if (src[j + i] == '\\' && src[j + i + 1] == '\\')
 				i++;
-			dst[j] = ((char*)src)[i];
-			i++;
+			dst[j] = ((char*)src)[j + i];
 			j++;
 		}
 		dst[j] = 0;
 	}
-	return (count);
+	return (i);
 }

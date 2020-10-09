@@ -6,7 +6,7 @@
 /*   By: glopez-a <glopez-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 15:44:40 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/10/08 21:12:54 by glopez-a         ###   ########.fr       */
+/*   Updated: 2020/10/09 17:39:52 by glopez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct	shell_struct
 	char	**path;
 	int		flag;
 	int		flag1;
+	int		flag2;
 	int		p;
 	int		i;
 	int 	fd1[2];

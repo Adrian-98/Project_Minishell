@@ -6,7 +6,7 @@
 /*   By: glopez-a <glopez-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 14:00:29 by glopez-a          #+#    #+#             */
-/*   Updated: 2020/10/08 21:12:16 by glopez-a         ###   ########.fr       */
+/*   Updated: 2020/10/09 17:40:03 by glopez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ static char			*ft_str_malloc(char const *s, char c, int k, t_shell *f)
 	}
 	else if (f->flag == 1)
 	{
-		ft_strlcpy2(str, s + k + 1, i + 1);
+		f->flag2 = ft_strlcpy2(str, s + k + 1, i + 1);
 		s += 1;
 	}
 	else
@@ -112,6 +112,7 @@ static int			ft_split_extra1(char **tab, int i, t_shell *f)
 		j += 2;
 	f->flag = 0;
 	f->flag1 = 0;
+	f->flag2 = 0;
 	return (j);
 }
 
@@ -138,7 +139,7 @@ char				**ft_split(char const *s, char c, t_shell *f)
 			free(tab);
 			return (NULL);
 		}
-		j += ft_split_extra1(tab, i, f);
+		j += f->flag2 + ft_split_extra1(tab, i, f);
 	}
 	tab[i] = 0;
 	return (tab);
