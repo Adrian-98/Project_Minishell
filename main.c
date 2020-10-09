@@ -6,7 +6,7 @@
 /*   By: glopez-a <glopez-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 18:10:01 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/10/09 19:06:12 by glopez-a         ###   ########.fr       */
+/*   Updated: 2020/10/09 20:02:57 by glopez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ static	t_shell		*ft_create_struct(t_shell *f, char **env)
 	f->pwd = getcwd(f->pwd, 4096);
 	f->flag = 0;
 	f->flag1 = 0;
+	f->flag2 = 0;
 	f->envv = env;
 	f->quote = 0;
 	f->p = 0; 
@@ -88,15 +89,11 @@ void     ft_get_path(t_shell *f)
     {
         if (!ft_strncmp(f->envv[i], "PATH=", 5))
         {
-			printf("%s\n", f->envv[i] + 5);
             f->path = ft_split(f->envv[i] + 5, ':', f);
             break;
         }
        i++;
     }
-	i = -1;
-	while (f->path[++i])
-		printf("%s\n", f->path[i]);
 	ft_get_user(f);
 }
 
@@ -123,7 +120,7 @@ int					main(int argc, char **argv, char **env)
 	i = 0;
 	f = ft_create_struct(f, env);
 	ft_get_path(f);
-	//ft_clear(f);
+	ft_clear(f);
 	while (1)
 	{
 		display_msg();		

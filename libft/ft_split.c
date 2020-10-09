@@ -6,7 +6,7 @@
 /*   By: glopez-a <glopez-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 14:00:29 by glopez-a          #+#    #+#             */
-/*   Updated: 2020/10/09 17:40:03 by glopez-a         ###   ########.fr       */
+/*   Updated: 2020/10/09 20:00:16 by glopez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ static int			ft_rows(const char *s, char c)
 	i = 0;
 	size = 0;
 	size = ft_rows_extra(s, c, i, size);
-	printf("%i\n", size);
 	return (size);
 }
 
