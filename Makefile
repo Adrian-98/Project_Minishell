@@ -6,7 +6,7 @@
 #    By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/26 17:54:32 by amunoz-p          #+#    #+#              #
-#    Updated: 2020/10/08 18:55:22 by amunoz-p         ###   ########.fr        #
+#    Updated: 2020/10/12 16:46:15 by amunoz-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME		= minishell
 
 SRCS		= main.c ft_path.c ft_cases.c ft_exit.c ft_echo.c ft_quote.c \
 				ft_bash.c ft_cd.c ft_quote_extra.c ft_export.c ft_unset.c\
-				ft_signal_handler.c ft_redirection.c ft_env.c\
+				ft_signal_handler.c ft_redirection.c ft_env.c ft_exit2.c\
 
 GCC			=	@gcc -Wall -Wextra -Werror -g
 

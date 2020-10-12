@@ -6,13 +6,13 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/22 17:58:40 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/10/08 18:42:13 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/12 17:40:47 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int		ft_already(t_shell *f, char *aux)
+int				ft_already(t_shell *f, char *aux)
 {
 	int i;
 
@@ -27,7 +27,7 @@ int		ft_already(t_shell *f, char *aux)
 	return (-1);
 }
 
-int			ft_export_while(t_shell *f)
+int				ft_export_while(t_shell *f)
 {
 	int		i;
 	char	**tmp;
@@ -43,48 +43,49 @@ int			ft_export_while(t_shell *f)
 	return (0);
 }
 
-int		ft_export(t_shell *f, char *str, char **tmp)
+static char		**ft_export2(char *aux, char **tmp, char *aux1, t_shell *f)
+{
+	f->b = -1;
+	if (f->a >= 0)
+	{
+		tmp[f->a] = ft_strjoin(aux, aux1);
+		while (++f->b < f->a)
+			tmp[f->b] = ft_strdup(f->envv[f->b]);
+		while (++f->a < f->k)
+			tmp[f->a] = ft_strdup(f->envv[++f->b]);
+	}
+	else
+	{
+		f->a = -1;
+		while (++f->a < f->k - 2)
+		{
+			tmp[f->a] = ft_strdup(f->envv[f->a]);
+		}
+		tmp[f->a] = ft_strjoin(aux, aux1);
+		f->a++;
+		tmp[f->a] = ft_strdup(f->envv[f->a - 1]);
+		tmp[++f->a] = 0;
+	}
+	return (tmp);
+}
+
+int				ft_export(t_shell *f, char *str, char **tmp)
 {
 	char	*aux;
 	char	*aux1;
-	int		i;
-	int		j;
-	int		k;
 
-
-	i = 0;
-	while (f->envv[i])
-		i++;
-	if (!(tmp = malloc(sizeof(char *) * (i + 2))))
+	while (f->envv[f->a])
+		f->a++;
+	if (!(tmp = malloc(sizeof(char *) * (f->a + 2))))
 		return (0);
-	k = i + 1;
-	i = 0;
+	f->k = f->a + 1;
+	f->a = 0;
 	if (!(str))
 		return (0);
 	aux = ft_strndup(str, ft_strchr(str, '=') - str + 1);
 	aux1 = ft_strdup(ft_strrchr(str, '=') + 1);
-	i = ft_already(f, aux);
-	j = -1;
-	if (i >= 0)
-	{
-		tmp[i] = ft_strjoin(aux, aux1);
-		while (++j < i)
-			tmp[j] = ft_strdup(f->envv[j]);
-		while (++i < k)
-			tmp[i] = ft_strdup(f->envv[++j]);
-	}
-	else
-	{
-		i = -1;
-		while (++i < k - 2)
-		{
-			tmp[i] = ft_strdup(f->envv[i]);
-		}
-		tmp[i] = ft_strjoin(aux, aux1);
-		i++;
-		tmp[i] = ft_strdup(f->envv[i - 1]);
-		tmp[++i] = 0;
-	}
+	f->a = ft_already(f, aux);
+	tmp = ft_export2(aux, tmp, aux1, f);
 	free(aux);
 	free(aux1);
 	f->envv = tmp;

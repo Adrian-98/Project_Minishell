@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 18:10:01 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/10/12 16:40:41 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/12 17:37:49 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,9 @@ static	t_shell		*ft_create_struct(t_shell *f, char **env)
 	f->z = 0;
 	f->x = 0;
 	f->c = 0;
+	f->a = 0;
+	f->b = 0;
+	f->k = 0;
 	f->statuss = 0;
 	f->erno = NULL;
 	return (f);
@@ -181,7 +184,7 @@ int					main(int argc, char **argv, char **env)
 		}
 		ft_free_matrix(f->process);
 		free(f->line);
-        exit(0);
+        // exit(0);
 	}
 	return (0);
 }

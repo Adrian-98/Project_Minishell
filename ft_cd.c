@@ -6,13 +6,13 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 17:57:14 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/10/08 17:10:52 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/12 16:41:27 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int		ft_cd(t_shell *f)
+int			ft_cd(t_shell *f)
 {
 	int		i;
 	char	**tmp;

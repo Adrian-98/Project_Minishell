@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glopez-a <glopez-a@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 15:44:40 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/10/09 17:39:52 by glopez-a         ###   ########.fr       */
+/*   Updated: 2020/10/12 17:35:28 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,10 @@ typedef struct	shell_struct
 	int		z;		//>
 	int		x;		//>>
 	int		c;		//<
+	
+	int		a;
+	int 	b;
+	int 	k;
 }				t_shell;
 
 int				ft_strcmp(const char *s1, const char *s2);
