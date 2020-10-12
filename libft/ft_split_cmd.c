@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/11 18:47:21 by glopez-a          #+#    #+#             */
-/*   Updated: 2020/09/29 18:09:09 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/12 18:33:45 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ static void		ft_pipe_counter(t_shell *f)
 		i++;
 	}
 }
-
 
 static void		ft_info(const char *s, char *c, t_shell *f)
 {
@@ -105,8 +104,6 @@ char			**ft_split_cmd(char const *s, char *c, t_shell *f)
 	int		i;
 	char	**tab;
 
-	if (!s)
-		return (NULL);
 	ft_info(s, c, f);
 	rows = ft_rows(s, c);
 	i = -1;

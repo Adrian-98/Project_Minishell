@@ -6,20 +6,19 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 00:50:10 by jrameau           #+#    #+#             */
-/*   Updated: 2020/09/30 21:21:23 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/12 17:43:17 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	proc_signal_handler(int signo)
+void		proc_signal_handler(int signo)
 {
 	if (signo == SIGINT)
 		ft_putstr("\n");
 }
 
-
-void	signal_handler(int signo)
+void		signal_handler(int signo)
 {
 	if (signo == SIGINT)
 	{
@@ -28,7 +27,7 @@ void	signal_handler(int signo)
 	}
 }
 
-void signal1(int signo)
+void		signal1(int signo)
 {
 	if (signo == 1)
 	{
@@ -37,7 +36,7 @@ void signal1(int signo)
 	}
 }
 
-void signal2(int signo)
+void		signal2(int signo)
 {
 	if (signo == SIGQUIT)
 		ft_putstr("QUIT: 3\n");

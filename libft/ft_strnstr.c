@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 16:55:43 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/09/18 17:33:17 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/12 18:24:48 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 		return ((char*)haystack);
 	while (pajar[i] != '\0' && i < len)
 	{
-		if (pajar[i] == '"') //este liena es solo para que funcione el  echo
+		if (pajar[i] == '"')
 			return (NULL);
 		j = 0;
 		if (pajar[i] == needle[j])

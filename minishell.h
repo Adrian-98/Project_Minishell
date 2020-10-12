@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 19:20:28 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/10/08 18:35:59 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/12 17:53:05 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,8 @@ void		ft_body_redi2(t_shell *f);
 void		ft_$(t_shell *f);
 void		ft_free_matrix(char **str);
 void		ft_env(t_shell *f);
+void		ft_redi_z(t_shell *f, char *tmp);
+void		ft_redi_x(t_shell *f, char *tmp);
+t_shell		*ft_create_struct(t_shell *f, char **env);
 
 #endif

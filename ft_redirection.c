@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_redirection.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glopez-a <glopez-a@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 17:01:34 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/10/09 20:30:52 by glopez-a         ###   ########.fr       */
+/*   Updated: 2020/10/12 17:51:01 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,35 +49,9 @@ void		ft_body_redi(t_shell *f)
 	else if (f->c == 1)
 		f->redi = ft_split2(f->pipes[f->i], '<');
 	if (f->z == 1)
-	{
-		tmp = ft_strtrim(f->redi[1], " ");
-		free(f->redi[1]);
-		f->redi[1] = ft_strdup(tmp);
-		f->fd2 = open(f->redi[1], O_CREAT | O_WRONLY, 0777);
-		if (f->fd2  < 0)
-		{
-			ft_printf("%s\n", strerror(errno));
-			exit (1);
-		}
-		f->ret = dup2(f->fd2, 1);
-		ft_body_redi2(f);
-		close(f->fd2);
-	}
+		ft_redi_z(f, tmp);
 	else if (f->x == 1)
-	{
-		tmp = ft_strtrim(f->redi[1], " ");
-		free(f->redi[1]);
-		f->redi[1] = ft_strdup(tmp);
-		f->fd2 = open(f->redi[1], O_CREAT | O_APPEND | O_WRONLY, 0777);
-		if (f->fd2  < 0)
-		{
-			ft_printf("error :%s\n", strerror(errno));
-			exit (1);
-		}
-		f->ret = dup2(f->fd2, 1);
-		ft_body_redi2(f);
-		close(f->fd2);
-	}
+		ft_redi_x(f, tmp);
 	else if (f->c == 1)
 	{
 		tmp = ft_strtrim(f->redi[1], " ");

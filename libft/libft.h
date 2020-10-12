@@ -6,11 +6,11 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 15:44:40 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/10/12 17:35:28 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/12 18:56:02 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef LIBFT_H
+#ifndef LIBFT_H
 # define LIBFT_H
 # include <string.h>
 # include <stddef.h>
@@ -24,7 +24,7 @@ typedef	struct	s_list
 	struct s_list	*next;
 }				t_list;
 
-typedef struct	shell_struct
+typedef struct	h_struct
 {
 	char	*line;
 	char	**arguments;
@@ -35,12 +35,12 @@ typedef struct	shell_struct
 	int		flag2;
 	int		p;
 	int		i;
-	int 	fd1[2];
+	int		fd1[2];
 	int		fd2;
 	int		ret;
-	int 	save[2];
+	int		save[2];
 	int		status;
-	int 	statuss;
+	int		statuss;
 	pid_t	pid;
 	int		quote;
 	char	**envv;
@@ -49,15 +49,15 @@ typedef struct	shell_struct
 	char	*erno;
 	char	*home;
 	char	**pipes;
-	char 	**redi;
+	char	**redi;
 
-	int		z;		//>
-	int		x;		//>>
-	int		c;		//<
-	
+	int		z;
+	int		x;
+	int		c;
+
 	int		a;
-	int 	b;
-	int 	k;
+	int		b;
+	int		k;
 }				t_shell;
 
 int				ft_strcmp(const char *s1, const char *s2);
@@ -115,7 +115,7 @@ void			ft_lstiter(t_list *lst, void (*f)(void *));
 t_list			*ft_lstmap(t_list *lst, void *(*f)(void *),\
 				void (*del)(void *));
 void			ft_putstr(char *s);
-char    		*ft_spaceserase(char *str);
+char			*ft_spaceserase(char *str);
 char			*ft_strsub(char *str, int start, size_t len);
 char			*ft_strnew(size_t size);
 size_t			ft_strlcpy1(char *dst, const char *src, size_t dstsize);
