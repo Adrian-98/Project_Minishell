@@ -6,11 +6,11 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 19:20:28 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/10/12 19:02:15 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/12 20:06:15 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef  MINISHELL_H
+#ifndef MINISHELL_H
 # define MINISHELL_H
 
 # include "libft/libft.h"
@@ -44,15 +44,15 @@ int			ft_echo(t_shell *f);
 int			ft_quotes(t_shell *f);
 void		ft_quote2(t_shell *f);
 int			ft_quotes1(t_shell *f);
-void    	ft_get_user(t_shell *f);
+void		ft_get_user(t_shell *f);
 void		ft_bash(char **path, t_shell *f);
 int			chdir(const char *path);
 int			ft_cd(t_shell *f);
 void		ft_extra2(char *temp, t_shell *f);
 void		ft_extra(char *temp, t_shell *f);
 void		display_msg1(t_shell *f);
-char    	*ft_var(char *str, t_shell *f);
-void    	ft_get_path(t_shell *f);
+char		*ft_var(char *str, t_shell *f);
+void		ft_get_path(t_shell *f);
 void		ft_clear(t_shell *f);
 int			ft_already(t_shell *f, char *aux);
 int			ft_export_while(t_shell *f);
@@ -62,12 +62,12 @@ void		proc_signal_handler(int signo);
 void		signal_handler(int signo);
 void		signal1(int signo);
 void		signal2(int signo);
-void 		ft_body(t_shell *f);
-int 		ft_count_pipes(t_shell *f);
+void		ft_body(t_shell *f);
+int			ft_count_pipes(t_shell *f);
 int			ft_redi(char *str, t_shell *f);
 void		ft_body_redi(t_shell *f);
 void		ft_body_redi2(t_shell *f);
-void		ft_$(t_shell *f);
+void		ft_dollar(t_shell *f);
 void		ft_free_matrix(char **str);
 void		ft_env(t_shell *f);
 void		ft_redi_z(t_shell *f, char *tmp);

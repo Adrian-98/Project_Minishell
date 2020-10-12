@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/22 17:58:40 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/10/12 17:40:47 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/12 20:01:59 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ int				ft_export_while(t_shell *f)
 	char	**tmp;
 
 	i = 1;
-	while (f->arguments[i] != 0)
+	while (f->arg[i] != 0)
 	{
-		if (!(ft_strchr(f->arguments[i], '=')))
+		if (!(ft_strchr(f->arg[i], '=')))
 			return (0);
-		ft_export(f, f->arguments[i], tmp);
+		ft_export(f, f->arg[i], tmp);
 		i++;
 	}
 	return (0);

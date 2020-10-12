@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/18 15:18:24 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/10/08 18:54:52 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/12 20:01:59 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_pwd(t_shell *f)
 	int i;
 
 	i = 0;
-	while (f->arguments[i])
+	while (f->arg[i])
 		i++;
 	if (i >= 2)
 		ft_too_many(f);

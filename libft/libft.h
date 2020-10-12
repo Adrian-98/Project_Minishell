@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 15:44:40 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/10/12 18:56:02 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/12 19:49:08 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef	struct	s_list
 	struct s_list	*next;
 }				t_list;
 
-typedef struct	h_struct
+typedef struct	s_structed
 {
 	char	*line;
 	char	**arguments;
@@ -60,6 +60,8 @@ typedef struct	h_struct
 	int		k;
 }				t_shell;
 
+int				ft_str_malloc2(int k, char const *s, t_shell *f, char c);
+int				ft_extraaa(const char *s, char c, int i, int size);
 int				ft_strcmp(const char *s1, const char *s2);
 char			*ft_strndup(const char *src, size_t chars);
 char			*ft_strjoin3(char const *s1, char const *s2);

@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 17:53:42 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/10/12 17:56:01 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/12 20:01:59 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,16 @@ void	ft_get_path(t_shell *f)
 	ft_get_user(f);
 }
 
-void 	ft_body(t_shell *f)
+void	ft_body(t_shell *f)
 {
-	f->arguments = ft_split(f->pipes[f->i], ' ', f);
-	ft_$(f);
+	f->arg = ft_split(f->pipes[f->i], ' ', f);
+	ft_dollar(f);
 	ft_cases(f);
 }
 
-int 	ft_count_pipes(t_shell *f)
+int		ft_count_pipes(t_shell *f)
 {
-	while(f->pipes[f->p])
+	while (f->pipes[f->p])
 		f->p++;
 	return (f->p);
 }

@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 17:57:14 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/10/12 16:41:27 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/12 20:01:59 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ int			ft_cd(t_shell *f)
 	char	**tmp;
 
 	i = 0;
-	while (f->arguments[i])
+	while (f->arg[i])
 		i++;
 	if (i >= 3)
 		ft_too_many(f);
-	else if ((f->arguments[1]) == 0)
+	else if ((f->arg[1]) == 0)
 	{
 		if (chdir(f->home) != 0)
 			ft_printf("%s\n", strerror(errno));
@@ -31,8 +31,8 @@ int			ft_cd(t_shell *f)
 	}
 	else
 	{
-		if (chdir(f->arguments[1]) != 0)
-			ft_printf("cd: %s: %s\n", strerror(errno), f->arguments[1]);
+		if (chdir(f->arg[1]) != 0)
+			ft_printf("cd: %s: %s\n", strerror(errno), f->arg[1]);
 		f->pwd = getcwd(f->pwd, 4096);
 		ft_export(f, ft_strjoin("PWD=", f->pwd), tmp);
 	}

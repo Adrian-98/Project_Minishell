@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 11:33:02 by adrian            #+#    #+#             */
-/*   Updated: 2020/10/12 19:01:31 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/12 20:06:32 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,28 +57,28 @@ char			*ft_var(char *str, t_shell *f)
 	return ("");
 }
 
-int			ft_echo(t_shell *f)
+int				ft_echo(t_shell *f)
 {
 	int i;
 	int j;
 
-	if (!(f->arguments[1]))
+	if (!(f->arg[1]))
 	{
 		ft_printf("\n");
 		return (0);
 	}
 	i = 1;
-	if (ft_strcmp(f->arguments[1], "-n") == 0)
+	if (ft_strcmp(f->arg[1], "-n") == 0)
 		i++;
-	while (f->arguments[i])
+	while (f->arg[i])
 	{
-		if (!f->arguments[i + 1])
-			ft_printf("%s", f->arguments[i]);
+		if (!f->arg[i + 1])
+			ft_printf("%s", f->arg[i]);
 		else
-			ft_printf("%s ", f->arguments[i]);
+			ft_printf("%s ", f->arg[i]);
 		i++;
 	}
-	if (ft_strcmp(f->arguments[1], "-n") == 0)
+	if (ft_strcmp(f->arg[1], "-n") == 0)
 		ft_printf("%%");
 	ft_printf("\n");
 	return (0);

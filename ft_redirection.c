@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 17:01:34 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/10/12 17:51:01 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/12 20:01:59 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int			ft_redi(char *str, t_shell *f)
 {
-	int i;
-	int j;
-	char **temp;
-	
+	int		i;
+	int		j;
+	char	**temp;
+
 	f->c = 0;
 	f->z = 0;
 	f->x = 0;
@@ -58,11 +58,6 @@ void		ft_body_redi(t_shell *f)
 		free(f->redi[1]);
 		f->redi[1] = ft_strdup(tmp);
 		f->fd2 = open(f->redi[1], O_RDONLY, 0777);
-		if (f->fd2  < 0)
-		{
-			ft_printf("error :%s\n", strerror(errno));
-			exit (1);
-		}
 		f->ret = dup2(f->fd2, 0);
 		ft_body_redi2(f);
 		close(f->fd2);
@@ -71,8 +66,8 @@ void		ft_body_redi(t_shell *f)
 
 void		ft_body_redi2(t_shell *f)
 {
-	f->arguments = ft_split(f->redi[0], ' ', f);
+	f->arg = ft_split(f->redi[0], ' ', f);
 	ft_free_matrix(f->redi);
-	ft_$(f);
+	ft_dollar(f);
 	ft_cases(f);
 }

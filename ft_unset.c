@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/23 19:55:12 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/10/01 20:14:19 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/12 20:01:59 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ int			ft_unset_while(t_shell *f)
 	char	**tmp;
 
 	i = 1;
-	while (f->arguments[i] != 0)
+	while (f->arg[i] != 0)
 	{
-		ft_unset(f, f->arguments[i], tmp);
+		ft_unset(f, f->arg[i], tmp);
 		i++;
 	}
 	return (0);

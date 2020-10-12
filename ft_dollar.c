@@ -5,43 +5,43 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/12 17:51:44 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/10/12 17:52:54 by amunoz-p         ###   ########.fr       */
+/*   Created: 2020/10/12 19:50:20 by amunoz-p          #+#    #+#             */
+/*   Updated: 2020/10/12 20:08:11 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void			ft_$(t_shell *f)
+void			ft_dollar(t_shell *f)
 {
-    int     i;
-    int     j;
-    char    *tmp;
-    char    *tmp2;
+	int		i;
+	int		j;
+	char	*tmp;
+	char	*tmp2;
 
-    i = -1;
-    while (f->arguments[++i])
-    {
-        j = 0;
-        while (f->arguments[i][j] && f->arguments[i][j] != '$')
-            j++;
-        tmp = ft_strndup(f->arguments[i], j);
-        while (f->arguments[i][j] && f->arguments[i][j] == '$')
-        {
-            tmp2 = ft_strjoin(tmp, ft_var(&f->arguments[i][++j], f));
-            free(tmp);      
-            tmp = ft_strdup(tmp2);
+	i = -1;
+	while (f->arg[++i])
+	{
+		j = 0;
+		while (f->arg[i][j] && f->arg[i][j] != '$')
+			j++;
+		tmp = ft_strndup(f->arg[i], j);
+		while (f->arg[i][j] && f->arg[i][j] == '$')
+		{
+			tmp2 = ft_strjoin(tmp, ft_var(&f->arg[i][++j], f));
+			free(tmp);
+			tmp = ft_strdup(tmp2);
 			free(tmp2);
-            while (f->arguments[i][j] && f->arguments[i][j] != '$' && f->arguments[i][j] != ' ')
-                j++;
-        }
-		free(f->arguments[i]);
-        f->arguments[i] = ft_strdup(tmp);
-        free(tmp);
-    }
+			while (f->arg[i][j] && f->arg[i][j] != '$' && f->arg[i][j] != ' ')
+				j++;
+		}
+		free(f->arg[i]);
+		f->arg[i] = ft_strdup(tmp);
+		free(tmp);
+	}
 }
 
-t_shell		*ft_create_struct(t_shell *f, char **env)
+t_shell			*ft_create_struct(t_shell *f, char **env)
 {
 	int i;
 
@@ -54,7 +54,7 @@ t_shell		*ft_create_struct(t_shell *f, char **env)
 	f->flag2 = 0;
 	f->envv = env;
 	f->quote = 0;
-	f->p = 0; 
+	f->p = 0;
 	f->i = 0;
 	f->z = 0;
 	f->x = 0;

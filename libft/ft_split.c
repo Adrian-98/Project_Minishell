@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/11 14:00:29 by glopez-a          #+#    #+#             */
-/*   Updated: 2020/10/12 18:54:12 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/12 19:46:49 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,7 @@ static int			ft_rows_extra(const char *s, char c, int i, int size)
 	while (s[i] != '\0')
 	{
 		if (s[i] == '"')
-		{
-			i++;
-			while (s[i] != '"')
-				i++;
-			i++;
-			size++;
-		}
+			size = ft_extraaa(s, c, i, size);
 		else if (s[i] == '\'')
 		{
 			i++;
@@ -63,26 +57,7 @@ static char			*ft_str_malloc(char const *s, char c, int k, t_shell *f)
 	int		i;
 	char	*str;
 
-	i = 0;
-	if (s[i + k] == '\'')
-	{
-		i++;
-		while (s[i + k] != '\'')
-			i++;
-		f->flag1 = 1;
-		i -= 1;
-	}
-	else if (s[i + k] == '"')
-	{
-		i++;
-		while (s[i + k] != '"')
-			i++;
-		f->flag = 1;
-		i -= 1;
-	}
-	else
-		while (s[i + k] && s[i + k] != c && s[i + k] != '"' && s[i + k] != '\'')
-			i++;
+	i = ft_str_malloc2(k, s, f, c);
 	if (!(str = (char *)malloc(sizeof(char) * (i + 1))))
 		return (NULL);
 	if (f->flag1 == 1)
