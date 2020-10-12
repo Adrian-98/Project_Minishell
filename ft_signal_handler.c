@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 00:50:10 by jrameau           #+#    #+#             */
-/*   Updated: 2020/10/12 17:43:17 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/12 19:09:32 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void		signal1(int signo)
 {
 	if (signo == 1)
 	{
+		ft_putstr("\n");
+		display_msg();
 		ft_putstr("exit\n");
 		exit(1);
 	}

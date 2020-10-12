@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 19:20:28 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/10/12 17:53:05 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/12 19:02:15 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void		ft_exit(t_shell *f);
 void		ft_404_kill(t_shell *f);
 void		ft_too_many(t_shell *f);
 void		ft_exit1(t_shell *f);
-void		ft_echo(t_shell *f);
+int			ft_echo(t_shell *f);
 int			ft_quotes(t_shell *f);
 void		ft_quote2(t_shell *f);
 int			ft_quotes1(t_shell *f);

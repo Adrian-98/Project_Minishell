@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 11:33:02 by adrian            #+#    #+#             */
-/*   Updated: 2020/10/12 18:30:19 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/12 19:01:31 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,16 @@ char			*ft_var(char *str, t_shell *f)
 	return ("");
 }
 
-void			ft_echo(t_shell *f)
+int			ft_echo(t_shell *f)
 {
 	int i;
 	int j;
 
+	if (!(f->arguments[1]))
+	{
+		ft_printf("\n");
+		return (0);
+	}
 	i = 1;
 	if (ft_strcmp(f->arguments[1], "-n") == 0)
 		i++;
@@ -76,4 +81,5 @@ void			ft_echo(t_shell *f)
 	if (ft_strcmp(f->arguments[1], "-n") == 0)
 		ft_printf("%%");
 	ft_printf("\n");
+	return (0);
 }
