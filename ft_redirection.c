@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_redirection.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: glopez-a <glopez-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/06 17:01:34 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/10/12 20:01:59 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/13 19:30:20 by glopez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ void		ft_body_redi(t_shell *f)
 		ft_redi_x(f, tmp);
 	else if (f->c == 1)
 	{
-		tmp = ft_strtrim(f->redi[1], " ");
+		tmp = ft_spaceserase(f->redi[1]);
 		free(f->redi[1]);
-		f->redi[1] = ft_strdup(tmp);
+		f->redi[1] = tmp;
 		f->fd2 = open(f->redi[1], O_RDONLY, 0777);
 		f->ret = dup2(f->fd2, 0);
 		ft_body_redi2(f);

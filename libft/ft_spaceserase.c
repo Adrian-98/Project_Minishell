@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_spaceserase.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: glopez-a <glopez-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 20:51:16 by adrian            #+#    #+#             */
-/*   Updated: 2020/09/18 15:39:09 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/13 19:28:22 by glopez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,23 @@
 char	*ft_spaceserase(char *str)
 {
 	char	*new_str;
-	int		start;
 	int		i;
+	int		j;
 
-	if (!str)
-		return (NULL);
 	i = 0;
-	while ((str[i] == ' ') || (str[i] == '\t') || (str[i] == '\n'))
+	j = 0;
+	while (str[j] == ' ')
+		j++;
+	while (str[i])
 		i++;
-	start = i;
-	i = ft_strlen(str) - 1;
-	while ((str[i] == ' ') || (str[i] == '\t') || (str[i] == '\n'))
-		i--;
-	return ((new_str = (ft_strsub(str, start, i - start + 1))));
+	new_str = malloc(sizeof(char) * (i - j + 1));
+	i = 0;
+	while (str[j])
+	{
+		new_str[i] = str[j];
+		i++;
+		j++;
+	}
+	new_str[i] = 0;
+	return (new_str);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_redii2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: glopez-a <glopez-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 17:43:53 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/10/12 17:48:55 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/13 19:29:39 by glopez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	ft_redi_z(t_shell *f, char *tmp)
 {
-	tmp = ft_strtrim(f->redi[1], " ");
+	tmp = ft_spaceserase(f->redi[1]);
 	free(f->redi[1]);
-	f->redi[1] = ft_strdup(tmp);
+	f->redi[1] = tmp;
 	f->fd2 = open(f->redi[1], O_CREAT | O_WRONLY, 0777);
 	if (f->fd2 < 0)
 	{
@@ -30,9 +30,9 @@ void	ft_redi_z(t_shell *f, char *tmp)
 
 void	ft_redi_x(t_shell *f, char *tmp)
 {
-	tmp = ft_strtrim(f->redi[1], " ");
+	tmp = ft_spaceserase(f->redi[1]);
 	free(f->redi[1]);
-	f->redi[1] = ft_strdup(tmp);
+	f->redi[1] = tmp;
 	f->fd2 = open(f->redi[1], O_CREAT | O_APPEND | O_WRONLY, 0777);
 	if (f->fd2 < 0)
 	{
