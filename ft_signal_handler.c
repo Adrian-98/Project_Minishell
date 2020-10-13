@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/11 00:50:10 by jrameau           #+#    #+#             */
-/*   Updated: 2020/10/12 19:18:45 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/13 17:48:22 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,14 @@ void		signal1(int signo)
 		ft_putstr("\n");
 		display_msg();
 		ft_putstr("exit\n");
-		exit(1);
+		exit(0);
 	}
 }
 
 void		signal2(int signo)
 {
 	if (signo == SIGQUIT)
+	{
 		ft_putstr("QUIT: 3\n");
+	}
 }

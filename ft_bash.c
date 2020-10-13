@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 11:33:02 by adrian            #+#    #+#             */
-/*   Updated: 2020/10/12 20:01:59 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/13 17:47:07 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,19 +45,19 @@ void			ft_bash(char **path, t_shell *f)
 {
 	int		i;
 	int		j;
-	pid_t	id;
+	pid_t	pidt;
 
 	i = 0;
-	id = fork();
+	pidt = fork();
 	signal(SIGINT, proc_signal_handler);
 	signal(SIGQUIT, signal2);
-	if (id == 0)
+	if (pidt == 0)
 	{
 		ft_bash_son(f, i);
 	}
 	else
 	{
-		waitpid(id, &f->statuss, 0);
+		waitpid(pidt, &f->statuss, 0);
 		f->statuss = (f->statuss / 256);
 	}
 }

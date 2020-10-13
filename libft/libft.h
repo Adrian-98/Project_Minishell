@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 15:44:40 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/10/12 19:49:08 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/13 16:26:15 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef	struct	s_list
 typedef struct	s_structed
 {
 	char	*line;
-	char	**arguments;
+	char	**arg;
 	char	*pwd;
 	char	**path;
 	int		flag;
@@ -42,6 +42,7 @@ typedef struct	s_structed
 	int		status;
 	int		statuss;
 	pid_t	pid;
+	pid_t	pidt;
 	int		quote;
 	char	**envv;
 	char	**process;
