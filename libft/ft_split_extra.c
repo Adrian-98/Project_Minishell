@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split_extra.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: glopez-a <glopez-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 19:27:57 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/10/12 19:39:45 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/13 19:58:50 by glopez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,12 @@
 
 int		ft_extraaa(const char *s, char c, int i, int size)
 {
-	(void)c;
-	if (s[i] == '"')
-	{
+	i++;
+	while (s[i] != c)
 		i++;
-		while (s[i] != '"')
-			i++;
-		i++;
-		size++;
-	}
-	return (size);
+	i++;
+	size++;
+	return (i);
 }
 
 int		ft_str_malloc2(int k, char const *s, t_shell *f, char c)
