@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: glopez-a <glopez-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 12:05:03 by adrian            #+#    #+#             */
-/*   Updated: 2020/10/12 20:01:59 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/13 18:06:27 by glopez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ void		ft_exit(t_shell *f)
 		j = ft_atoi(f->arg[1]);
 		exit(j);
 	}
+	else
+		exit(0);
 }
 
 void		ft_too_many(t_shell *f)
