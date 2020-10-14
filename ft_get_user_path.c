@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_get_user_path.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: glopez-a <glopez-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 17:53:42 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/10/12 20:01:59 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/14 18:37:24 by glopez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	ft_get_user(t_shell *f)
 	int i;
 
 	i = 0;
+	if (f->home)
+		free(f->home);
 	while (f->envv[i])
 	{
 		if (!ft_strncmp(f->envv[i], "HOME=", 5))
