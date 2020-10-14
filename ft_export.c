@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: glopez-a <glopez-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/22 17:58:40 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/10/14 18:01:17 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/14 21:05:00 by glopez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,10 @@ int				ft_export(t_shell *f, char *str, char **tmp)
 	tmp = ft_export2(aux, tmp, aux1, f);
 	free(aux);
 	free(aux1);
+	ft_free_matrix(f->envv);
 	f->envv = tmp;
-	//ft_free_matrix(f->path);
+	if (f->path)
+		ft_free_matrix(f->path);
 	ft_get_path(f);
 	return (0);
 }

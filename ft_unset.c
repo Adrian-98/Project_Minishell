@@ -6,7 +6,7 @@
 /*   By: glopez-a <glopez-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/23 19:55:12 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/10/14 20:40:52 by glopez-a         ###   ########.fr       */
+/*   Updated: 2020/10/14 21:18:01 by glopez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,13 @@ int			ft_unset(t_shell *f, char *str, char **tmp)
 {
 	int		i;
 	int		j;
-	int		k;
 
 	i = 0;
 	while (f->envv[i])
 		i++;
 	if (!(tmp = malloc(sizeof(char *) * (i + 1))))
 		return (0);
-	k = i;
+	f->k = i;
 	i = 0;
 	str = ft_strjoin(str, "=");
 	if ((i = ft_already(f, str)) == -1)
@@ -46,7 +45,7 @@ int			ft_unset(t_shell *f, char *str, char **tmp)
 	j = -1;
 	while (++j < i)
 		tmp[j] = ft_strdup(f->envv[j]);
-	while (i++ < k)
+	while (i++ < f->k)
 		tmp[i - 1] = ft_strdup(f->envv[++j]);
 	ft_free_matrix(f->envv);
 	f->envv = tmp;

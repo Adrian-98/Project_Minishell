@@ -6,7 +6,7 @@
 /*   By: glopez-a <glopez-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 11:33:02 by adrian            #+#    #+#             */
-/*   Updated: 2020/10/13 18:00:52 by glopez-a         ###   ########.fr       */
+/*   Updated: 2020/10/14 21:16:06 by glopez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ void			ft_bash(char **path, t_shell *f)
 	signal(SIGQUIT, signal2);
 	if (pidt == 0)
 	{
+		if (!f->path)
+			ft_404(f);
 		ft_bash_son(f, i);
 	}
 	else
