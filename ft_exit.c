@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glopez-a <glopez-a@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 12:05:03 by adrian            #+#    #+#             */
-/*   Updated: 2020/10/13 18:06:27 by glopez-a         ###   ########.fr       */
+/*   Updated: 2020/10/14 17:35:17 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,10 @@ void		ft_exit(t_shell *f)
 		exit(j);
 	}
 	else
+	{
+		system("leaks minishell");
 		exit(0);
+	}
 }
 
 void		ft_too_many(t_shell *f)

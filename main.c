@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glopez-a <glopez-a@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 18:10:01 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/10/13 19:31:49 by glopez-a         ###   ########.fr       */
+/*   Updated: 2020/10/14 17:38:54 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int				main(int argc, char **argv, char **env)
 		f->process = ft_split2(f->line, ';');
 		main2(f);
 		ft_free_matrix(f->process);
-		free(f->line);
+		free(proceso);
 	}
 	return (0);
 }
