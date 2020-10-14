@@ -6,7 +6,7 @@
 /*   By: glopez-a <glopez-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 11:33:02 by adrian            #+#    #+#             */
-/*   Updated: 2020/10/13 18:03:02 by glopez-a         ###   ########.fr       */
+/*   Updated: 2020/10/14 20:41:42 by glopez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@ void	ft_cases(t_shell *f)
 	else if (ft_strcmp("export", f->arg[0]) == 0)
 		ft_export_while(f);
 	else if (ft_strcmp("unset", f->arg[0]) == 0)
+	{
 		ft_unset_while(f);
+	}
 	else if (ft_strcmp("env", f->arg[0]) == 0)
 		ft_env(f);
 	else
