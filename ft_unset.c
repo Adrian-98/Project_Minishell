@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/23 19:55:12 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/10/12 20:01:59 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/14 17:59:15 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int			ft_unset(t_shell *f, char *str, char **tmp)
 	while (i++ < k)
 		tmp[i - 1] = ft_strdup(f->envv[++j]);
 	f->envv = tmp;
+	ft_free_matrix(f->path);
 	ft_get_path(f);
 	return (0);
 }
