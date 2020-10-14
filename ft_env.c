@@ -6,7 +6,7 @@
 /*   By: glopez-a <glopez-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/08 18:34:32 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/10/14 18:47:20 by glopez-a         ###   ########.fr       */
+/*   Updated: 2020/10/14 19:27:44 by glopez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void		ft_env(t_shell *f)
 	{
 		while (f->path[i])
 		{
-			if (!(ft_strncmp(f->path[i], "/bin", 4)))
+			if (!(ft_strncmp(f->path[i], "/usr/bin", 8)))
 				j = 1;
 			i++;
 		}
