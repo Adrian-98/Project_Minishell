@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
+/*   By: glopez-a <glopez-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 17:57:14 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/10/12 20:01:59 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/15 18:48:28 by glopez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int			ft_cd(t_shell *f)
 {
 	int		i;
 	char	**tmp;
+	char	*str;
 
 	i = 0;
 	while (f->arg[i])
@@ -27,15 +28,18 @@ int			ft_cd(t_shell *f)
 		if (chdir(f->home) != 0)
 			ft_printf("%s\n", strerror(errno));
 		f->pwd = getcwd(f->pwd, 4096);
-		ft_export(f, ft_strjoin("PWD=", f->pwd), tmp);
+		str = ft_strjoin("PWD=", f->pwd);
+		ft_export(f, str, tmp);
 	}
 	else
 	{
 		if (chdir(f->arg[1]) != 0)
 			ft_printf("cd: %s: %s\n", strerror(errno), f->arg[1]);
 		f->pwd = getcwd(f->pwd, 4096);
-		ft_export(f, ft_strjoin("PWD=", f->pwd), tmp);
+		str = ft_strjoin("PWD=", f->pwd);
+		ft_export(f, str, tmp);
 	}
+	free(str);
 	return (0);
 }
 
