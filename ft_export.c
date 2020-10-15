@@ -6,7 +6,7 @@
 /*   By: glopez-a <glopez-a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/22 17:58:40 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/10/14 21:05:00 by glopez-a         ###   ########.fr       */
+/*   Updated: 2020/10/15 19:14:34 by glopez-a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int				ft_export_while(t_shell *f)
 
 static char		**ft_export2(char *aux, char **tmp, char *aux1, t_shell *f)
 {
+
 	f->b = -1;
 	if (f->a >= 0)
 	{
@@ -53,6 +54,7 @@ static char		**ft_export2(char *aux, char **tmp, char *aux1, t_shell *f)
 			tmp[f->b] = ft_strdup(f->envv[f->b]);
 		while (++f->a < f->k)
 			tmp[f->a] = ft_strdup(f->envv[++f->b]);
+		tmp[f->a] = 0;
 	}
 	else
 	{
