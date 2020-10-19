@@ -3,16 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glopez-a <glopez-a@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 17:57:14 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/10/15 19:15:08 by glopez-a         ###   ########.fr       */
+/*   Updated: 2020/10/19 16:46:13 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int			ft_cd(t_shell *f)
+static void		ft_cd_extra(t_shell *f, char *str, char **tmp)
+{
+	if (chdir(f->arg[1]) != 0)
+		ft_printf("cd: %s: %s\n", strerror(errno), f->arg[1]);
+	f->pwd = getcwd(f->pwd, 4096);
+	str = ft_strjoin("PWD=", f->pwd);
+	ft_export(f, str, tmp);
+	free(str);
+}
+
+int				ft_cd(t_shell *f)
 {
 	int		i;
 	char	**tmp;
@@ -30,20 +40,14 @@ int			ft_cd(t_shell *f)
 		f->pwd = getcwd(f->pwd, 4096);
 		str = ft_strjoin("PWD=", f->pwd);
 		ft_export(f, str, tmp);
+		free(str);
 	}
 	else
-	{
-		if (chdir(f->arg[1]) != 0)
-			ft_printf("cd: %s: %s\n", strerror(errno), f->arg[1]);
-		f->pwd = getcwd(f->pwd, 4096);
-		str = ft_strjoin("PWD=", f->pwd);
-		ft_export(f, str, tmp);
-	}
-	free(str);
+		ft_cd_extra(f, str, tmp);
 	return (0);
 }
 
-void		ft_clear(t_shell *f)
+void			ft_clear(t_shell *f)
 {
 	char	**str;
 	pid_t	id;
