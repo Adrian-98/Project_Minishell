@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_dollar.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glopez-a <glopez-a@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/12 19:50:20 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/10/14 21:04:48 by glopez-a         ###   ########.fr       */
+/*   Updated: 2020/10/19 18:29:47 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ t_shell			*ft_create_struct(t_shell *f, char **env)
 	f->c = 0;
 	f->a = 0;
 	f->b = 0;
+	f->v = 0;
 	f->k = 0;
 	f->statuss = 0;
 	f->erno = NULL;

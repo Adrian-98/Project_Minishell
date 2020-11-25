@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 15:44:40 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/10/13 16:26:15 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/19 20:01:26 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct	s_structed
 	int		i;
 	int		fd1[2];
 	int		fd2;
+	int		aux;
 	int		ret;
 	int		save[2];
 	int		status;
@@ -55,6 +56,7 @@ typedef struct	s_structed
 	int		z;
 	int		x;
 	int		c;
+	int		v;
 
 	int		a;
 	int		b;

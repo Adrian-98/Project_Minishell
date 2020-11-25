@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_spaceserase.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glopez-a <glopez-a@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 20:51:16 by adrian            #+#    #+#             */
-/*   Updated: 2020/10/13 19:28:22 by glopez-a         ###   ########.fr       */
+/*   Updated: 2020/10/19 19:39:49 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*ft_spaceserase(char *str)
 		i++;
 	new_str = malloc(sizeof(char) * (i - j + 1));
 	i = 0;
-	while (str[j])
+	while (str[j] && str[j] != ' ')
 	{
 		new_str[i] = str[j];
 		i++;

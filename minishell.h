@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: glopez-a <glopez-a@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 19:20:28 by amunoz-p          #+#    #+#             */
-/*   Updated: 2020/10/13 18:28:05 by glopez-a         ###   ########.fr       */
+/*   Updated: 2020/10/19 18:35:25 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,7 @@ void		ft_env(t_shell *f);
 void		ft_redi_z(t_shell *f, char *tmp);
 void		ft_redi_x(t_shell *f, char *tmp);
 t_shell		*ft_create_struct(t_shell *f, char **env);
+void		ft_redi_c(t_shell *f, char *tmp);
+void		ft_redi_v(t_shell *f, char *tmp);
 
 #endif

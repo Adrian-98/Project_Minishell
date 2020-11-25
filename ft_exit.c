@@ -6,7 +6,7 @@
 /*   By: amunoz-p <amunoz-p@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 12:05:03 by adrian            #+#    #+#             */
-/*   Updated: 2020/10/19 16:50:59 by amunoz-p         ###   ########.fr       */
+/*   Updated: 2020/10/19 20:06:23 by amunoz-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void		ft_free_matrix(char **str)
 {
-	int	i;
+	int i;
 
 	i = -1;
 	while (str[++i])
@@ -28,10 +28,38 @@ void		ft_exit1(t_shell *f)
 	dup2(f->save[1], STDOUT_FILENO);
 }
 
-void		ft_exit(t_shell *f)
+static void	ft_exit2(t_shell *f, int j)
 {
 	int i;
+	int k;
+
+	k = 0;
+	i = -1;
+	j = ft_atoi(f->arg[1]);
+	while (f->arg[1][++i])
+	{
+		if (f->arg[1][0] == '-')
+			i++;
+		if (ft_isdigit(f->arg[1][i]) == 0)
+			k = 1;
+	}
+	if (k != 1)
+	{
+		ft_putstr("exit\n");
+		exit(j);
+	}
+	else
+	{
+		ft_putstr("exit\n");
+		ft_printf("bash: exit: %s: numeric argument required\n", f->arg[1]);
+		exit(255);
+	}
+}
+
+void		ft_exit(t_shell *f)
+{
 	int j;
+	int i;
 
 	j = 0;
 	i = 0;
@@ -44,10 +72,13 @@ void		ft_exit(t_shell *f)
 	else if (f->arg[1])
 	{
 		j = ft_atoi(f->arg[1]);
-		exit(j);
+		ft_exit2(f, j);
 	}
 	else
+	{
+		ft_putstr("exit\n");
 		exit(0);
+	}
 }
 
 void		ft_too_many(t_shell *f)
